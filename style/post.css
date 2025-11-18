@@ -25,9 +25,16 @@
 }
 
 .full-post-content p { 
+    text-align: justify;
     font-size: 1.1rem; 
     line-height: 1.6; 
     margin-bottom: 16px; 
+}
+
+.full-post-content li { 
+    text-align: justify;
+    font-size: 1.1rem; 
+    line-height: 1.6; 
 }
 
 .full-post-content h2 { 
