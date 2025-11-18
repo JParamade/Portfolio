@@ -26,15 +26,24 @@
 
 .full-post-content p { 
     text-align: justify;
+    text-justify: inter-word;
     font-size: 1.1rem; 
     line-height: 1.6; 
     margin-bottom: 16px; 
 }
 
-.full-post-content li { 
+.full-post-content ul,
+.full-post-content ol {
+    padding-left: 20px;   
+    margin-bottom: 16px; 
+}
+
+.full-post-content li {
     text-align: justify;
+    text-justify: inter-word;
     font-size: 1.1rem; 
     line-height: 1.6; 
+    margin-bottom: 8px;  
 }
 
 .full-post-content h2 { 
