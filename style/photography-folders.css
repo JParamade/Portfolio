@@ -1,0 +1,31 @@
+.folder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.folder-card {
+    text-decoration: none;
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    color: inherit;
+}
+
+.folder-card:hover {
+    transform: translateY(-5px);
+}
+
+.folder-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.folder-card h2 {
+    font-size: 1.3rem;
+    padding: 12px;
+    text-align: center;
+}

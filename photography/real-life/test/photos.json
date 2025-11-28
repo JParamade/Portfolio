@@ -1,0 +1,34 @@
+[
+    {
+        "src": "/assets/images/photography/real-life/test/test_1.jpg",
+        "title": "Sunrise in Kyoto",
+        "camera": "Canon EOS R6 Mark II",
+        "apperture": "f/1.8",
+        "shutter": "1/250s",
+        "iso": "200"
+    },
+    {
+        "src": "/assets/images/photography/real-life/test/test_2.jpeg",
+        "title": "Deer in Nara",
+        "camera": "Canon EOS R6 Mark II",
+        "apperture": "f/5.6",
+        "shutter": "1/1000s",
+        "iso": "800"
+    },
+    {
+        "src": "/assets/images/photography/real-life/test/test_3.webp",
+        "title": "Calculus Integral Projection",
+        "camera": "Canon EOS R6 Mark II",
+        "apperture": "f/2",
+        "shutter": "1/1000s",
+        "iso": "100"
+    },
+    {
+        "src": "/assets/images/photography/real-life/test/test_4.webp",
+        "title": "Fractal Beauty",
+        "camera": "Canon EOS R6 Mark II",
+        "apperture": "f/7.1",
+        "shutter": "1/1000s",
+        "iso": "400"
+    }
+]
