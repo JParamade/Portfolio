@@ -61,11 +61,13 @@
 }
 
 .tags {
-    margin-top: 10px;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    margin-left: 15px;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -94,4 +96,9 @@
 .tag.team {
     background: #1f2a1f;
     border-color: #3a7a3a;
+}
+
+.tag.tool {
+    background: #292a1f;
+    border-color: #7a753a;
 }

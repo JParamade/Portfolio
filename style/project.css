@@ -51,3 +51,89 @@ ul {
     color: #888;
     text-align: center;
 }
+
+.tags {
+    margin-bottom: 20px;
+    margin-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    font-size: 0.75rem;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.tag.engine {
+    background: #1f2a44;
+    border-color: #2f4a7a;
+}
+
+.tag.lang {
+    background: #2a1f1f;
+    border-color: #7a3a3a;
+}
+
+.tag.team {
+    background: #1f2a1f;
+    border-color: #3a7a3a;
+}
+
+.tag.tool {
+    background: #292a1f;
+    border-color: #7a753a;
+}
+
+.project-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+    border-radius: 8px;
+
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    transition: transform 0.2s, background 0.2s;
+}
+
+.project-link i {
+    font-size: 1rem;
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+    background: #2a2a2a;
+}
+
+/* Platform-specific accents */
+.project-link.steam:hover {
+    border-color: #1b2838;
+}
+
+.project-link.github:hover {
+    border-color: #6e5494;
+}
