@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Typewriter Effect Logic ---
-    const words = ["Game", "User Interface", "Audio", "Gameplay"];
+    const words = ["Game", "UI", "Audio", "Gameplay"];
     const typeWriterElement = document.getElementById('typewriter');
     
     let wordIndex = 0;
