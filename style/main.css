@@ -9,6 +9,12 @@
     --font-code: 'Fira Code', monospace;
 }
 
+.highlight {
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(0, 255, 102, 0.3); /* Subtle neon glow */
+    font-weight: inherit; /* Keeps whatever weight the parent heading has */
+}
+
 body {
     margin: 0;
     font-family: var(--font-heading);
