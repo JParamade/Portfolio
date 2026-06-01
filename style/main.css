@@ -42,19 +42,26 @@ body {
 /* ---------- HEADER & NAV ---------- */
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; 
     align-items: center;
-    height: 12vh;
-    padding: 0 5vw;
+    height: 8vh;
     background: rgba(10, 10, 10, 0.9);
     border-bottom: 1px solid #222;
     position: fixed;
     width: 100%;
-    box-sizing: border-box;
     z-index: 1000;
     
     opacity: 0;
     animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; 
+    padding: 0 5vw; 
 }
 
 .logo-container {
@@ -79,7 +86,7 @@ body {
 }
 
 .nav a {
-    margin-left: 3vw;
+    margin-left: 2vw;
     text-decoration: none;
     color: var(--text-muted);
     font-weight: 600;

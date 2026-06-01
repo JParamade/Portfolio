@@ -1,193 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Jaime Páramo, a Game Programmer specializing in Gameplay, UI, Audio, and Unreal Engine.">
-    <title>Game Programmer Portfolio - JParamade</title>
-    
-    <link rel="icon" href="/assets/images/logo.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="/style/main.css">
-    <link rel="stylesheet" href="/style/blog.css">
-</head>
-<body>
-    <header class="header">
-        <a href="/" class="logo-container">
-            <span class="site-name"><b>JParamade</b></span>
-        </a>
-        
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
-            <i class="fas fa-bars"></i>
-        </button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Portfolio of Jaime Páramo, a Game Programmer specializing in Gameplay, UI, Audio, and Unreal Engine.">
+        <title>Game Programmer Portfolio - JParamade</title>
 
-        <nav class="nav" id="nav-menu">
-            <a href="/">Home</a>
-            <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/blog" class="active">Blog</a>
-            <a href="/photography">Photography</a>
-            <a href="/contact">Contact</a>
-        </nav>
-    </header>
-    
-    <main class="blog-page fade-in-up">
-    <h1 class="page-title">Blog & <span class="highlight">Reviews</span></h1>
-    
-    <div class="blog-grid">
-        <article class="blog-card delay-1">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/dustborn/cover.jpg" alt="Dustborn Cover" class="post-image">
-            </div>
-            <div class="card-content">
-                <div class="post-date">August 19, 2024</div>
-                <h2 class="post-title">[Review] Dustborn</h2>
-                <p class="post-description">
-                    It has now been five years since Quantic Dream jumped aboard the publishing train with Spotlight. Since then, it has published games like Under the Waves, Lysfanga, and the Sea of Solitude: The Director’s Cut for Nintendo Switch. Its next release, developed by Red Thread Games, is about to land on PC and on Sony and Microsoft’s eighth- and ninth-generation consoles. Dustborn throws you into a hilarious narrative action-adventure with a comic-book aesthetic, where a diverse group of friends, under the cover of a music band, must embark on a dangerous road trip across the United States to deliver a package of great importance.                
-                </p>
-                <a href="/blog/posts/review-dustborn/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
+        <link rel="icon" href="/assets/images/logo.png">
 
-        <article class="blog-card delay-2">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/thepixelpulpscollection/cover.png" alt="The Pixel Pulps Collection Cover" class="post-image">
-            </div>
-            <div class="card-content">
-                <div class="post-date">August 3, 2024</div>
-                <h2 class="post-title">[Review] The Pixel Pulps Collection</h2>
-                <p class="post-description">
-                    The creative talents of Nico Saraintaris and Fernando Martínez Ruppel, novelist and artist respectively, come together in this first volume of the Pixel Pulps anthology. This collection of three video games, inspired by 1950s pulp fiction and 1980s computer graphics, pays tribute to the golden age of adventure games. Something that becomes evident shortly after starting these adventures is their exquisite narrative writing and striking illustration. In Mothmen 1966, Varney Lake, and Bahnsen Knights, we dive into short novels of roughly two hours each, filled with mystery, camaraderie, and horror.                
-                </p>
-                <a href="/blog/posts/review-the-pixel-pulps-collection/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
-        
-        <article class="blog-card delay-3">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/sociablesoccer24/cover.jpg" alt="Sociable Soccer 24 Cover" class="post-image">            
-            </div>
-            <div class="card-content">
-                <div class="post-date">July 26, 2024</div>
-                <h2 class="post-title">[Review] Sociable Soccer 24</h2>
-                <p class="post-description">
-                    The classic video game series Sensible Soccer, popular in the early 1990s, has received a spiritual successor led by Jon Hare and developed by Tower Studios and Combo Breaker. Football is one of the most widely played sports worldwide, so it’s no surprise that this type of game is so successful, as it allows football fans to enjoy the sport from home. In an industry dominated by Electronic Arts with its FC 24 (formerly FIFA), independent titles like Sociable Soccer 24 are carving out their own place, offering gameplay on par with that of the major North American studio.    
-                </p>
-                <a href="/blog/posts/review-sociable-soccer-24/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
-        
-        <article class="blog-card delay-4">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/horrortalesthebeggar/cover.png" alt="Horror Tales: The Beggar Cover" class="post-image">            
-            </div>
-            <div class="card-content">
-                <div class="post-date">June 17, 2024</div>
-                <h2 class="post-title">[Review] Horror Tales: The Beggar</h2>
-                <p class="post-description">
-                    Horror Tales: The Beggar is the latest horror release from Carlos Coronado, a true master of video game development in Unreal Engine, published by Jandusoft. Coronado is a certified authorized instructor and has won numerous awards, including several MegaGrants granted by Epic Games itself. This title is the sequel to The Wine, the first installment of the Horror Tales saga. Narratively, we are placed years after the apocalyptic events of The Wine, embodying a beggar who has been subjected to experiments with a toxic wine that causes terrifying hallucinations. Horror Tales: The Beggar has just landed today on Steam, PS4/PS5, and Xbox Series X/S.                
-                </p>
-                <a href="/blog/posts/review-horror-tales-the-beggar/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
-        
-        <article class="blog-card delay-5">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/michaelsantorum/michael-santorum-utad.jpg" alt="Michael Santorum U-tad" class="post-image">            
-            </div>
-            <div class="card-content">
-                <div class="post-date">May 10, 2024</div>
-                <h2 class="post-title">U-TALK with Michael Santorum: “Riot Games allowed us to tell a story about friendship, in a game filled with violence”</h2>
-                <p class="post-description">
-                    This past Wednesday, we had the great pleasure of attending the talk given by Michael Santorum at U-tad on “how video games tell stories.” He is a game developer and instructor who began his career in the industry as a designer on Commandos 2 and Commandos 3 (Pyro Studios, 2001–2003). Later in his career, he worked as Lead QA on Castlevania: Lords of Shadow (MercurySteam, 2010), where he interestingly met Kojima during a visit the Japanese developer made to the studio. In 2013, he joined the design team at Tequila Works, working on RiME and The Invisible Hours, which led him to his current role as Narrative Director. We also saw him on the stage of U-tad’s own Jugando en Casa gala, where, alongside José Raluy and Estefanía Salcedo, he received a recognition for the trajectory of the Madrid-based studio.                
-                </p>
-                <a href="/blog/posts/utalk-michael-santorum/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
-        
-        <article class="blog-card delay-6">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/thesuicideofrachelfoster/cover.jpg" alt="The Suicide of Rachel Foster Cover" class="post-image">            
-            </div>
-            <div class="card-content">
-                <div class="post-date">April 2, 2024</div>
-                <h2 class="post-title">[Review] The Suicide of Rachel Foster</h2>
-                <p class="post-description">
-                    The genre of first-person narrative adventures, commonly known aswalking simulators, has been gaining presence in the video game industry over the years. We’ve been able to enjoy great titles in this genre such as Gone Home, Firewatch, What Remains of Edith Finch, or Virginia, where the experience focuses on narrative progression through environmental exploration. One O One Games offers us this mysterious adventure with a slight touch of horror, one that stands proudly alongside its competitors.                
-                </p>
-                <a href="/blog/posts/review-suicide-rachel-foster/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
-        
-        <article class="blog-card delay-7">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/afterus/cover.png" alt="After Us Cover" class="post-image">            
-            </div>
-            <div class="card-content">
-                <div class="post-date">March 30, 2024</div>
-                <h2 class="post-title">[Review] After Us</h2>
-                <p class="post-description">
-                    Have you ever imagined what the world would look like after facing the devastation caused by human beings? Piccolo Studio brings us this wonderful, thought-provoking experience that criticizes the environmental impact human actions have had on nature.                
-                </p>
-                <a href="/blog/posts/review-after-us" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
-        
-        <article class="blog-card delay-8">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/avatar/cover.jpg" alt="Avatar FoP Cover" class="post-image">            
-            </div>
-            <div class="card-content">
-                <div class="post-date">January 4, 2024</div>
-                <h2 class="post-title">[Review] Avatar: Frontiers of Pandora</h2>
-                <p class="post-description">
-                    Avatar: Frontiers of Pandora is a love letter to fans of the saga starring those blue beings who, at first glance, have very human-like features, the Na’vi. Together with the release of Avatar 2: The Way of Water, the game has reignited many people’s interest. Massive Entertainment, a Ubisoft studio and developer of titles such as Far Cry 3, the upcoming Star Wars Outlaws, and the Tom Clancy's The Division series, brings us this visually stunning and mechanically fun work that lets us live the dream of exploring Pandora, defending it from hostile human forces, or flying an Ikran between floating mountains.                
-                </p>
-                <a href="/blog/posts/review-avatar-fop" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
-        
-        <article class="blog-card delay-9">
-            <div class="card-img-wrapper">
-                <img src="/assets/images/blog/mcpixel3/cover.png" alt="McPixel 3 Cover" class="post-image">            
-            </div>
-            <div class="card-content">
-                <div class="post-date">November 30, 2023</div>
-                <h2 class="post-title">[Review] McPixel 3</h2>
-                <p class="post-description">
-                    Once again, Sos Sosowski, originally known as Mikołaj Kamiński, surprises us with a new installment of the hilarious McPixel. In this sequel to the comedic graphic adventure, we take on the role of the character who gives the game its name, on his mission to become a hero, facing strange situations in which we must make the decisions we consider most correct (or not) to “save the day.”               
-                </p>
-                <a href="/blog/posts/review-mcpixel-3" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </article>
-    </div>
-</main>
-    
-    <footer class="footer">
-        <p>© 2026 Jaime Páramo. All rights reserved.</p>
-    </footer>
-    
-    <div class="floating-social">
-        <a href="https://github.com/JParamade" target="_blank" class="social-btn github">
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://JParamade.itch.io" target="_blank" class="social-btn itch">
-            <img src="https://static.itch.io/images/itchio-textless-black.svg" alt="itch icon">
-        </a>
-        <a href="https://www.linkedin.com/in/jaime-paramo" target="_blank" class="social-btn linkedin">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="mailto:jaime.paramo@outlook.com" class="social-btn mail">
-            <i class="fas fa-envelope"></i>
-        </a>
-    </div>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
 
-    <script src="/scripts/main.js"></script>
-</body>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <link rel="stylesheet" href="/style/main.css">
+        <link rel="stylesheet" href="/style/blog.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-inner">
+                <a href="/" class="logo-container">
+                    <span class="site-name"><b>JParamade</b></span>
+                </a>
+
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <nav class="nav" id="nav-menu">
+                    <a href="/">Home</a>
+                    <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
+                    <a href="/portfolio">Portfolio</a>
+                    <a href="/blog" class="active">Blog</a>
+                    <a href="/photography">Photography</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="blog-page fade-in-up">
+        <h1 class="page-title">Blog & <span class="highlight">Reviews</span></h1>
+
+        <div class="blog-grid">
+            <article class="blog-card delay-1">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/dustborn/cover.jpg" alt="Dustborn Cover" class="post-image">
+                </div>
+                <div class="card-content">
+                    <div class="post-date">August 19, 2024</div>
+                    <h2 class="post-title">[Review] Dustborn</h2>
+                    <p class="post-description">
+                        It has now been five years since Quantic Dream jumped aboard the publishing train with Spotlight. Since then, it has published games like Under the Waves, Lysfanga, and the Sea of Solitude: The Director’s Cut for Nintendo Switch. Its next release, developed by Red Thread Games, is about to land on PC and on Sony and Microsoft’s eighth- and ninth-generation consoles. Dustborn throws you into a hilarious narrative action-adventure with a comic-book aesthetic, where a diverse group of friends, under the cover of a music band, must embark on a dangerous road trip across the United States to deliver a package of great importance.                
+                    </p>
+                    <a href="/blog/posts/review-dustborn/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card delay-2">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/thepixelpulpscollection/cover.png" alt="The Pixel Pulps Collection Cover" class="post-image">
+                </div>
+                <div class="card-content">
+                    <div class="post-date">August 3, 2024</div>
+                    <h2 class="post-title">[Review] The Pixel Pulps Collection</h2>
+                    <p class="post-description">
+                        The creative talents of Nico Saraintaris and Fernando Martínez Ruppel, novelist and artist respectively, come together in this first volume of the Pixel Pulps anthology. This collection of three video games, inspired by 1950s pulp fiction and 1980s computer graphics, pays tribute to the golden age of adventure games. Something that becomes evident shortly after starting these adventures is their exquisite narrative writing and striking illustration. In Mothmen 1966, Varney Lake, and Bahnsen Knights, we dive into short novels of roughly two hours each, filled with mystery, camaraderie, and horror.                
+                    </p>
+                    <a href="/blog/posts/review-the-pixel-pulps-collection/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card delay-3">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/sociablesoccer24/cover.jpg" alt="Sociable Soccer 24 Cover" class="post-image">            
+                </div>
+                <div class="card-content">
+                    <div class="post-date">July 26, 2024</div>
+                    <h2 class="post-title">[Review] Sociable Soccer 24</h2>
+                    <p class="post-description">
+                        The classic video game series Sensible Soccer, popular in the early 1990s, has received a spiritual successor led by Jon Hare and developed by Tower Studios and Combo Breaker. Football is one of the most widely played sports worldwide, so it’s no surprise that this type of game is so successful, as it allows football fans to enjoy the sport from home. In an industry dominated by Electronic Arts with its FC 24 (formerly FIFA), independent titles like Sociable Soccer 24 are carving out their own place, offering gameplay on par with that of the major North American studio.    
+                    </p>
+                    <a href="/blog/posts/review-sociable-soccer-24/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card delay-4">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/horrortalesthebeggar/cover.png" alt="Horror Tales: The Beggar Cover" class="post-image">            
+                </div>
+                <div class="card-content">
+                    <div class="post-date">June 17, 2024</div>
+                    <h2 class="post-title">[Review] Horror Tales: The Beggar</h2>
+                    <p class="post-description">
+                        Horror Tales: The Beggar is the latest horror release from Carlos Coronado, a true master of video game development in Unreal Engine, published by Jandusoft. Coronado is a certified authorized instructor and has won numerous awards, including several MegaGrants granted by Epic Games itself. This title is the sequel to The Wine, the first installment of the Horror Tales saga. Narratively, we are placed years after the apocalyptic events of The Wine, embodying a beggar who has been subjected to experiments with a toxic wine that causes terrifying hallucinations. Horror Tales: The Beggar has just landed today on Steam, PS4/PS5, and Xbox Series X/S.                
+                    </p>
+                    <a href="/blog/posts/review-horror-tales-the-beggar/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card delay-5">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/michaelsantorum/michael-santorum-utad.jpg" alt="Michael Santorum U-tad" class="post-image">            
+                </div>
+                <div class="card-content">
+                    <div class="post-date">May 10, 2024</div>
+                    <h2 class="post-title">U-TALK with Michael Santorum: “Riot Games allowed us to tell a story about friendship, in a game filled with violence”</h2>
+                    <p class="post-description">
+                        This past Wednesday, we had the great pleasure of attending the talk given by Michael Santorum at U-tad on “how video games tell stories.” He is a game developer and instructor who began his career in the industry as a designer on Commandos 2 and Commandos 3 (Pyro Studios, 2001–2003). Later in his career, he worked as Lead QA on Castlevania: Lords of Shadow (MercurySteam, 2010), where he interestingly met Kojima during a visit the Japanese developer made to the studio. In 2013, he joined the design team at Tequila Works, working on RiME and The Invisible Hours, which led him to his current role as Narrative Director. We also saw him on the stage of U-tad’s own Jugando en Casa gala, where, alongside José Raluy and Estefanía Salcedo, he received a recognition for the trajectory of the Madrid-based studio.                
+                    </p>
+                    <a href="/blog/posts/utalk-michael-santorum/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card delay-6">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/thesuicideofrachelfoster/cover.jpg" alt="The Suicide of Rachel Foster Cover" class="post-image">            
+                </div>
+                <div class="card-content">
+                    <div class="post-date">April 2, 2024</div>
+                    <h2 class="post-title">[Review] The Suicide of Rachel Foster</h2>
+                    <p class="post-description">
+                        The genre of first-person narrative adventures, commonly known aswalking simulators, has been gaining presence in the video game industry over the years. We’ve been able to enjoy great titles in this genre such as Gone Home, Firewatch, What Remains of Edith Finch, or Virginia, where the experience focuses on narrative progression through environmental exploration. One O One Games offers us this mysterious adventure with a slight touch of horror, one that stands proudly alongside its competitors.                
+                    </p>
+                    <a href="/blog/posts/review-suicide-rachel-foster/" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card delay-7">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/afterus/cover.png" alt="After Us Cover" class="post-image">            
+                </div>
+                <div class="card-content">
+                    <div class="post-date">March 30, 2024</div>
+                    <h2 class="post-title">[Review] After Us</h2>
+                    <p class="post-description">
+                        Have you ever imagined what the world would look like after facing the devastation caused by human beings? Piccolo Studio brings us this wonderful, thought-provoking experience that criticizes the environmental impact human actions have had on nature.                
+                    </p>
+                    <a href="/blog/posts/review-after-us" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card delay-8">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/avatar/cover.jpg" alt="Avatar FoP Cover" class="post-image">            
+                </div>
+                <div class="card-content">
+                    <div class="post-date">January 4, 2024</div>
+                    <h2 class="post-title">[Review] Avatar: Frontiers of Pandora</h2>
+                    <p class="post-description">
+                        Avatar: Frontiers of Pandora is a love letter to fans of the saga starring those blue beings who, at first glance, have very human-like features, the Na’vi. Together with the release of Avatar 2: The Way of Water, the game has reignited many people’s interest. Massive Entertainment, a Ubisoft studio and developer of titles such as Far Cry 3, the upcoming Star Wars Outlaws, and the Tom Clancy's The Division series, brings us this visually stunning and mechanically fun work that lets us live the dream of exploring Pandora, defending it from hostile human forces, or flying an Ikran between floating mountains.                
+                    </p>
+                    <a href="/blog/posts/review-avatar-fop" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card delay-9">
+                <div class="card-img-wrapper">
+                    <img src="/assets/images/blog/mcpixel3/cover.png" alt="McPixel 3 Cover" class="post-image">            
+                </div>
+                <div class="card-content">
+                    <div class="post-date">November 30, 2023</div>
+                    <h2 class="post-title">[Review] McPixel 3</h2>
+                    <p class="post-description">
+                        Once again, Sos Sosowski, originally known as Mikołaj Kamiński, surprises us with a new installment of the hilarious McPixel. In this sequel to the comedic graphic adventure, we take on the role of the character who gives the game its name, on his mission to become a hero, facing strange situations in which we must make the decisions we consider most correct (or not) to “save the day.”               
+                    </p>
+                    <a href="/blog/posts/review-mcpixel-3" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+        <footer class="footer">
+            <p>© 2026 Jaime Páramo. All rights reserved.</p>
+        </footer>
+
+        <div class="floating-social">
+            <a href="https://github.com/JParamade" target="_blank" class="social-btn github">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://JParamade.itch.io" target="_blank" class="social-btn itch">
+                <img src="https://static.itch.io/images/itchio-textless-black.svg" alt="itch icon">
+            </a>
+            <a href="https://www.linkedin.com/in/jaime-paramo" target="_blank" class="social-btn linkedin">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:jaime.paramo@outlook.com" class="social-btn mail">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <script src="/scripts/main.js"></script>
+    </body>
 </html>
