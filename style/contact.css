@@ -86,12 +86,14 @@
 }
 
 .email-btn {
-    background: var(--text-main);
-    color: var(--bg-color);
+    background: transparent;
+    color: var(--text-main);
     border: 2px solid var(--text-main);
 }
 
 .email-btn:hover {
+    background: var(--text-main);
+    color: var(--bg-color);
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
 }

@@ -1,104 +1,208 @@
-.portfolio {
-    max-width: 1100px;
-    margin: 80px auto;
-    padding: 0 20px;
+/* ---------- PORTFOLIO PAGE ---------- */
+.portfolio-page {
+    min-height: 100vh;
+    padding: 18vh 5vw 10vh 5vw;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .portfolio-intro {
-    text-align: center;
+    text-align: justify;
     margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.portfolio-intro p {
-    max-width: 700px;
-    margin: 0 auto;
-    color: #ccc;
-    line-height: 1.6;
+.intro-text {
+    max-width: 800px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1.1rem;
 }
 
-/* GRID */
+.tech-highlight {
+    color: var(--text-main);
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+/* ---------- PORTFOLIO GRID ---------- */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
 }
 
-/* CARD */
+/* ---------- PROJECT CARD ---------- */
 .project-card {
-    text-decoration: none;
-    background: #1a1a1a;
+    background: #151515;
+    border: 1px solid #222;
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.2s;
-    color: white;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 255, 102, 0.1);
 }
 
-.project-card img {
+/* ---------- CARD IMAGE & BADGE ---------- */
+.card-img-wrapper {
+    position: relative;
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    height: 220px;
+    overflow: hidden;
 }
 
-.project-info {
-    padding: 15px;
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.role-badge {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(5px);
+    color: var(--text-main);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid #333;
+}
+
+/* ---------- CARD CONTENT ---------- */
+.project-content {
+    padding: 25px;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
-.project-info h2 {
+.project-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.project-title {
+    color: var(--text-main);
+    font-size: 1.4rem;
     margin: 0;
-    font-size: 1.2rem;
+    line-height: 1.2;
 }
 
-.project-info p {
-    margin-top: 5px;
+.project-year {
+    font-family: var(--font-code);
+    color: var(--accent-color);
     font-size: 0.9rem;
-    color: #aaa;
+    font-weight: 600;
+    background: rgba(0, 255, 102, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
 }
 
-.tags {
-    margin-top: -10px;
+.studio-name {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 1.05rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 20px;
-    margin-left: 15px;
+}
+
+.studio-name i {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* ---------- SYNTAX-STYLE TAGS ---------- */
+.tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    justify-content: flex-start;
-    align-items: center;
+    gap: 10px;
+    margin-top: auto;
 }
 
 .tag {
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
     display: inline-flex;
     align-items: center;
-    padding: 4px 8px;
-    border-radius: 6px;
-    background: #2a2a2a;
-    border: 1px solid #3a3a3a;
-    font-size: 0.75rem;
-    line-height: 1;
-    white-space: nowrap;
+    gap: 6px;
 }
 
-.tag.engine {
-    background: #1f2a44;
-    border-color: #2f4a7a;
+.tag-engine {
+    color: #00d2ff;
+    background: rgba(0, 210, 255, 0.1);
+    border: 1px solid rgba(0, 210, 255, 0.2);
 }
 
-.tag.lang {
-    background: #2a1f1f;
-    border-color: #7a3a3a;
+.tag-lang {
+    color: #ff3366;
+    background: rgba(255, 51, 102, 0.1);
+    border: 1px solid rgba(255, 51, 102, 0.2);
 }
 
-.tag.team {
-    background: #1f2a1f;
-    border-color: #3a7a3a;
+.tag-tool {
+    color: #ffaa00;
+    background: rgba(255, 170, 0, 0.1);
+    border: 1px solid rgba(255, 170, 0, 0.2);
 }
 
-.tag.tool {
-    background: #292a1f;
-    border-color: #7a753a;
+.tag-team {
+    color: var(--accent-color);
+    background: rgba(0, 255, 102, 0.1);
+    border: 1px solid rgba(0, 255, 102, 0.2);
+}
+
+/* ---------- VIEW DETAILS ACTION ---------- */
+.view-project-action {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #222;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.view-project-action i {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .view-project-action {
+    color: var(--accent-color);
+}
+
+.project-card:hover .view-project-action i {
+    transform: translateX(8px);
 }
