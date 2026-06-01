@@ -25,6 +25,8 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    text-decoration: none; 
+    color: var(--text-main);
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -99,14 +101,14 @@
     margin-top: auto;
 }
 
-.read-more-link:hover {
+.blog-card:hover .read-more-link {
     color: var(--accent-color);
+}
+
+.blog-card:hover .read-more-link i {
+    transform: translateX(5px);
 }
 
 .read-more-link i {
     transition: transform 0.2s ease;
-}
-
-.read-more-link:hover i {
-    transform: translateX(5px); 
 }
