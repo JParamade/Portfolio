@@ -3,36 +3,96 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Video Game Photography - JParamade</title>
+        <meta name="description" content="Portfolio of Jaime Páramo, a Game Programmer specializing in Gameplay, UI, Audio, and Unreal Engine.">
+        <title>Game Programmer Portfolio - JParamade</title>
+
         <link rel="icon" href="/assets/images/logo.png">
-        <link rel="stylesheet" href="/style/main.css">
-        <link rel="stylesheet" href="/style/photography.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <link rel="stylesheet" href="/style/main.css">
+        <link rel="stylesheet" href="/style/gallery.css">
     </head>
     <body>
         <header class="header">
-            <div class="logo-container">
-                <img src="/assets/images/logo.png" alt="Logo" class="logo">
-                <span class="site-name">JParamade</span>
+            <div class="header-inner">
+                <a href="/" class="logo-container">
+                    <span class="site-name"><b>JParamade</b></span>
+                </a>
+
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <nav class="nav" id="nav-menu">
+                    <a href="/">Home</a>
+                    <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
+                    <a href="/portfolio">Portfolio</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/photography" class="active">Photography</a>
+                    <a href="/contact">Contact</a>
+                </nav>
             </div>
-            
-            <nav class="nav">
-                <a href="/home">Home</a>
-                <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
-                <a href="/portfolio">Portfolio</a>
-                <a href="/blog">Blog</a>
-                <a href="/photography">Photography</a>
-                <a href="">Contact</a>
-            </nav>
         </header>
+
+<main class="gallery-page fade-in-up">
+    <header class="gallery-header">
+        <a href="/photography" class="back-link"><i class="fas fa-arrow-left"></i> Back to Galleries</a>
+        <h1 class="page-title">Virtual <span class="highlight">Environments</span></h1>
+    </header>
+
+    <nav class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="cyberpunk">Cyberpunk 2077</button>
+    </nav>
+
+    <div class="masonry-grid">
+        <div class="masonry-item cyberpunk">
+            <img src="/assets/images/photography/game-photography.jpg" alt="Neon Streets">
+            
+            <div class="photo-overlay">
+                <span class="photo-name">Neon Streets</span>
+                <i class="fas fa-expand"></i>
+            </div>
+
+            <div class="photo-meta-data" style="display: none;" 
+                 data-title="Neon Streets"
+                 data-game="Cyberpunk 2077" 
+                 data-engine="REDengine 4"
+                 data-lens="35mm"
+                 data-aperture="f/1.4">
+            </div>
+        </div>
+    </div>
+
+    <div class="lightbox" id="photo-lightbox">
+        <button class="lightbox-close"><i class="fas fa-times"></i></button>
         
-        <main class="hero">
-        </main>
-        
+        <div class="lightbox-content">
+            <img src="/" alt="" class="lightbox-img" id="lightbox-main-img">
+            
+            <div class="lightbox-sidebar">
+                <h3 id="lb-title">Photo Title</h3>
+                <div class="meta-list">
+                    <p><i class="fas fa-gamepad"></i> <span id="lb-game">Game Name</span></p>
+                    <p><i class="fas fa-cube"></i> <span id="lb-engine">Engine</span></p>
+                    <p><i class="fas fa-camera"></i> <span id="lb-lens">Lens Info</span></p>
+                    <p><i class="fas fa-adjust"></i> <span id="lb-aperture">Aperture</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
         <footer class="footer">
-            <p>© 2025 Jaime Páramo. All rights reserved.</p>
+            <p>© 2026 Jaime Páramo. All rights reserved.</p>
         </footer>
-        
+
         <div class="floating-social">
             <a href="https://github.com/JParamade" target="_blank" class="social-btn github">
                 <i class="fab fa-github"></i>
@@ -47,5 +107,7 @@
                 <i class="fas fa-envelope"></i>
             </a>
         </div>
+
+        <script src="/scripts/photography.js"></script>
     </body>
 </html>

@@ -1,74 +1,125 @@
-.photography-hero {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;
+/* ---------- PHOTOGRAPHY PAGE LAYOUT ---------- */
+.photography-page {
+    min-height: 100vh;
+    padding: 18vh 5vw 10vh 5vw; /* Matches the global spacing! */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.photography-hero img {
+.page-title {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+/* ---------- PHOTOGRAPHY STORY TEXT ---------- */
+.story-text {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    text-align: left;
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.story-text p {
+    margin-bottom: 25px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* ---------- CINEMATIC CATEGORY PORTALS ---------- */
+.photo-portals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    max-width: 1000px; /* Constrains it slightly so the two cards look premium */
+    margin: 0 auto;
+}
+
+.portal-card {
+    position: relative;
+    height: 450px; /* Nice, tall cinematic aspect ratio */
+    border-radius: 12px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    border: 1px solid #222;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portal-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(70%);
+    transition: transform 0.6s ease;
 }
 
-.photography-hero h1 {
+.portal-overlay {
     position: absolute;
-    bottom: 20px;
-    left: 40px;
-    color: white;
-    font-size: 3rem;
-    font-weight: 600;
-}
-
-/* --- Intro Section --- */
-.photography-intro {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
-    font-size: 1.2rem;
-    line-height: 1.7;
-    text-align: justify;
-}
-
-/* --- Categories Section --- */
-.photography-categories {
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* This gradient darkens the bottom so text is always readable */
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
     display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    padding: 40px 20px;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    transition: background 0.3s ease;
 }
 
-.photo-category {
-    width: 350px;
-    text-align: center;
+.portal-overlay h2 {
+    color: var(--text-main);
+    font-size: 2.2rem;
+    margin: 0 0 10px 0;
+    line-height: 1.1;
 }
 
-.photo-category img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
+.portal-action {
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
 }
 
-.photo-category h2 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+.portal-action i {
+    transition: transform 0.3s ease;
 }
 
-.photo-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    border-radius: 6px;
-    background: black;
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
+/* ---------- HOVER INTERACTIONS ---------- */
+.portal-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 30px rgba(0, 255, 102, 0.15);
 }
 
-.photo-btn:hover {
-    background: #444;
+.portal-card:hover .portal-img {
+    transform: scale(1.05); /* Slight zoom on the image */
+}
+
+.portal-card:hover .portal-overlay {
+    /* Adds a very subtle neon green tint to the darkness on hover */
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0, 255, 102, 0.05) 60%, transparent 100%);
+}
+
+.portal-card:hover .portal-action {
+    color: var(--accent-color);
+}
+
+.portal-card:hover .portal-action i {
+    transform: translateX(8px); /* Arrow slides right */
+}
+
+/* ---------- MOBILE ADJUSTMENTS ---------- */
+@media (max-width: 768px) {
+    .photo-portals {
+        grid-template-columns: 1fr;
+    }
+    .portal-card {
+        height: 350px; /* Keeps them from taking up the entire phone screen */
+    }
 }

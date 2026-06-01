@@ -3,58 +3,83 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Photography - JParamade</title>
+        <meta name="description" content="Portfolio of Jaime Páramo, a Game Programmer specializing in Gameplay, UI, Audio, and Unreal Engine.">
+        <title>Game Programmer Portfolio - JParamade</title>
+
         <link rel="icon" href="/assets/images/logo.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
         <link rel="stylesheet" href="/style/main.css">
         <link rel="stylesheet" href="/style/photography.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     </head>
     <body>
         <header class="header">
-            <div class="logo-container">
-                <img src="/assets/images/logo.png" alt="Logo" class="logo">
-                <span class="site-name">JParamade</span>
+            <div class="header-inner">
+                <a href="/" class="logo-container">
+                    <span class="site-name"><b>JParamade</b></span>
+                </a>
+
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <nav class="nav" id="nav-menu">
+                    <a href="/">Home</a>
+                    <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
+                    <a href="/portfolio">Portfolio</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/photography" class="active">Photography</a>
+                    <a href="/contact">Contact</a>
+                </nav>
             </div>
-            
-            <nav class="nav">
-                <a href="/">Home</a>
-                <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
-                <a href="/portfolio">Portfolio</a>
-                <a href="/blog">Blog</a>
-                <a href="/photography">Photography</a>
-                <a href="">Contact</a>
-            </nav>
         </header>
-        
-        <main class="hero">
-            <div class="photography-hero">
-                <img src="/assets/images/photography/hero-photography.jpg" alt="Photography Hero Image">
-                <h1>Photography</h1>
-            </div>
-            <section class="photography-intro">
-                <p>I discovered photography about eight years ago, when I stumbled upon my father’s old camera hidden in a drawer. That moment opened a door to a world where time could be frozen, a comforting contrast in a reality where everything feels so ephemeral.</p>
-                <p>Photography quickly became more than a hobby; it became a way to preserve memories that would otherwise slip through the cracks. A way to capture the small stories happening around us, the ones that deserve to be remembered.</p>
-                <p>I’ve always been drawn to animal, nature, and sports photography, the kind that requires patience, distance, and a bit of stealth. Hiding behind a bush waiting for wildlife to move naturally, or crouching behind a trackside banner as two-wheeled machines roar past… these moments are unpredictable, fleeting, and real. And that’s exactly why I love capturing them.</p>
-                <p>Beyond real-life photography, I also explore game photography. Video games have always been a core part of my life, and the worlds within them are crafted with as much intention and beauty as anything in reality. Capturing moments inside these digital spaces feels like a dialogue between the player and the artists who built them; a way to frame their creativity through my own. It’s another canvas where I can chase light, composition, and emotion, even in places that exist only through imagination.</p>
+
+        <main class="photography-page fade-in-up">
+
+            <section class="portfolio-intro">
+                <h1 class="page-title">Photography <span class="highlight">Gallery</span></h1>
+
+                <div class="story-text">
+                    <p>I discovered photography about eight years ago, when I stumbled upon my <b>father’s old camera</b> hidden in a drawer. That moment opened a door to a world where <b>time could be frozen</b>, a comforting contrast in a reality where everything feels so ephemeral.</p>
+
+                    <p>Photography quickly became more than a hobby; it became a way to <b>preserve memories</b> that would otherwise slip through the cracks. A way to capture the <b>small stories</b> happening around us, the ones that deserve to be remembered.</p>
+
+                    <p>I’ve always been drawn to <b>animal, nature, and sports photography</b>, the kind that requires patience, distance, and a bit of stealth. Hiding behind a bush waiting for wildlife to move naturally, or crouching behind a trackside banner as two-wheeled machines roar past… these moments are <b>unpredictable, fleeting, and real</b>. And that’s exactly why I love capturing them.</p>
+
+                    <p>Beyond real-life photography, I also explore <b>video game photography</b>. Video games have always been a core part of my life, and the worlds within them are crafted with as much intention and beauty as anything in reality. Capturing moments inside these digital spaces feels like a dialogue between the player and the artists who built them; a way to <b>frame their creativity</b> through my own. It’s another canvas where I can chase <b>light, composition, and emotion</b>, even in places that exist only through imagination.</p>
+                </div>
             </section>
-            <section class="photography-categories">
-                <div class="photo-category">
-                    <img src="/assets/images/photography/irl-photography.webp" alt="IRL Photography">
-                    <h2>Real Life Photography</h2>
-                    <a class="photo-btn" href="/photography/real-life/">Explore</a>
-                </div>
-                <div class="photo-category">
-                    <img src="/assets/images/photography/game-photography.jpg" alt="Video Game Photography">
-                    <h2>Video Game Photography</h2>
-                    <a class="photo-btn" href="/photography/video-games/">Explore</a>
-                </div>
+
+            <section class="photo-portals">
+
+                <a href="/photography/real-life/" class="portal-card delay-1">
+                    <img src="/assets/images/photography/irl-photography.webp" alt="Real Life Photography" class="portal-img">
+                    <div class="portal-overlay">
+                        <h2>Real Life</h2>
+                        <span class="portal-action">Explore Gallery <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <a href="/photography/video-games/" class="portal-card delay-2">
+                    <img src="/assets/images/photography/game-photography.jpg" alt="Video Game Photography" class="portal-img">
+                    <div class="portal-overlay">
+                        <h2>Virtual Environments</h2>
+                        <span class="portal-action">Explore Gallery <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
             </section>
         </main>
-        
+
         <footer class="footer">
-            <p>© 2025 Jaime Páramo. All rights reserved.</p>
+            <p>© 2026 Jaime Páramo. All rights reserved.</p>
         </footer>
-        
+
         <div class="floating-social">
             <a href="https://github.com/JParamade" target="_blank" class="social-btn github">
                 <i class="fab fa-github"></i>

@@ -27,12 +27,6 @@
     font-size: 1.1rem;
 }
 
-.tech-highlight {
-    color: var(--text-main);
-    font-weight: 600;
-    border-bottom: 1px solid var(--accent-color);
-}
-
 /* ---------- PORTFOLIO GRID ---------- */
 .portfolio-grid {
     display: grid;

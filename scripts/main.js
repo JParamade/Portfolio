@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- Hamburger Menu Logic ---
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const navMenu = document.getElementById('nav-menu');
 
@@ -8,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.toggle('open');
     });
 
-    // --- Typewriter Effect Logic ---
     const words = ["Game", "UI", "Audio", "Gameplay"];
     const typeWriterElement = document.getElementById('typewriter');
     
@@ -43,6 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(type, typeSpeed);
     }
 
-    // DELAY ADDED HERE: Wait 1.2 seconds before starting to match the CSS fade-in
     setTimeout(type, 1200); 
 });
