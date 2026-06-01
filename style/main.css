@@ -62,7 +62,7 @@ body {
     transition: transform 0.3s ease; /* Smooth transition for hover */
 }
 
-    .logo {
+.logo {
     height: 1em;
     width: auto;
 }
