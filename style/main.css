@@ -336,3 +336,10 @@ body {
     .social-btn { width: 45px; height: 45px; font-size: 1.1rem; }
     .social-btn.itch img { width: 22px; }
 }
+
+/* Entrance Animations */
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+.delay-1 { animation-delay: 0.2s; }
