@@ -1,7 +1,7 @@
 /* ---------- BLOG LIST PAGE ---------- */
 .blog-page {
     min-height: 100vh;
-    padding: 18vh 5vw 10vh 5vw;
+    padding: 10vh 5vw 10vh 5vw;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -9,7 +9,7 @@
 .page-title {
     font-size: clamp(2.5rem, 4vw, 4rem);
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .blog-grid {

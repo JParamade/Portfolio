@@ -240,15 +240,31 @@ body {
 
 /* ---------- FOOTER ---------- */
 .footer {
-    padding: 20px 40px;
-    border-top: 1px solid #222;
-    background: var(--bg-color);
+    background: #0a0a0a; /* A shade darker than the main background (#151515) to anchor the page */
+    border-top: 1px solid #222; /* A crisp, subtle separation line */
+    padding: 20px 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -1px; /* Overlaps the border-top perfectly */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 2px;
+    background: var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
 }
 
 .footer p {
-    text-align: center;
-    margin: 0;
     color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+    font-family: var(--font-code);
 }
 
 /* ---------- FLOATING SOCIALS ---------- */

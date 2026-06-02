@@ -25,45 +25,42 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (lightbox) {
         const lightboxImg = document.getElementById('lightbox-main-img');
-        const lbTitle = document.getElementById('lb-title');
-        const lbGame = document.getElementById('lb-game');
-        const lbEngine = document.getElementById('lb-engine');
-        const lbLens = document.getElementById('lb-lens');
-        const lbAperture = document.getElementById('lb-aperture');
         const closeBtn = document.querySelector('.lightbox-close');
 
         masonryItems.forEach(item => {
             item.addEventListener('click', () => {
                 const img = item.querySelector('img');
-                const metaData = item.querySelector('.photo-meta-data');
-
-                if (img && metaData) {
+                
+                if (img) {
                     lightboxImg.src = img.src;
-
-                    lbTitle.textContent = metaData.getAttribute('data-title') || 'Untitled';
-                    lbGame.textContent = metaData.getAttribute('data-game') || 'Unknown';
-                    lbEngine.textContent = metaData.getAttribute('data-engine') || 'Unknown';
-                    lbLens.textContent = metaData.getAttribute('data-lens') || 'N/A';
-                    lbAperture.textContent = metaData.getAttribute('data-aperture') || 'N/A';
-
+                    
                     lightbox.classList.add('active');
+                    
+                    document.body.style.overflow = 'hidden'; 
                 }
             });
         });
 
-        closeBtn.addEventListener('click', () => {
+        const closeLightbox = () => {
             lightbox.classList.remove('active');
-        });
+            document.body.style.overflow = 'auto'; 
+            
+            setTimeout(() => {
+                lightboxImg.src = '';
+            }, 300);
+        };
+
+        closeBtn.addEventListener('click', closeLightbox);
 
         lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('active');
+            if (e.target === lightbox || e.target.classList.contains('pure-image-content')) {
+                closeLightbox();
             }
         });
         
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                lightbox.classList.remove('active');
+                closeLightbox();
             }
         });
     }
