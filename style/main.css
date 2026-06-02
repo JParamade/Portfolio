@@ -9,6 +9,8 @@
     --font-code: 'Fira Code', monospace;
 }
 
+* { box-sizing: border-box; }
+
 .highlight {
     color: var(--accent-color);
     text-shadow: 0 0 15px rgba(0, 255, 102, 0.3); /* Subtle neon glow */
