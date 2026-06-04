@@ -52,6 +52,34 @@
     box-shadow: 0 10px 30px rgba(0, 255, 102, 0.1);
 }
 
+.card-badges {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.platform-icon {
+    font-size: 1.3rem;
+    color: #555; 
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .platform-icon {
+    transform: scale(1.1);
+}
+
+.project-card:hover .platform-icon.steam {
+    color: #66c0f4; 
+}
+
+.project-card:hover .platform-icon.itch {
+    color: #fa5c5c; 
+}
+
+.project-card:hover .platform-icon.github {
+    color: #ffffff; 
+}
+
 /* ---------- CARD IMAGE & BADGE ---------- */
 .card-img-wrapper {
     position: relative;
