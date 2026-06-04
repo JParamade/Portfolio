@@ -230,4 +230,8 @@
     .contact-form-wrapper {
         padding: 30px 20px;
     }
+    
+    .contact-page { 
+        padding-top: 15vh; 
+    }
 }

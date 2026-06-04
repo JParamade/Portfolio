@@ -176,6 +176,13 @@ body {
     animation: fadeInUp 1s ease-out 0.3s forwards; 
 }
 
+@media (max-width: 768px) { 
+    .hero h1 { 
+        font-size: clamp(1.8rem, 7vw, 2.5rem); 
+        white-space: nowrap; 
+    }
+}
+
 .hero h2 {
     font-family: var(--font-code);
     font-weight: 400;
