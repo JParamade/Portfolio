@@ -1,4 +1,6 @@
-/* ---------- INDIVIDUAL POST PAGE ---------- */
+/* ==========================================================================
+   1. INDIVIDUAL POST LAYOUT
+   ========================================================================== */
 .post-page {
     min-height: 100vh;
     padding: 15vh 5vw 5vh 5vw;
@@ -11,6 +13,9 @@
     width: 100%;
 }
 
+/* ==========================================================================
+   2. POST HEADER & META DATA
+   ========================================================================== */
 .post-header {
     text-align: center;
     margin-bottom: 30px;
@@ -41,26 +46,12 @@
     font-size: clamp(2rem, 4vw, 3.5rem);
     margin: 0;
     line-height: 1.2;
-    
-    text-wrap: balance;
+    text-wrap: balance; /* Prevents awkward single-word orphans on new lines */
 }
 
-.full-post-image {
-    width: 100%;
-    height: auto;
-    max-height: 450px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 40px;
-    border: 1px solid #222;
-}
-
-.inline-image {
-    width: 100%;
-    border-radius: 8px;
-    margin: 30px 0;
-}
-
+/* ==========================================================================
+   3. POST CONTENT & TYPOGRAPHY
+   ========================================================================== */
 .full-post-content {
     text-align: justify;
     font-size: 1.15rem;
@@ -78,10 +69,29 @@
     font-weight: 600;
 }
 
+/* ==========================================================================
+   4. POST MEDIA (Images & Videos)
+   ========================================================================== */
+.full-post-image {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    border: 1px solid #222;
+}
+
+.inline-image {
+    width: 100%;
+    border-radius: 8px;
+    margin: 30px 0;
+}
+
 /* 16:9 Responsive Video Container */
 .video-container {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     height: 0;
     overflow: hidden;
     border-radius: 12px;

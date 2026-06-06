@@ -1,4 +1,6 @@
-/* ---------- BLOG LIST PAGE ---------- */
+/* ==========================================================================
+   1. BLOG PAGE LAYOUT
+   ========================================================================== */
 .blog-page {
     min-height: 100vh;
     padding: 10vh 5vw 10vh 5vw;
@@ -12,8 +14,12 @@
     margin-bottom: 60px;
 }
 
+/* ==========================================================================
+   2. BLOG GRID & CARDS
+   ========================================================================== */
 .blog-grid {
     display: grid;
+    /* auto-fill creates as many columns as fit the min-width automatically */
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 30px;
 }
@@ -30,12 +36,7 @@
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.blog-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 20px rgba(0, 255, 102, 0.05);
-}
-
+/* -------- Card Image -------- */
 .card-img-wrapper {
     width: 100%;
     height: 200px;
@@ -49,15 +50,12 @@
     transition: transform 0.5s ease;
 }
 
-.blog-card:hover .post-image {
-    transform: scale(1.05); 
-}
-
+/* -------- Card Content -------- */
 .card-content {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; 
+    flex-grow: 1; /* Pushes the 'Read More' link to the bottom */
 }
 
 .post-date {
@@ -81,6 +79,7 @@
     margin-bottom: 20px;
     text-align: justify;
         
+    /* Truncates text after 3 lines to keep cards uniform */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -97,8 +96,24 @@
     font-size: 0.95rem;
     transition: color 0.2s ease;
     align-self: flex-start;
-    
-    margin-top: auto;
+    margin-top: auto; /* Anchors link to the bottom of the card */
+}
+
+.read-more-link i {
+    transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   3. HOVER INTERACTIONS
+   ========================================================================== */
+.blog-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgba(0, 255, 102, 0.05);
+}
+
+.blog-card:hover .post-image {
+    transform: scale(1.05); 
 }
 
 .blog-card:hover .read-more-link {
@@ -107,8 +122,4 @@
 
 .blog-card:hover .read-more-link i {
     transform: translateX(5px);
-}
-
-.read-more-link i {
-    transition: transform 0.2s ease;
 }
