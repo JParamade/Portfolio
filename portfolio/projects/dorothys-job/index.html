@@ -39,6 +39,7 @@
         </header>
 
         <main class="project-detail-page fade-in-up">
+            <a href="/portfolio" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Portfolio</a>
             
             <!-- 1. CINEMATIC HERO & TRAILER -->
             <section class="project-hero">
@@ -48,19 +49,19 @@
                     <h1 class="project-title">Dorothy’s Job</h1>
                     <p class="studio-tagline">Developed at <b>Bola 13 Studios</b></p>
 
-                    <!-- Project Highlights Bar -->
-                    <div class="milestones-grid">
-                        <div class="milestone">
-                            <span class="value">30,000+</span>
-                            <span class="label">License Activations</span>
+                    <!-- Project Highlights (Award Ribbons) -->
+                    <div class="award-ribbons">
+                        <div class="award-ribbon">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                            <span><b>30,000+</b> License Activations</span>
                         </div>
-                        <div class="milestone">
-                            <span class="value">96/100</span>
-                            <span class="label">Positive Reviews</span>
+                        <div class="award-ribbon">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <span><b>96/100</b> Positive Reviews</span>
                         </div>
-                        <div class="milestone">
-                            <span class="value">BIG Conf.</span>
-                            <span class="label">Nomination (Best University Game)</span>
+                        <div class="award-ribbon">
+                            <i class="fas fa-trophy" aria-hidden="true"></i>
+                            <span><b>BIG Conference:</b> Nominated for Best University Game</span>
                         </div>
                     </div>
                     
@@ -88,7 +89,7 @@
 
                 <!-- Game Trailer / Main Media -->
                 <div class="hero-media video-container">
-                    <iframe src="https://www.youtube.com/embed/YOUR_TRAILER_ID_HERE" title="Dorothy's Job Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/LgurwsG-pxo?si=PKCD0FWbOXzFf_gx" title="Dorothy's Job Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
             </section>
@@ -141,7 +142,7 @@
                         </div>
                         <pre><code><span class="keyword">void</span> UFocusManager::<span class="function">UpdateFocus</span>(<span class="type">UWidget</span>* NewWidget) {
     <span class="keyword">if</span> (!NewWidget || NewWidget == CurrentFocusedWidget) 
-    <span class="keyword">return</span>;
+        <span class="keyword">return</span>;
 
     <span class="comment">// Store previous focus for backtracking</span>
     FocusHistory.Push(CurrentFocusedWidget);

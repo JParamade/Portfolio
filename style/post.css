@@ -8,6 +8,22 @@
     min-height: 100vh;
 }
 
+/* -------- Back Link -------- */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent-color);
+}
+
 .project-hero {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -28,33 +44,40 @@
     margin: 0 0 30px 0;
 }
 
-/* -------- Milestones Grid -------- */
-.milestones-grid {
+/* -------- Stacked Award Ribbons -------- */
+.award-ribbons {
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 30px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
     border-bottom: 1px solid #222;
 }
 
-.milestone {
-    display: flex;
-    flex-direction: column;
-}
-
-.milestone .value {
-    font-size: 1.3rem;
-    font-weight: 900;
+.award-ribbon {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+    border-left: 3px solid #ffd700;
+    padding: 10px 15px;
     color: var(--text-main);
-    font-family: var(--font-code);
+    font-size: 0.95rem;
+    border-radius: 0 6px 6px 0;
 }
 
-.milestone .label {
-    font-size: 0.8rem;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 4px;
+.award-ribbon i {
+    color: #ffd700;
+    font-size: 1.2rem;
+    width: 24px; /* Fixed width ensures all text aligns perfectly vertically */
+    text-align: center;
+    margin-right: 12px;
+}
+
+.award-ribbon b {
+    color: #ffd700;
+    font-family: var(--font-code);
+    font-size: 1.1rem;
+    margin-right: 5px;
 }
 
 .project-tagline {
@@ -62,7 +85,6 @@
     color: var(--text-muted);
     line-height: 1.6;
     margin-bottom: 30px;
-    
     text-align: justify;
 }
 
@@ -309,13 +331,6 @@
     
     .fast-facts {
         grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .milestones-grid {
-        flex-direction: column;
-        gap: 15px;
     }
 }
 
