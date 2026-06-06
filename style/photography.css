@@ -3,24 +3,30 @@
    ========================================================================== */
 .photography-page {
     min-height: 100vh;
-    padding: 10vh 5vw 10vh 5vw; /* Matches the global spacing */
-    max-width: 1200px;
+    padding: 12vh 5vw 10vh 5vw; 
+    max-width: 1400px; 
     margin: 0 auto;
 }
 
 .page-title {
     font-size: clamp(2.5rem, 4vw, 4rem);
-    text-align: center;
-    margin-bottom: 60px;
+    text-align: center; /* Restored to center */
+    margin-bottom: 60px; /* Gives nice breathing room before the columns start */
+    line-height: 1.1;
+}
+
+/* Two-Column CSS Grid */
+.photography-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); 
+    gap: 6vw;
+    align-items: center; /* FIX: This vertically centers the right column to the left column */
 }
 
 /* ==========================================================================
-   2. STORY / INTRO TEXT
+   2. STORY / INTRO TEXT (Left Column)
    ========================================================================== */
 .story-text {
-    max-width: 800px;
-    margin: 0 auto 60px auto;
-    text-align: left;
     color: var(--text-muted);
     font-size: 1.15rem;
     line-height: 1.8;
@@ -32,20 +38,23 @@
     text-justify: inter-word;
 }
 
+.story-text p:last-child {
+    margin-bottom: 0;
+}
+
 /* ==========================================================================
-   3. CINEMATIC CATEGORY PORTALS
+   3. CINEMATIC CATEGORY PORTALS (Right Column)
    ========================================================================== */
-.photo-portals {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+.photography-galleries {
+    display: flex;
+    flex-direction: column;
     gap: 40px;
-    max-width: 1000px; /* Constrains it slightly so the two cards look premium */
-    margin: 0 auto;
+    /* Removed the previous margin-top so it centers perfectly mathematically */
 }
 
 .portal-card {
     position: relative;
-    height: 450px; /* Cinematic aspect ratio */
+    height: 350px; 
     border-radius: 12px;
     overflow: hidden;
     display: block;
@@ -107,7 +116,6 @@
 }
 
 .portal-card:hover .portal-overlay {
-    /* Subtle neon green tint injection */
     background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0, 255, 102, 0.05) 60%, transparent 100%);
 }
 
@@ -122,11 +130,15 @@
 /* ==========================================================================
    4. RESPONSIVE DESIGN
    ========================================================================== */
-@media (max-width: 768px) {
-    .photo-portals {
-        grid-template-columns: 1fr;
+@media (max-width: 992px) {
+    .photography-layout {
+        grid-template-columns: 1fr; /* Stacks columns vertically */
+        gap: 60px;
     }
+}
+
+@media (max-width: 768px) {
     .portal-card {
-        height: 350px; /* Prevents cards from taking up the entire phone screen */
+        height: 300px; /* Ensures cards fit nicely on smaller phone screens */
     }
 }
