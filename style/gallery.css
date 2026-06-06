@@ -1,4 +1,6 @@
-/* ---------- GALLERY PAGE LAYOUT ---------- */
+/* ==========================================================================
+   1. GALLERY PAGE LAYOUT & HEADER
+   ========================================================================== */
 .gallery-page {
     padding: 15vh 5vw 10vh 5vw;
     max-width: 1400px;
@@ -6,7 +8,6 @@
     min-height: 100vh;
 }
 
-/* ---------- GALLERY HEADER ---------- */
 .gallery-header {
     margin-bottom: 40px;
 }
@@ -33,7 +34,9 @@
     color: var(--text-main);
 }
 
-/* ---------- FILTER BAR ---------- */
+/* ==========================================================================
+   2. FILTER NAVIGATION
+   ========================================================================== */
 .gallery-filters {
     display: flex;
     flex-wrap: wrap;
@@ -61,14 +64,16 @@
     background: rgba(0, 255, 102, 0.05);
 }
 
-/* ---------- CSS MASONRY GRID ---------- */
+/* ==========================================================================
+   3. MASONRY GRID (CSS Columns)
+   ========================================================================== */
 .masonry-grid {
     column-count: 3;
     column-gap: 20px;
 }
 
 .masonry-item {
-    break-inside: avoid;
+    break-inside: avoid; /* Crucial: Prevents images from being split across columns */
     margin-bottom: 20px;
     position: relative;
     border-radius: 8px;
@@ -84,6 +89,7 @@
     transition: transform 0.4s ease;
 }
 
+/* -------- Hover Overlay (Expand Icon) -------- */
 .photo-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -104,20 +110,16 @@
     text-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-.masonry-item:hover .photo-overlay {
-    opacity: 1;
-}
-
+.masonry-item:hover .photo-overlay { opacity: 1; }
 .masonry-item:hover .photo-overlay i {
     opacity: 1;
     transform: scale(1);
 }
+.masonry-item:hover img { transform: scale(1.02); }
 
-.masonry-item:hover img {
-    transform: scale(1.02);
-}
-
-/* ---------- THE PURE IMAGE LIGHTBOX ---------- */
+/* ==========================================================================
+   4. LIGHTBOX: BASE & PURE IMAGE (Video Games)
+   ========================================================================== */
 .lightbox {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -168,18 +170,9 @@
     box-shadow: 0 10px 40px rgba(0,0,0,0.8);
 }
 
-/* ---------- MOBILE ADJUSTMENTS ---------- */
-@media (max-width: 900px) {
-    .masonry-grid { column-count: 2; }
-    .pure-image-content { padding: 20px; }
-    .lightbox-close { top: 15px; right: 20px; }
-}
-
-@media (max-width: 600px) {
-    .masonry-grid { column-count: 1; }
-    .gallery-filters { justify-content: center; }
-}
-
+/* ==========================================================================
+   5. LIGHTBOX: EXIF METADATA (Real Life)
+   ========================================================================== */
 .meta-image-content {
     display: flex;
     max-width: 90vw;
@@ -206,6 +199,7 @@
     box-shadow: none; 
 }
 
+/* -------- Metadata Sidebar -------- */
 .lightbox-sidebar {
     width: 320px;
     min-width: 320px;
@@ -255,17 +249,24 @@
     text-align: center;
 }
 
+/* ==========================================================================
+   6. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+/* Tablets & Small Desktops */
 @media (max-width: 900px) {
+    .masonry-grid { column-count: 2; }
+    .pure-image-content { padding: 20px; }
+    .lightbox-close { top: 15px; right: 20px; }
+    
+    /* Meta Lightbox Stacked Layout */
     .meta-image-content { 
         flex-direction: column; 
         max-height: 95vh; 
     }
-    .lightbox-img-wrapper {
-        padding: 10px;
-    }
-    .meta-image-content .lightbox-img {
-        max-height: 50vh; 
-    }
+    .lightbox-img-wrapper { padding: 10px; }
+    .meta-image-content .lightbox-img { max-height: 50vh; }
+    
     .lightbox-sidebar { 
         width: 100%; 
         min-width: 100%;
@@ -275,6 +276,12 @@
     }
     .meta-list {
         display: grid;
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 1fr; /* Shifts list to a neat 2-column grid */
     }
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+    .masonry-grid { column-count: 1; }
+    .gallery-filters { justify-content: center; }
 }
