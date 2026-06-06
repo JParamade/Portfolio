@@ -152,6 +152,11 @@
     padding: 40px;
     border-radius: 12px;
     border: 1px solid #222;
+    justify-self: center; 
+    align-self: center;
+
+    width: 100%;
+    max-width: 650px;
 }
 
 .input-group {
