@@ -34,6 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (img) {
                     lightboxImg.src = img.src;
                     
+                    const sidebar = document.querySelector('.lightbox-sidebar');
+                    const metaData = item.querySelector('.photo-meta-data');
+                    
+                    if (sidebar && metaData) {
+                        document.getElementById('lb-camera').textContent = metaData.getAttribute('data-camera') || 'Unknown';
+                        document.getElementById('lb-lens').textContent = metaData.getAttribute('data-lens') || 'Unknown';
+                        document.getElementById('lb-aperture').textContent = metaData.getAttribute('data-aperture') || 'Unknown';
+                        document.getElementById('lb-shutter').textContent = metaData.getAttribute('data-shutter') || 'Unknown';
+                        document.getElementById('lb-iso').textContent = metaData.getAttribute('data-iso') || 'Unknown';
+                    }
+                    
                     lightbox.classList.add('active');
                     
                     document.body.style.overflow = 'hidden'; 
@@ -43,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const closeLightbox = () => {
             lightbox.classList.remove('active');
+            
             document.body.style.overflow = 'auto'; 
             
             setTimeout(() => {
@@ -53,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtn.addEventListener('click', closeLightbox);
 
         lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox || e.target.classList.contains('pure-image-content')) {
+            if (e.target === lightbox || 
+                e.target.classList.contains('pure-image-content') || 
+                e.target.classList.contains('lightbox-img-wrapper')) {
                 closeLightbox();
             }
         });
