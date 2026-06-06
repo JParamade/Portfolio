@@ -63,4 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Start the effect after a brief delay so the entrance animations can finish
         setTimeout(type, 1200); 
     }
+    
+    // ========================================================
+    // 3. PREVENT SCROLL CREEP ON PAGE RELOAD
+    // ========================================================
+    if ('scrollRestoration' in history) {
+        // Tells the browser not to auto-restore the scroll position on refresh,
+        // which prevents layout-shifting CSS animations from pushing the page down.
+        history.scrollRestoration = 'manual';
+    }
+
+    // Optional: Force the page to always start at the very top on a fresh reload
+    window.addEventListener('beforeunload', function() {
+        window.scrollTo(0, 0);
+    });
 });
