@@ -1,109 +1,326 @@
 /* ==========================================================================
-   1. INDIVIDUAL POST LAYOUT
+   1. PAGE LAYOUT & HERO
    ========================================================================== */
-.post-page {
+.project-detail-page {
+    padding: 12vh 5vw 10vh 5vw;
+    max-width: 1200px;
+    margin: 0 auto;
     min-height: 100vh;
-    padding: 15vh 5vw 5vh 5vw;
-    display: flex;
-    justify-content: center;
 }
 
-.full-post {
-    max-width: 800px; /* Constrained for perfect reading width */
-    width: 100%;
+.project-hero {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.project-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 0 0 10px 0;
+    line-height: 1.1;
+}
+
+.studio-tagline {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin: 0 0 30px 0;
+}
+
+/* -------- Milestones Grid -------- */
+.milestones-grid {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #222;
+}
+
+.milestone {
+    display: flex;
+    flex-direction: column;
+}
+
+.milestone .value {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--text-main);
+    font-family: var(--font-code);
+}
+
+.milestone .label {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+.project-tagline {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    
+    text-align: justify;
 }
 
 /* ==========================================================================
-   2. POST HEADER & META DATA
+   2. TAGS & ACTION BUTTONS
    ========================================================================== */
-.post-header {
-    text-align: center;
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 30px;
 }
 
-.post-meta {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+.tag {
     font-family: var(--font-code);
-    color: var(--accent-color);
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-}
-
-.post-date {
-    margin-top: 3px;
-}
-
-.post-category {
-    color: var(--text-muted);
-    border: 1px solid #333;
-    padding: 2px 10px;
-    border-radius: 12px;
-}
-
-.full-post-title {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    margin: 0;
-    line-height: 1.2;
-    text-wrap: balance; /* Prevents awkward single-word orphans on new lines */
-}
-
-/* ==========================================================================
-   3. POST CONTENT & TYPOGRAPHY
-   ========================================================================== */
-.full-post-content {
-    text-align: justify;
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #e0e0e0;
-}
-
-.full-post-content p {
-    margin-bottom: 25px;
-}
-
-.full-post-content b, 
-.full-post-content strong {
-    color: var(--text-main);
+    font-size: 0.85rem;
     font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
+
+.tag-engine { color: #00d2ff; background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.2); }
+.tag-lang { color: #ff3366; background: rgba(255, 51, 102, 0.1); border: 1px solid rgba(255, 51, 102, 0.2); }
+.tag-tool { color: #ffaa00; background: rgba(255, 170, 0, 0.1); border: 1px solid rgba(255, 170, 0, 0.2); }
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-external {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-external i { font-size: 1.2rem; }
+.btn-external:hover { transform: translateY(-3px); }
+.btn-external.steam:hover { background: #1b2838; border-color: #66c0f4; }
+.btn-external.github:hover { background: #24292e; border-color: #ffffff; }
 
 /* ==========================================================================
-   4. POST MEDIA (Images & Videos)
+   3. RESPONSIVE VIDEO TRAILER
    ========================================================================== */
-.full-post-image {
-    width: 100%;
-    height: auto;
-    max-height: 450px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 40px;
-    border: 1px solid #222;
-}
-
-.inline-image {
-    width: 100%;
-    border-radius: 8px;
-    margin: 30px 0;
-}
-
-/* 16:9 Responsive Video Container */
 .video-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     height: 0;
     overflow: hidden;
     border-radius: 12px;
-    margin: 40px 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    border: 1px solid #222;
 }
 
 .video-container iframe {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     border: 0;
+}
+
+/* ==========================================================================
+   4. FAST FACTS BAR (Recruiter Quick-Scan)
+   ========================================================================== */
+.fast-facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: #151515;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    margin-bottom: 80px;
+}
+
+.fact-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fact-box i {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.fact-box h4 {
+    color: var(--text-muted);
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.fact-box p {
+    color: var(--text-main);
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   5. TECH DEEP DIVES (Feature Blocks)
+   ========================================================================== */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.feature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+/* Reverses the order so image/media is on the left, text on right */
+.feature-block.reversed {
+    direction: rtl; 
+}
+.feature-block.reversed > * {
+    direction: ltr; /* Resets text direction */
+}
+
+.feature-text h3 {
+    font-size: 1.8rem;
+    margin: 0 0 20px 0;
+}
+
+.feature-text p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+}
+
+.tech-list li {
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.tech-list i {
+    color: var(--accent-color);
+    margin-top: 5px;
+}
+
+.detail-img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.section-divider {
+    border: none;
+    height: 1px;
+    background: #222;
+    margin: 60px 0;
+}
+
+/* ==========================================================================
+   6. IDE-STYLE CODE SNIPPET BOX
+   ========================================================================== */
+.feature-code {
+    background: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+}
+
+.code-header {
+    background: #1a1a1a;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+}
+
+.file-name {
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feature-code pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.feature-code code {
+    font-family: var(--font-code);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e6e6e6;
+}
+
+/* C++ Syntax Highlighting Colors */
+.feature-code .keyword { color: #569cd6; } /* Blue */
+.feature-code .type { color: #4ec9b0; }    /* Teal */
+.feature-code .function { color: #dcdcaa; }/* Light Yellow */
+.feature-code .comment { color: #6a9955; font-style: italic; } /* Green */
+
+/* ==========================================================================
+   7. MOBILE RESPONSIVE
+   ========================================================================== */
+@media (max-width: 992px) {
+    .project-hero, .feature-block {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-block.reversed { direction: ltr; } /* Disables reverse on mobile */
+    
+    .fast-facts {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .milestones-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .fast-facts {
+        grid-template-columns: 1fr;
+    }
 }

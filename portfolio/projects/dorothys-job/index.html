@@ -3,146 +3,195 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Game Programmer Portfolio - JParamade</title>
+        <meta name="description" content="Dorothy's Job - Discover my technical work on UI systems, Audio (FMOD), and Gameplay programming for this isometric twin-stick shooter in Unreal Engine 5.">
+        <title>Dorothy's Job | JParamade Portfolio</title>
+
         <link rel="icon" href="/assets/images/logo.png">
-        <link rel="stylesheet" href="/style/main.css">
-        <link rel="stylesheet" href="/style/project.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        
+        <link rel="stylesheet" href="/style/main.css">
+        <link rel="stylesheet" href="/style/post.css">
     </head>
     <body>
+        
         <header class="header">
-            <div class="logo-container">
-                <img src="/assets/images/logo.png" alt="Logo" class="logo">
-                <span class="site-name">JParamade</span>
+            <div class="header-inner">
+                <a href="/" class="logo-container">
+                    <span class="site-name"><b>JParamade</b></span>
+                </a>
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="nav" id="nav-menu">
+                    <a href="/">Home</a>
+                    <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
+                    <a href="/portfolio" class="active">Portfolio</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/photography">Photography</a>
+                    <a href="/contact">Contact</a>
+                </nav>
             </div>
-            
-            <nav class="nav">
-                <a href="/">Home</a>
-                <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
-                <a href="/portfolio">Portfolio</a>
-                <a href="/blog">Blog</a>
-                <a href="/photography">Photography</a>
-                <a href="">Contact</a>
-            </nav>
         </header>
-        
-        <main class="project-page">
 
-            <!-- HERO -->
+        <main class="project-detail-page fade-in-up">
+            
+            <!-- 1. CINEMATIC HERO & TRAILER -->
             <section class="project-hero">
-                <h1>Dorothy’s Job</h1>
-                <p class="subtitle">
-                    
-                </p>
-                <div class="tags">
-                        <span class="tag engine">Unreal Engine 5</span>
-                        <span class="tag lang">Blueprints & C++</span>
-                        <span class="tag team"><b>Team Size:</b>&nbsp;30+</span>
-                        <span class="tag tool">FMOD</span>
-                    </div>
-                <div class="project-links">
-                    <a href="https://store.steampowered.com/app/3926730/Dorothys_Job/" target="_blank" class="project-link steam">
-                        <i class="fab fa-steam"></i>
-                        Steam
-                    </a>
                 
-                    <a href="https://github.com/JParamade/DorothysJob" target="_blank" class="project-link github">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
-                </div>
-                <img src="/assets/images/portfolio/dorothys-job/hero.png" class="hero-img">
-            </section>
-        
-        
-            <!-- ABOUT -->
-            <section class="project-section">
-                <h2>About the Project</h2>
-                <p>
-                    Dorothy’s Job is a frenetic and comedic isometric twin-stick shooter
-                    where players control a maid fighting through chaotic enemy-filled levels.
-                </p>
-                <p>
-                    This page highlights my technical contributions, focused on UI systems,
-                    audio programming, and gameplay integration in Unreal Engine 5.
-                </p>
-            </section>
-        
-        
-            <!-- ROLE -->
-            <section class="project-section">
-                <h2>My Role</h2>
-        
-                <h3>UI Programming</h3>
-                <ul>
-                    <li>Custom C++ focus navigation system (grid + linear UI)</li>
-                    <li>Input-aware navigation (keyboard/gamepad/mouse)</li>
-                    <li>Focus wrapping + focus memory system</li>
-                    <li>Responsive UMG layouts across resolutions</li>
-                </ul>
-        
-                <h3>Audio Programming</h3>
-                <ul>
-                    <li>FMOD integration with event-driven architecture</li>
-                    <li>Custom Audio Manager subsystem</li>
-                    <li>Audio settings management system</li>
-                </ul>
-        
-                <h3>Gameplay Contributions</h3>
-                <ul>
-                    <li>Modular consumable / power-up system</li>
-                    <li>Weapon and enemy behavior support</li>
-                </ul>
-            </section>
-        
-        
-            <!-- TECH SYSTEMS -->
-            <section class="project-section">
-                <h2>Key Systems</h2>
-        
-                <div class="system-card">
-                    <h3>Focus Navigation System</h3>
-                    <p>
-                        Modular UI navigation system supporting both grid and linear layouts
-                        with input-aware control and focus memory.
+                <div class="hero-info">
+                    
+                    <h1 class="project-title">Dorothy’s Job</h1>
+                    <p class="studio-tagline">Developed at <b>Bola 13 Studios</b></p>
+
+                    <!-- Project Highlights Bar -->
+                    <div class="milestones-grid">
+                        <div class="milestone">
+                            <span class="value">30,000+</span>
+                            <span class="label">License Activations</span>
+                        </div>
+                        <div class="milestone">
+                            <span class="value">96/100</span>
+                            <span class="label">Positive Reviews</span>
+                        </div>
+                        <div class="milestone">
+                            <span class="value">BIG Conf.</span>
+                            <span class="label">Nomination (Best University Game)</span>
+                        </div>
+                    </div>
+                    
+                    <p class="project-tagline">
+                        A frenetic, comedic isometric twin-stick shooter where players control a heavily-armed maid fighting through chaotic, enemy-filled mansions.
                     </p>
+
+                    <!-- Tech Tags -->
+                    <div class="tech-tags">
+                        <span class="tag tag-engine"><i class="fas fa-cube" aria-hidden="true"></i> Unreal Engine 5</span>
+                        <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> C++ & Blueprints</span>
+                        <span class="tag tag-tool"><i class="fas fa-wrench" aria-hidden="true"></i> FMOD</span>
+                    </div>
+
+                    <!-- CTA Links -->
+                    <div class="project-links">
+                        <a href="https://store.steampowered.com/app/3926730/Dorothys_Job/" target="_blank" class="btn-external steam">
+                            <i class="fab fa-steam" aria-hidden="true"></i> Play on Steam
+                        </a>
+                        <a href="https://github.com/JParamade/DorothysJob" target="_blank" class="btn-external github">
+                            <i class="fab fa-github" aria-hidden="true"></i> View Source Code
+                        </a>
+                    </div>
                 </div>
-        
-                <div class="system-card">
-                    <h3>Audio Manager (FMOD)</h3>
-                    <p>
-                        Centralized subsystem handling all audio events and settings
-                        across gameplay systems.
-                    </p>
+
+                <!-- Game Trailer / Main Media -->
+                <div class="hero-media video-container">
+                    <iframe src="https://www.youtube.com/embed/YOUR_TRAILER_ID_HERE" title="Dorothy's Job Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-        
-                <div class="system-card">
-                    <h3>Consumable System</h3>
-                    <p>
-                        Scalable architecture for power-ups integrated into player gameplay.
-                    </p>
+
+            </section>
+
+            <!-- 2. FAST FACTS BAR (For Recruiters) -->
+            <section class="fast-facts">
+                <div class="fact-box">
+                    <i class="fas fa-user-astronaut" aria-hidden="true"></i>
+                    <h4>My Role</h4>
+                    <p>UI, Audio & Gameplay</p>
                 </div>
+                <div class="fact-box">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <h4>Team Size</h4>
+                    <p>30+ Developers</p>
+                </div>
+                <div class="fact-box">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h4>Development</h4>
+                    <p>9 Months</p>
+                </div>
+                <div class="fact-box">
+                    <i class="fas fa-gamepad" aria-hidden="true"></i>
+                    <h4>Platform</h4>
+                    <p>PC (Steam)</p>
+                </div>
+            </section>
+
+            <!-- 3. TECHNICAL DEEP DIVES (For Tech Leads) -->
+            <section class="tech-deep-dives">
+                
+                <h2 class="section-title">Engineering <span class="highlight">Systems</span></h2>
+
+                <!-- Feature 1: UI Navigation -->
+                <div class="feature-block">
+                    <div class="feature-text">
+                        <h3>Custom UI Focus Navigation</h3>
+                        <p>Navigating complex UI menus with a gamepad requires a robust focus system. I engineered a custom C++ UI navigation subsystem that supports both grid-based and linear layouts.</p>
+                        <ul class="tech-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <b>Input-Aware:</b> Dynamically swaps control schemes between Keyboard, Mouse, and Gamepad.</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <b>Focus Memory:</b> Remembers the last selected widget when swapping between deeply nested menus.</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <b>Responsive:</b> UMG layouts mathematically scale to maintain aspect ratios across all monitor resolutions.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Code Snippet Box -->
+                    <div class="feature-code">
+                        <div class="code-header">
+                            <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> UFocusManager.cpp</span>
+                        </div>
+                        <pre><code><span class="keyword">void</span> UFocusManager::<span class="function">UpdateFocus</span>(<span class="type">UWidget</span>* NewWidget) {
+    <span class="keyword">if</span> (!NewWidget || NewWidget == CurrentFocusedWidget) 
+    <span class="keyword">return</span>;
+
+    <span class="comment">// Store previous focus for backtracking</span>
+    FocusHistory.Push(CurrentFocusedWidget);
+
+    <span class="comment">// Broadcast event to trigger UI animations</span>
+    OnFocusChanged.Broadcast(CurrentFocusedWidget, NewWidget);
+
+    CurrentFocusedWidget = NewWidget;
+    NewWidget->SetKeyboardFocus();
+}</code></pre>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- Feature 2: Audio & Gameplay (Text & Image layout) -->
+                <div class="feature-block reversed">
+                    <div class="feature-text">
+                        <h3>Audio Architecture & Consumables</h3>
+                        <p>With a background in music, I took ownership of the FMOD integration. I built an event-driven Audio Manager subsystem in C++ that decoupled sound logic from game actors, drastically improving performance.</p>
+                        <p>On the gameplay side, I developed a highly modular consumable architecture. By utilizing data-driven design (DataAssets), game designers could create and balance new power-ups and weapons entirely in the editor without requiring additional code support.</p>
+                    </div>
+                    
+                    <div class="feature-media">
+                        <img src="/assets/images/portfolio/dorothys-job/hero.png" alt="Dorothy's Job Gameplay" class="detail-img">
+                    </div>
+                </div>
+
             </section>
         </main>
-        
+
         <footer class="footer">
-            <p>© 2025 Jaime Páramo. All rights reserved.</p>
+            <p>© 2026 Jaime Páramo. All rights reserved.</p>
         </footer>
-        
+
         <div class="floating-social">
-            <a href="https://github.com/JParamade" target="_blank" class="social-btn github">
+            <a href="https://github.com/JParamade" target="_blank" class="social-btn github" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://JParamade.itch.io" target="_blank" class="social-btn itch">
+            <a href="https://JParamade.itch.io" target="_blank" class="social-btn itch" aria-label="Itch.io">
                 <img src="https://static.itch.io/images/itchio-textless-black.svg" alt="itch icon">
             </a>
-            <a href="https://www.linkedin.com/in/jaime-paramo" target="_blank" class="social-btn linkedin">
+            <a href="https://www.linkedin.com/in/jaime-paramo" target="_blank" class="social-btn linkedin" aria-label="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="mailto:jaime.paramo@outlook.com" class="social-btn mail">
+            <a href="mailto:jaime.paramo@outlook.com" class="social-btn mail" aria-label="Email">
                 <i class="fas fa-envelope"></i>
             </a>
         </div>
+
+        <script src="/scripts/main.js"></script>
     </body>
-    
 </html>
