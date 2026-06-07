@@ -1,139 +1,448 @@
-.project-page {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 0 20px;
+/* ==========================================================================
+   1. PAGE LAYOUT & HERO
+   ========================================================================== */
+.project-detail-page {
+    padding: 12vh 5vw 10vh 5vw;
+    max-width: 1300px;
+    margin: 0 auto;
+    min-height: 100vh;
 }
 
-.project-hero {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.hero-img {
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-.subtitle {
-    color: #ccc;
-    margin-bottom: 15px;
-}
-
-.project-section {
-    margin-bottom: 40px;
-}
-
-.project-section h2 {
-    margin-bottom: 10px;
-}
-
-.project-section p,
-.project-section li {
-    color: #ddd;
-    line-height: 1.6;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-.system-card {
-    background: #1a1a1a;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.project-footer {
-    margin-top: 50px;
-    font-size: 0.85rem;
-    color: #888;
-    text-align: center;
-}
-
-.tags {
-    margin-bottom: 20px;
-    margin-left: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: center;
-    align-items: center;
-}
-
-.tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 8px;
-    border-radius: 6px;
-    background: #2a2a2a;
-    border: 1px solid #3a3a3a;
-    font-size: 0.75rem;
-    line-height: 1;
-    white-space: nowrap;
-}
-
-.tag.engine {
-    background: #1f2a44;
-    border-color: #2f4a7a;
-}
-
-.tag.lang {
-    background: #2a1f1f;
-    border-color: #7a3a3a;
-}
-
-.tag.team {
-    background: #1f2a1f;
-    border-color: #3a7a3a;
-}
-
-.tag.tool {
-    background: #292a1f;
-    border-color: #7a753a;
-}
-
-.project-links {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.project-link {
+/* -------- Back Link -------- */
+.back-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: color 0.2s ease;
+}
 
-    padding: 8px 14px;
+.back-link:hover {
+    color: var(--accent-color);
+}
+
+.project-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3vw;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.project-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 0 0 10px 0;
+    line-height: 1.1;
+}
+
+.studio-tagline {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin: 0 0 30px 0;
+}
+
+/* -------- Stacked Award Ribbons -------- */
+.award-ribbons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #222;
+}
+
+.award-ribbon {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+    border-left: 3px solid #ffd700;
+    padding: 10px 15px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    border-radius: 0 6px 6px 0;
+}
+
+.award-ribbon i {
+    color: #ffd700;
+    font-size: 1.2rem;
+    width: 24px; /* Fixed width ensures all text aligns perfectly vertically */
+    text-align: center;
+    margin-right: 12px;
+}
+
+.award-ribbon b {
+    color: #ffd700;
+    font-family: var(--font-code);
+    font-size: 1.1rem;
+    margin-right: 5px;
+}
+
+.project-tagline {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* ==========================================================================
+   2. TAGS & ACTION BUTTONS
+   ========================================================================== */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-self: center;
+}
+
+.tag {
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tag-engine { color: #00d2ff; background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.2); }
+.tag-lang { color: #ff3366; background: rgba(255, 51, 102, 0.1); border: 1px solid rgba(255, 51, 102, 0.2); }
+.tag-tool { color: #ffaa00; background: rgba(255, 170, 0, 0.1); border: 1px solid rgba(255, 170, 0, 0.2); }
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    align-self: center;
+}
+
+.btn-external {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
     border-radius: 8px;
-
     background: #1a1a1a;
     border: 1px solid #333;
     color: white;
     text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
 
+.btn-external i { font-size: 1.2rem; }
+.btn-external:hover { transform: translateY(-3px); }
+.btn-external.steam:hover { background: #1b2838; border-color: #66c0f4; }
+.btn-external.github:hover { background: #24292e; border-color: #ffffff; }
+
+/* ==========================================================================
+   3. RESPONSIVE VIDEO TRAILER
+   ========================================================================== */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    border: 1px solid #222;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+}
+
+.hero-media-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.hero-media-column .video-container {
+    margin-bottom: 25px; 
+}
+
+/* ==========================================================================
+   4. FAST FACTS BAR (Recruiter Quick-Scan)
+   ========================================================================== */
+.fast-facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: #151515;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    margin-bottom: 60px;
+}
+
+.fact-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fact-box i {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.fact-box h4 {
+    color: var(--text-muted);
+    margin: 0 0 5px 0;
     font-size: 0.9rem;
-
-    transition: transform 0.2s, background 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.project-link i {
+.fact-box p {
+    color: var(--text-main);
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* ==========================================================================
+   5. WHITEPAPER DOWNLOAD BANNER
+   ========================================================================== */
+.whitepaper-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(0, 255, 102, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+    border: 1px solid rgba(0, 255, 102, 0.2);
+    border-radius: 12px;
+    padding: 30px 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex: 1;
+}
+
+.banner-content i {
+    font-size: 3rem;
+    color: var(--accent-color);
+}
+
+.banner-text h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.banner-text p {
+    margin: 0;
+    color: var(--text-muted);
     font-size: 1rem;
+    line-height: 1.5;
+    max-width: 750px;
+    text-align: justify;
 }
 
-.project-link:hover {
-    transform: translateY(-2px);
-    background: #2a2a2a;
+.pdf-btn {
+    background: rgba(0, 255, 102, 0.15);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
-/* Platform-specific accents */
-.project-link.steam:hover {
-    border-color: #1b2838;
+.pdf-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
 }
 
-.project-link.github:hover {
-    border-color: #6e5494;
+@media (max-width: 768px) {
+    .whitepaper-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+    .banner-content i {
+        display: none; /* Hide icon on small screens to save space */
+    }
+}
+
+/* ==========================================================================
+   6. TECH DEEP DIVES (Feature Blocks)
+   ========================================================================== */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.feature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+/* Reverses the order so image/media is on the left, text on right */
+.feature-block.reversed {
+    direction: rtl; 
+}
+.feature-block.reversed > * {
+    direction: ltr; /* Resets text direction */
+}
+
+.feature-text h3 {
+    font-size: 1.75rem;
+    margin: 0 0 20px 0;
+    text-align: left; 
+}
+
+.feature-text p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: left; 
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; 
+}
+
+.tech-list li {
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    display: block; /* Overrides the flexbox behavior causing the columns */
+    position: relative;
+    padding-left: 35px; /* Creates a clean indent margin for the text */
+    line-height: 1.6;
+}
+
+.tech-list i {
+    color: var(--accent-color);
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.detail-img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.feature-visuals {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+
+.section-divider {
+    border: none;
+    height: 1px;
+    background: #222;
+    margin: 60px 0;
+}
+
+/* ==========================================================================
+   7. IDE-STYLE CODE SNIPPET BOX
+   ========================================================================== */
+.feature-code {
+    background: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+}
+
+.code-header {
+    background: #1a1a1a;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+}
+
+.file-name {
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feature-code pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.feature-code code {
+    font-family: var(--font-code);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e6e6e6;
+}
+
+/* C++ Syntax Highlighting Colors */
+.feature-code .keyword { color: #569cd6; } /* Blue */
+.feature-code .type { color: #4ec9b0; }    /* Teal */
+.feature-code .function { color: #dcdcaa; }/* Light Yellow */
+.feature-code .comment { color: #6a9955; font-style: italic; } /* Green */
+
+/* ==========================================================================
+   8. INLINE CODE FIX
+   ========================================================================== */
+p code, 
+li code {
+    display: inline-block; /* Forces the code to sit inside the text line */
+    background: #1a1a1a; /* Subtle dark background */
+    color: var(--accent-color); /* Uses your neon green for emphasis */
+    font-family: var(--font-code);
+    font-size: 0.9em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    line-height: 1;
+    margin: 0 2px;
+}
+
+/* ==========================================================================
+   9. MOBILE RESPONSIVE
+   ========================================================================== */
+@media (max-width: 992px) {
+    .project-hero, .feature-block {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-block.reversed { direction: ltr; } /* Disables reverse on mobile */
+    
+    .fast-facts {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .fast-facts {
+        grid-template-columns: 1fr;
+    }
 }
