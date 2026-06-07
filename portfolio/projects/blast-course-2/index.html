@@ -125,7 +125,7 @@
                         <p>To ensure high performance and strict predictability in a fast-paced game, I bypassed Unreal Engine's native <code>UProjectileMovementComponent</code>. Instead, I engineered a highly modular, <code>Tick</code>-driven mathematical movement system utilizing <code>SweepSingleByChannel</code>.</p>
                         <ul class="tech-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i> <b>Component-Agnostic Collisions:</b> Environmental interactions are handled cleanly by detecting "Defuser" surfaces via <code>UMaterialInterface</code>.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> <b>Polymorphic Extensions:</b> The robust <code>ABaseRocket</code> allows child classes (like Bounce or Remote rockets) to implement complex behaviors—such as vector reflection—simply by overriding the virtual <code>Impact()</code> function.</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <b>Polymorphic Extensions:</b> The robust <code>ABaseRocket</code> allows child classes (like Bounce or Remote rockets) to implement complex behaviors, such as vector reflection, simply by overriding the virtual <code>Impact()</code> function.</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> <b>The "Unconscious" Actor:</b> Rockets have zero awareness of the memory pool. They simply execute their lifecycle and broadcast an <code>OnRocketFinished</code> multicast delegate when ready for reclamation.</li>
                         </ul>
                     </div>
