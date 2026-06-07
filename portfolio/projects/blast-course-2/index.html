@@ -120,7 +120,7 @@
                     <div class="feature-text">
                         <h3>Polymorphic Projectile Architecture</h3>
                         
-                        <video src="/assets/images/portfolio/blast-course-2/bounce-rocket-gameplay.webm" autoplay loop muted playsinline class="demo-media"></video>
+                        <video src="/assets/videos/rocket-architecture.webm" autoplay loop muted playsinline class="demo-media"></video>
                         
                         <p>To ensure high performance and strict predictability in a fast-paced game, I bypassed Unreal Engine's native <code>UProjectileMovementComponent</code>. Instead, I engineered a highly modular, <code>Tick</code>-driven mathematical movement system utilizing <code>SweepSingleByChannel</code>.</p>
                         <ul class="tech-list">
@@ -132,18 +132,6 @@
                     
                     <div class="feature-visuals">
                         <img src="/assets/images/portfolio/blast-course-2/rocket-architecture.webp" alt="UML Class Diagram of Rocket Architecture" class="detail-img">
-                        <div class="feature-code">
-                            <div class="code-header">
-                                <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> ABaseRocket.cpp</span>
-                            </div>
-                            <pre><code><span class="keyword">void</span> ABaseRocket::<span class="function">FinishLifecycle</span>() {
-    <span class="keyword">if</span> (!m_bIsActive) <span class="keyword">return</span>;
-    Activate(FVector::ZeroVector, <span class="keyword">false</span>);
-
-    <span class="comment">// Broadcast to the Object Pool that this actor is ready to be reclaimed.</span>
-    OnRocketFinished.Broadcast(<span class="keyword">this</span>);
-}</code></pre>
-                        </div>
                     </div>
                 </div>
 
@@ -154,7 +142,7 @@
                     <div class="feature-text">
                         <h3>Dual Object Pooling</h3>
                         
-                        <video src="/assets/images/portfolio/blast-course-2/bounce-rocket-gameplay.webm" autoplay loop muted playsinline class="demo-media"></video>
+                        <video src="/assets/videos/object-pool.webm" autoplay loop muted playsinline class="demo-media"></video>
                         
                         <p>Spawning hundreds of rockets and explosions at runtime causes massive memory fragmentation and garbage collection spikes. To guarantee a locked frame rate, I built two distinct pooling strategies directly into the <code>ACustomGameMode</code>.</p>
                         <ul class="tech-list">
@@ -195,7 +183,7 @@
                     <div class="feature-text">
                         <h3>Extended UMG Architecture</h3>
                         
-                        <video src="/assets/images/portfolio/blast-course-2/bounce-rocket-gameplay.webm" autoplay loop muted playsinline class="demo-media"></video>
+                        <video src="/assets/videos/umg-architecture.webm" autoplay loop muted playsinline class="demo-media"></video>
                         
                         <p>Controlling exact pixel dimensions and aspect ratios from C++ while maintaining a WYSIWYG experience for UI Artists in the Unreal Editor is notoriously difficult. I engineered an extended hierarchy to decouple layout logic from Blueprint constraints.</p>
                         <ul class="tech-list">
