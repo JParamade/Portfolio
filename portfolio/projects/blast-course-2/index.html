@@ -50,8 +50,7 @@
                     <p class="studio-tagline">Developed at <b>Amiguito Studios</b></p>
 
                     <p class="project-tagline">
-                        The explosive sequel to <i>Blast Course</i>. A first-person puzzle-platformer centered around the high-speed art of Rocket Jumping. Step back into the shoes of Kit for another day at work, testing the revolutionary "Hyperboom" transport technology in complex, physics-driven test chambers.
-                    </p>
+                        The explosive sequel to <i>Blast Course</i>. A first-person puzzle-platformer centered around the high-speed art of Rocket Jumping.&nbsp;</p>
                     
                     <!-- Tech Tags -->
                     <div class="tech-tags">
@@ -98,6 +97,7 @@
                 </div>
             </section>
 
+            <!-- 3. TECHNICAL DEEP DIVES (For Tech Leads) -->
             <div class="whitepaper-banner fade-in-up delay-1">
                 <div class="banner-content">
                     
@@ -111,15 +111,17 @@
                 </a>
             </div>
 
-            <!-- 3. TECHNICAL DEEP DIVES (For Tech Leads) -->
             <section class="tech-deep-dives">
                 
                 <h2 class="section-title">Engineering <span class="highlight">Systems</span></h2>
 
-                <!-- Feature 1: Polymorphic Rocket Architecture -->
+                <!-- Feature 1: Rocket Architecture -->
                 <div class="feature-block">
                     <div class="feature-text">
                         <h3>Polymorphic Projectile Architecture</h3>
+                        
+                        <video src="/assets/images/portfolio/blast-course-2/bounce-rocket-gameplay.webm" autoplay loop muted playsinline class="demo-media"></video>
+                        
                         <p>To ensure high performance and strict predictability in a fast-paced game, I bypassed Unreal Engine's native <code>UProjectileMovementComponent</code>. Instead, I engineered a highly modular, <code>Tick</code>-driven mathematical movement system utilizing <code>SweepSingleByChannel</code>.</p>
                         <ul class="tech-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i> <b>Component-Agnostic Collisions:</b> Environmental interactions are handled cleanly by detecting "Defuser" surfaces via <code>UMaterialInterface</code>.</li>
@@ -128,15 +130,13 @@
                         </ul>
                     </div>
                     
-                    <!-- Visuals Column: Diagram + Code -->
                     <div class="feature-visuals">
                         <img src="/assets/images/portfolio/blast-course-2/rocket-architecture.webp" alt="UML Class Diagram of Rocket Architecture" class="detail-img">
                         <div class="feature-code">
                             <div class="code-header">
                                 <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> ABaseRocket.cpp</span>
                             </div>
-                            <pre><code><span class="keyword">void</span> ABaseRocket::<span class="function">FinishLifecycle</span>() 
-{
+                            <pre><code><span class="keyword">void</span> ABaseRocket::<span class="function">FinishLifecycle</span>() {
     <span class="keyword">if</span> (!m_bIsActive) <span class="keyword">return</span>;
     Activate(FVector::ZeroVector, <span class="keyword">false</span>);
 
@@ -149,10 +149,13 @@
 
                 <hr class="section-divider">
 
-                <!-- Feature 2: Dual Pooling Strategies -->
-                <div class="feature-block reversed">
+                <!-- Feature 2: Object Pooling -->
+                <div class="feature-block">
                     <div class="feature-text">
                         <h3>Dual Object Pooling & Memory Management</h3>
+                        
+                        <video src="/assets/images/portfolio/blast-course-2/bounce-rocket-gameplay.webm" autoplay loop muted playsinline class="demo-media"></video>
+                        
                         <p>Spawning hundreds of rockets and explosions at runtime causes massive memory fragmentation and garbage collection spikes. To guarantee a locked frame rate, I built two distinct pooling strategies directly into the <code>ACustomGameMode</code>.</p>
                         <ul class="tech-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i> <b>O(1) Circular Buffer:</b> Transient, visual-heavy explosions do not require complex lifecycle tracking. They utilize a high-performance modulo-based ring buffer for instant memory access.</li>
@@ -161,21 +164,17 @@
                         </ul>
                     </div>
                     
-                    <!-- Visuals Column: Diagram + Code -->
                     <div class="feature-visuals">
                         <img src="/assets/images/portfolio/blast-course-2/pool-sequence.webp" alt="Sequence Diagram of the Decoupled Pooling Lifecycle" class="detail-img">
                         <div class="feature-code">
                             <div class="code-header">
                                 <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> ACustomGameMode.cpp</span>
                             </div>
-                            <pre><code><span class="type">ABaseRocket</span>* ACustomGameMode::<span class="function">AcquireRocketFromPool</span>(<span class="type">ERocketType</span> _eType) 
-{
+                            <pre><code><span class="type">ABaseRocket</span>* ACustomGameMode::<span class="function">AcquireRocketFromPool</span>(<span class="type">ERocketType</span> _eType) {
     <span class="type">FRocketPool</span>&amp; rPool = m_mRocketPools[_eType];
     <span class="type">TObjectPtr</span>&lt;<span class="type">ABaseRocket</span>&gt; pRocket = <span class="keyword">nullptr</span>;
 
-    <span class="keyword">if</span> (!rPool.Free.IsEmpty()) {
-        pRocket = rPool.Free.Pop();
-    } 
+    <span class="keyword">if</span> (!rPool.Free.IsEmpty()) pRocket = rPool.Free.Pop();
     <span class="keyword">else if</span> (rPool.Active.Num() &gt; 0) {
         <span class="comment">// Aggressive recycling: force oldest active rocket to explode</span>
         pRocket = rPool.Active[0];
@@ -191,10 +190,13 @@
 
                 <hr class="section-divider">
 
-                <!-- Feature 3: Extended UMG Framework -->
+                <!-- Feature 2: UMG Architecture -->
                 <div class="feature-block">
                     <div class="feature-text">
                         <h3>Extended UMG Architecture & Editor Synchronization</h3>
+                        
+                        <video src="/assets/images/portfolio/blast-course-2/bounce-rocket-gameplay.webm" autoplay loop muted playsinline class="demo-media"></video>
+                        
                         <p>Controlling exact pixel dimensions and aspect ratios from C++ while maintaining a WYSIWYG experience for UI Artists in the Unreal Editor is notoriously difficult. I engineered an extended hierarchy to decouple layout logic from Blueprint constraints.</p>
                         <ul class="tech-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i> <b>Recursive State Management:</b> The base <code>UCustomUserWidget</code> bypasses native limitations by recursively propagating custom <code>ShowWidget()</code> and <code>HideWidget()</code> states down deeply nested hierarchies.</li>
@@ -203,26 +205,23 @@
                         </ul>
                     </div>
                     
-                    <!-- Visuals Column: Diagram + Code -->
                     <div class="feature-visuals">
                         <img src="/assets/images/portfolio/blast-course-2/umg-architecture.webp" alt="Class Hierarchy of the Custom UMG Framework" class="detail-img">
                         <div class="feature-code">
                             <div class="code-header">
                                 <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> UResizableUserWidget.cpp</span>
                             </div>
-                            <pre><code><span class="keyword">void</span> UResizableUserWidget::<span class="function">SynchronizeProperties</span>() 
-{
+                            <pre><code><span class="keyword">void</span> UResizableUserWidget::<span class="function">SynchronizeProperties</span>() {
     Super::SynchronizeProperties();
 
     <span class="comment">// Preserve aspect ratio if the flag is enabled in the editor.</span>
     <span class="keyword">if</span> (m_bPreserveAspectRatio) {
         <span class="keyword">if</span> (m_fAspectRatio &lt; 0.f &amp;&amp; m_vWidgetSize.Y != 0.f) {
             m_fAspectRatio = m_vWidgetSize.X / m_vWidgetSize.Y;
-        }
+        }<br>
         ApplyAspectRatio();
-    } <span class="keyword">else</span> {
-        m_fAspectRatio = 0.f;
-    }
+    } 
+<span class="keyword">    else</span> m_fAspectRatio = 0.f;
 
     SetWidgetSize(m_vWidgetSize);
     UpdateSizeToContent();
