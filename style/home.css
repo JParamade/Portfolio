@@ -98,6 +98,7 @@
 .home-section {
     padding: 100px 5vw;
     width: 100%;
+    scroll-margin-top: 8vh; /* Adds a buffer so the fixed header doesn't cover titles */
 }
 
 .section-inner {
@@ -348,12 +349,12 @@
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.5;
-    margin: 0; /* Ensures the tags sit cleanly beneath */
+    margin: 0;
     flex-grow: 1;
 }
 
 .read-more {
-    color: var(--accent-color);
+    color: var(--text-muted);
     font-family: var(--font-code);
     font-size: 0.9rem;
     font-weight: 600;
@@ -362,9 +363,14 @@
     gap: 8px;
 }
 
+.mini-project-card:hover .read-more {
+    color: var(--accent-color);
+}
+
 .mini-project-card:hover .read-more i {
     transform: translateX(5px);
     transition: transform 0.3s ease;
+    color: var(--accent-color);
 }
 
 /* ==========================================================================
@@ -402,6 +408,14 @@
     background: var(--bg-color);
     border: 3px solid var(--accent-color);
     box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+    transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* The interactive hover state for the timeline dot */
+.timeline-item:hover .timeline-dot {
+    background: var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.8);
+    transform: scale(1.2);
 }
 
 .timeline-date {
@@ -440,7 +454,7 @@
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 15px; 
-    margin-bottom: 20px; /* Space before the Read More button in projects */
+    margin-bottom: 20px; 
 }
 
 .tag {
