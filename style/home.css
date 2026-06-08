@@ -127,12 +127,45 @@
 /* ==========================================================================
    5. ABOUT & BUTTONS
    ========================================================================== */
+.about-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.about-text-column {
+    flex: 1; 
+}
+
+.about-image-column {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 255, 102, 0.15); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 255, 102, 0.3);
+}
+
 .about-text {
     font-size: 1.2rem;
     line-height: 1.8;
     color: var(--text-muted);
     margin-bottom: 40px;
     max-width: 800px;
+    text-align: justify;
 }
 
 .about-text b { color: var(--text-main); }
@@ -272,4 +305,22 @@
     .timeline::before { left: 10px; }
     .timeline-dot { left: 3px; }
     .timeline-item { padding-left: 40px; }
+}
+
+@media (max-width: 992px) {
+    .about-grid {
+        flex-direction: column-reverse; 
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .about-text {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .section-title {
+        text-align: center;
+    }
 }
