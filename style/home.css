@@ -31,14 +31,25 @@
    ========================================================================== */
 .hero {
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
     padding: 0 20px;
+    pointer-events: none; /* Prevents the invisible container from blocking clicks */
+}
+
+.hero-content > * {
+    pointer-events: auto; /* Keeps the text selectable and interactable */
 }
 
 .hero h1 {
@@ -98,7 +109,9 @@
 .home-section {
     padding: 100px 5vw;
     width: 100%;
-    scroll-margin-top: 8vh; /* Adds a buffer so the fixed header doesn't cover titles */
+    scroll-margin-top: 8vh; 
+    position: relative;
+    z-index: 5; /* This ensures your sections physically slide OVER the fixed hero text! */
 }
 
 .section-inner {
