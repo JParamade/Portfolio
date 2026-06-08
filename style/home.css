@@ -348,7 +348,7 @@
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.5;
-    margin: 0 0 20px 0;
+    margin: 0; /* Ensures the tags sit cleanly beneath */
     flex-grow: 1;
 }
 
@@ -413,7 +413,7 @@
 
 .timeline-content h3 { margin: 10px 0 5px 0; font-size: 1.5rem; }
 
-/* The new wrapper that holds the logo and company name side-by-side */
+/* The wrapper that holds the logo and company name side-by-side */
 .company-header {
     display: flex;
     align-items: center;
@@ -421,12 +421,11 @@
     margin: 0 0 15px 0;
 }
 
-/* The actual image logo */
 .company-logo {
     width: 28px;
     height: 28px;
-    border-radius: 4px; /* Gives square logos a slightly soft edge */
-    object-fit: contain; /* Prevents logos from stretching out of proportion */
+    border-radius: 4px;
+    object-fit: contain; 
 }
 
 .company-header h4 { margin: 0; color: #888; font-weight: 400; font-size: 1.1rem; }
@@ -434,7 +433,37 @@
 .timeline-content p { color: var(--text-muted); line-height: 1.6; margin: 0; }
 
 /* ==========================================================================
-   10. MOBILE RESPONSIVE
+   10. SHARED TAG SYSTEM (Projects & Experience)
+   ========================================================================== */
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px; 
+    margin-bottom: 20px; /* Space before the Read More button in projects */
+}
+
+.tag {
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tag i { margin-right: 2px; }
+
+/* Color coding for rapid scanning */
+.tag-engine { color: #00d2ff; background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.2); }
+.tag-lang   { color: #ff3366; background: rgba(255, 51, 102, 0.1); border: 1px solid rgba(255, 51, 102, 0.2); }
+.tag-tool   { color: #ffaa00; background: rgba(255, 170, 0, 0.1); border: 1px solid rgba(255, 170, 0, 0.2); }
+.tag-area   { color: var(--accent-color); background: rgba(0, 255, 102, 0.1); border: 1px solid rgba(0, 255, 102, 0.2); }
+
+/* ==========================================================================
+   11. MOBILE RESPONSIVE
    ========================================================================== */
 @media (max-width: 768px) {
     .hero h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); white-space: nowrap; }
