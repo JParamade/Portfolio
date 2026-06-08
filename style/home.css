@@ -4,7 +4,7 @@
 .fixed-video-bg {
     position: fixed;
     top: 0; left: 0;
-    width: 100%; /* FIX: Prevents horizontal scrollbar overflow */
+    width: 100%; 
     height: 100vh;
     z-index: -10;
     overflow: hidden;
@@ -66,7 +66,7 @@
 .typewriter-text::after { content: '|'; color: var(--accent-color); animation: blink 0.7s infinite; }
 
 /* ==========================================================================
-   3. SCROLL PROMPT ANIMATION (Add this below your Hero section CSS)
+   3. SCROLL PROMPT ANIMATION
    ========================================================================== */
 .scroll-prompt {
     position: absolute;
@@ -165,7 +165,7 @@
     color: var(--text-muted);
     margin-bottom: 40px;
     max-width: 800px;
-    text-align: justify;
+    text-align: left; /* Removed justify for better web readability */
 }
 
 .about-text b { color: var(--text-main); }
@@ -246,10 +246,87 @@
 }
 
 .skill-name { color: var(--text-muted); }
+
+/* Forces all FontAwesome icons in the stack to align perfectly */
+.skill-name i {
+    width: 25px; 
+    text-align: center;
+    margin-right: 8px;
+    color: var(--accent-color);
+}
+
 .skill-time { font-family: var(--font-code); color: var(--text-main); font-weight: 600; }
 
 /* ==========================================================================
-   7. EXPERIENCE TIMELINE
+   7. FEATURED PROJECTS
+   ========================================================================== */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.mini-project-card {
+    display: flex;
+    flex-direction: column;
+    background: #151515;
+    border: 1px solid #222;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.mini-project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.mini-project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #222;
+}
+
+.mini-project-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.mini-project-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+}
+
+.mini-project-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    flex-grow: 1;
+}
+
+.read-more {
+    color: var(--accent-color);
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mini-project-card:hover .read-more i {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+/* ==========================================================================
+   8. EXPERIENCE TIMELINE
    ========================================================================== */
 .timeline {
     position: relative;
@@ -297,7 +374,7 @@
 .timeline-content p { color: var(--text-muted); line-height: 1.6; margin: 0; }
 
 /* ==========================================================================
-   8. MOBILE RESPONSIVE
+   9. MOBILE RESPONSIVE
    ========================================================================== */
 @media (max-width: 768px) {
     .hero h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); white-space: nowrap; }
