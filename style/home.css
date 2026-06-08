@@ -1,47 +1,43 @@
 /* ==========================================================================
-   1. HOME PAGE HERO
+   1. FIXED BACKGROUND VIDEO
+   ========================================================================== */
+.fixed-video-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; /* FIX: Prevents horizontal scrollbar overflow */
+    height: 100vh;
+    z-index: -10;
+    overflow: hidden;
+    background: #000;
+}
+
+.bg-video {
+    position: absolute;
+    top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.6; 
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(17,17,17,0.8) 0%, rgba(17,17,17,0.3) 50%, rgba(17,17,17,0.9) 100%);
+}
+
+/* ==========================================================================
+   2. HERO SECTION
    ========================================================================== */
 .hero {
-    position: relative;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: hidden;
-}
-
-.video-wrapper {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; 
-    height: 100%;
-    z-index: -2;
-    overflow: hidden;
-}
-
-.bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: -1;
 }
 
 .hero-content {
-    z-index: 1;
-    width: 100%;
     padding: 0 20px;
 }
 
@@ -66,25 +62,205 @@
     animation: fadeInUp 1s ease-out 0.7s forwards; 
 }
 
-/* Typewriter specific styles */
-.typewriter-text {
-    color: var(--accent-color);
-    font-weight: 600;
+.typewriter-text { color: var(--accent-color); font-weight: 600; }
+.typewriter-text::after { content: '|'; color: var(--accent-color); animation: blink 0.7s infinite; }
+
+/* ==========================================================================
+   3. SCROLL PROMPT ANIMATION (Add this below your Hero section CSS)
+   ========================================================================== */
+.scroll-prompt {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 10;
+    cursor: pointer;
 }
 
-.typewriter-text::after {
-    content: '|';
-    color: var(--accent-color);
-    animation: blink 0.7s infinite;
+.scroll-prompt.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-15px) translateX(-50%); }
+    60% { transform: translateY(-7px) translateX(-50%); }
 }
 
 /* ==========================================================================
-   2. MOBILE RESPONSIVE
+   4. SCROLLING SECTION LAYOUTS
+   ========================================================================== */
+.home-section {
+    padding: 100px 5vw;
+    width: 100%;
+}
+
+.section-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0 0 40px 0;
+}
+
+.text-center { text-align: center; }
+
+.solid-bg {
+    background-color: var(--bg-color); 
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.glass-bg {
+    background: rgba(17, 17, 17, 0.4);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* ==========================================================================
+   5. ABOUT & BUTTONS
+   ========================================================================== */
+.about-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 800px;
+}
+
+.about-text b { color: var(--text-main); }
+
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.btn-primary:hover {
+    background: #00cc55;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 255, 102, 0.2);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid #444;
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-main);
+    background: rgba(255,255,255,0.05);
+}
+
+.cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+/* ==========================================================================
+   6. TECH STACK GRID
+   ========================================================================== */
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.stack-category h3 {
+    font-family: var(--font-code);
+    color: var(--text-main);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-list { list-style: none; padding: 0; margin: 0; }
+
+.skill-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 1.1rem;
+}
+
+.skill-name { color: var(--text-muted); }
+.skill-time { font-family: var(--font-code); color: var(--text-main); font-weight: 600; }
+
+/* ==========================================================================
+   7. EXPERIENCE TIMELINE
+   ========================================================================== */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: #333;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 50px;
+}
+
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-dot {
+    position: absolute;
+    left: 13px; 
+    top: 5px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+}
+
+.timeline-date {
+    font-family: var(--font-code);
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.timeline-content h3 { margin: 10px 0 5px 0; font-size: 1.5rem; }
+.timeline-content h4 { margin: 0 0 15px 0; color: #888; font-weight: 400; font-size: 1.1rem; }
+.timeline-content p { color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+/* ==========================================================================
+   8. MOBILE RESPONSIVE
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Hero Title Fix */
-    .hero h1 { 
-        font-size: clamp(1.8rem, 7vw, 2.5rem); 
-        white-space: nowrap; 
-    }
+    .hero h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); white-space: nowrap; }
+    .home-section { padding: 60px 5vw; }
+    .timeline::before { left: 10px; }
+    .timeline-dot { left: 3px; }
+    .timeline-item { padding-left: 40px; }
 }

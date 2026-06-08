@@ -49,4 +49,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Start the effect after a brief delay so the entrance animations can finish
         setTimeout(type, 1200); 
     }
+    
+    // ========================================================
+    // 2. DISAPPEARING SCROLL PROMPT
+    // ========================================================
+    const scrollPrompt = document.getElementById('scroll-prompt');
+    
+    if (scrollPrompt) {
+        window.addEventListener('scroll', () => {
+            // If the user scrolls down more than 50 pixels, hide the prompt
+            if (window.scrollY > 50) {
+                scrollPrompt.classList.add('hidden');
+            } else {
+                // If they scroll all the way back to the top, show it again
+                scrollPrompt.classList.remove('hidden');
+            }
+        });
+
+        // Optional: Clicking the arrow smoothly scrolls them to the About section
+        scrollPrompt.addEventListener('click', () => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
 });

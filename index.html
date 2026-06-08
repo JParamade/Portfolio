@@ -21,7 +21,6 @@
         
         <header class="header">
             <div class="header-inner">
-                
                 <a href="/" class="logo-container">
                     <span class="site-name"><b>JParamade</b></span>
                 </a>
@@ -32,31 +31,140 @@
 
                 <nav class="nav" id="nav-menu">
                     <a href="/" class="active">Home</a>
-                    <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">CV</a>
+                    <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">Resume</a>
                     <a href="/portfolio">Portfolio</a>
                     <a href="/blog">Blog</a>
                     <a href="/photography">Photography</a>
                     <a href="/contact">Contact</a>
                 </nav>
-                
             </div>
         </header>
 
-        <main class="hero">
-            
-            <div class="video-wrapper">
-                <video autoplay loop muted playsinline class="bg-video">
-                    <source src="assets/videos/hero-background.webm" type="video/webm">
-                </video>
-            </div>
+        <!-- 1. FIXED BACKGROUND VIDEO -->
+        <div class="fixed-video-bg">
+            <video autoplay loop muted playsinline class="bg-video">
+                <source src="assets/videos/hero-background.webm" type="video/webm">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
 
-            <div class="hero-overlay"></div>
+        <main>
+            <!-- 2. HERO SECTION -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>JAIME PÁRAMO</h1>
+                    <h2><b><span id="typewriter" class="typewriter-text"></span>Programmer</b></h2>
+                </div>
+                
+                <div class="scroll-prompt" id="scroll-prompt">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </section>
 
-            <div class="hero-content">
-                <h1>JAIME PÁRAMO</h1>
-                <h2><b><span id="typewriter" class="typewriter-text"></span>Programmer</b></h2>
-            </div>
-            
+            <!-- 3. ABOUT SECTION -->
+            <section class="home-section solid-bg" id="about">
+                <div class="section-inner">
+                    <h2 class="section-title">Hello, World.</h2>
+                    <p class="about-text">
+                        I am a Game Programmer based in Madrid specializing in <b>Gameplay Systems, Custom UI Architecture, and Audio implementation</b>. With a deep focus on performance and modularity, I build robust systems in Unreal Engine 5 and C++ that empower designers to create without constraints.
+                    </p>
+                    <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank" class="btn-primary"><i class="fas fa-file"></i> Download Resume</a>
+                </div>
+            </section>
+
+            <!-- 4. TECH STACK SECTION -->
+            <section class="home-section glass-bg" id="stack">
+                <div class="section-inner">
+                    <h2 class="section-title">Technical <span class="highlight">Arsenal</span></h2>
+                    
+                    <div class="stack-grid">
+                        
+                        <div class="stack-category">
+                            <h3><i class="fas fa-gamepad"></i> Game Engines</h3>
+                            <ul class="skill-list">
+                                <li><span class="skill-name"><i class="fas fa-cube"></i> Unreal Engine 5</span> <span class="skill-time">5+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fab fa-unity"></i> Unity</span> <span class="skill-time">4+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fas fa-robot"></i> Godot</span> <span class="skill-time">6+ Mos</span></li>
+                                <li><span class="skill-name"><i class="fas fa-cat"></i> Scratch</span> <span class="skill-time">6+ Mos</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="stack-category">
+                            <h3><i class="fas fa-code"></i> Languages</h3>
+                            <ul class="skill-list">
+                                <li><span class="skill-name"><i class="fab fa-cuttlefish"></i> C++</span> <span class="skill-time">2+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fas fa-hashtag"></i> C#</span> <span class="skill-time">3+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fab fa-python"></i> Python</span> <span class="skill-time">1+ Yr</span></li>
+                                <li><span class="skill-name"><i class="fas fa-moon"></i> Lua</span> <span class="skill-time">1+ Yr</span></li>
+                                <li><span class="skill-name"><i class="fas fa-scroll"></i> GDScript</span> <span class="skill-time">6+ Mos</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="stack-category">
+                            <h3><i class="fas fa-wrench"></i> Tools</h3>
+                            <ul class="skill-list">
+                                <li><span class="skill-name"><i class="fas fa-music"></i> FMOD</span> <span class="skill-time">3+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fab fa-git-alt"></i> Git</span> <span class="skill-time">3+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fas fa-book"></i> Notion</span> <span class="skill-time">3+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fas fa-superscript"></i> LaTeX</span> <span class="skill-time">2+ Yrs</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="stack-category">
+                            <h3><i class="fas fa-globe"></i> Web Dev</h3>
+                            <ul class="skill-list">
+                                <li><span class="skill-name"><i class="fab fa-html5"></i> HTML</span> <span class="skill-time">2+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fab fa-css3-alt"></i> CSS</span> <span class="skill-time">2+ Yrs</span></li>
+                                <li><span class="skill-name"><i class="fab fa-js"></i> JavaScript</span> <span class="skill-time">2+ Yrs</span></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. EXPERIENCE TIMELINE -->
+            <section class="home-section solid-bg" id="experience">
+                <div class="section-inner">
+                    <h2 class="section-title">Professional <span class="highlight">Experience</span></h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2024 — Present</span>
+                                <h3>Generalist Programmer</h3>
+                                <h4>Amiguito Studios</h4>
+                                <p>Developing core gameplay architecture, polymorphic projectile systems, and custom C++ UMG frameworks for <i>Blast Course 2</i>.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2023 — 2024</span>
+                                <h3>Gameplay & UI Programmer</h3>
+                                <h4>Indie Title: Dorothy's Job</h4>
+                                <p>Engineered input-aware UI focus navigation subsystems and data-driven consumable architectures.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. CALL TO ACTION -->
+            <section class="home-section glass-bg" id="cta">
+                <div class="section-inner text-center">
+                    <h2 class="section-title">Ready to review my code?</h2>
+                    <p class="about-text" style="text-align: center; margin-bottom: 30px;">
+                        Dive into my full portfolio to read my architectural whitepapers and C++ implementations, or reach out directly.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="/portfolio" class="btn-primary"><i class="fas fa-gamepad"></i> View Portfolio</a>
+                        <a href="/contact" class="btn-secondary"><i class="fas fa-paper-plane"></i> Contact Me</a>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="footer">
