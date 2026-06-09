@@ -440,6 +440,36 @@
     margin: 80px 0;
 }
 
+.repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.repo-link i.fa-github {
+    font-size: 1.1rem;
+}
+
+.repo-link i.fa-arrow-right {
+    transition: transform 0.3s ease;
+}
+
+.repo-link:hover {
+    color: var(--accent-color);
+}
+
+.repo-link:hover i.fa-arrow-right {
+    transform: translateX(5px);
+}
+
 /* ==========================================================================
    7. IDE-STYLE CODE SNIPPET BOX
    ========================================================================== */

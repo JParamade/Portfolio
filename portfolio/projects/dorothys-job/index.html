@@ -127,13 +127,12 @@
             <!-- 3. TECHNICAL DEEP DIVES (For Tech Leads) -->
             <div class="whitepaper-banner fade-in-up delay-1">
                 <div class="banner-content">
-                    
                     <div class="banner-text">
                         <h3><i class="fa-solid fa-file-code" aria-hidden="true"></i>&nbsp;&nbsp;Technical Deep-Dive</h3>
-                        <p>Want to see the full technical breakdown? Download the comprehensive 8-page whitepaper detailing the rocket math, memory pooling, and extended UMG frameworks.</p>
+                        <p>Want to see the full technical breakdown? Download the comprehensive 13-page whitepaper detailing the custom UMG navigation, FMOD integration, Steamworks API serialization, and more.</p>
                     </div>
                 </div>
-                <a href="/assets/files/TechnicalDeepDive_BC2.pdf" target="_blank" class="btn-external pdf-btn">
+                <a href="/assets/files/JaimeParamo_DorothysJob_TDD.pdf" target="_blank" rel="noopener noreferrer" class="btn-external pdf-btn">
                     <i class="fas fa-download" aria-hidden="true"></i> Download PDF
                 </a>
             </div>
@@ -142,72 +141,46 @@
                 
                 <h2 class="section-title">Engineering <span class="highlight">Systems</span></h2>
 
-                <!-- Feature 1: Rocket Architecture -->
+                <!-- Feature 1: Custom UI Focus Routing -->
                 <div class="feature-block">
                     <div class="dropdown-header">
-                        <h3>Polymorphic Projectile Architecture</h3>
+                        <h3>Custom Focus Routing & Dynamic Input</h3>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
                     <div class="dropdown-content">
                         <div class="dropdown-inner">
                             <div class="feature-text">
-                                <video src="/assets/videos/rocket-architecture.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                <a href="https://github.com/JParamade/DorothysJob/blob/main/Source/DorothysJob/UI/Focus/GeneralFocusManager.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
                                 
-                                <p>To ensure high performance and strict predictability in a fast-paced game, I bypassed Unreal Engine's native <code>UProjectileMovementComponent</code>. Instead, I engineered a highly modular, <code>Tick</code>-driven mathematical movement system utilizing <code>SweepSingleByChannel</code>.</p>
+                                <video src="/assets/videos/portfolio/dorothys-job/ui-navigation.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                
+                                <p>To create a seamless, input-agnostic menu experience, I bypassed Unreal Engine's native <code>SetUserFocus</code> limitations. I engineered a dynamic input detection system and a custom focus router that maps flat arrays of widgets into irregular 2D grids.</p>
                                 <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Component-Agnostic Collisions:</b> Environmental interactions are handled cleanly by detecting "Defuser" surfaces via <code>UMaterialInterface</code>.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Polymorphic Extensions:</b> The robust <code>ABaseRocket</code> allows child classes (like Bounce or Remote rockets) to implement complex behaviors, such as vector reflection, simply by overriding the virtual <code>Impact()</code> function.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>The "Unconscious" Actor:</b> Rockets have zero awareness of the memory pool. They simply execute their lifecycle and broadcast an <code>OnRocketFinished</code> multicast delegate when ready for reclamation.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Hardware Polling:</b> The <code>ABasePlayerController</code> acts as the single source of truth, dynamically switching between <code>FOCUS</code> (Gamepad) and <code>FREE</code> (Mouse) states the moment hardware intent is detected.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Menu Stack & Grid Calculation:</b> The <code>UGeneralFocusManager</code> routes inputs exclusively to the top of the menu stack, while the <code>USpecificFocusManager</code> handles complex, irregular grid navigation.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Interface Interception:</b> Widgets inheriting <code>IAxisNavigable</code> intercept directional inputs to adjust internal values (like a volume slider) without forcing the system to move focus to a different widget.</li>
                                 </ul>
                             </div>
                             
                             <div class="feature-visuals">
-                                <img src="/assets/images/portfolio/blast-course-2/rocket-architecture.webp" alt="UML Class Diagram of Rocket Architecture" class="detail-img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature 2: Object Pooling -->
-                <div class="feature-block">
-                    <div class="dropdown-header">
-                        <h3>Dual Object Pooling</h3>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </div>
-                    
-                    <div class="dropdown-content">
-                        <div class="dropdown-inner">
-                            <div class="feature-text">
-                                <video src="/assets/videos/object-pool.webm" autoplay loop muted playsinline class="demo-media"></video>
-                                
-                                <p>Spawning hundreds of rockets and explosions at runtime causes massive memory fragmentation and garbage collection spikes. To guarantee a locked frame rate, I built two distinct pooling strategies directly into the <code>ACustomGameMode</code>.</p>
-                                <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>O(1) Circular Buffer:</b> Transient, visual-heavy explosions do not require complex lifecycle tracking. They utilize a high-performance modulo-based ring buffer for instant memory access.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Active/Free Queues:</b> Rockets utilize stricter management via decoupled <code>TArray</code> queues.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Aggressive Recycling Failsafe:</b> If a player exhausts the pre-allocated free pool, the system forces the oldest active rocket to detonate, ensuring the game never hitches due to limit exhaustion or mid-combat memory allocation.</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="feature-visuals">
-                                <img src="/assets/images/portfolio/blast-course-2/pool-sequence.webp" alt="Sequence Diagram of the Decoupled Pooling Lifecycle" class="detail-img">
+                                <img src="/assets/images/portfolio/dorothys-job/focus-system.webp" alt="Sequence Diagram of Custom Focus Routing" class="detail-img">
                                 <div class="feature-code">
                                     <div class="code-header">
-                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> ACustomGameMode.cpp</span>
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> BasePlayerController.cpp</span>
                                     </div>
-                                    <pre><code><span class="type">ABaseRocket</span>* ACustomGameMode::<span class="function">AcquireRocketFromPool</span>(<span class="type">ERocketType</span> _eType) {
-    <span class="type">FRocketPool</span>&amp; rPool = m_mRocketPools[_eType];
-    <span class="type">TObjectPtr</span>&lt;<span class="type">ABaseRocket</span>&gt; pRocket = <span class="keyword">nullptr</span>;
+                                    <pre><code><span class="type">void</span> ABasePlayerController::<span class="function">HandleNavigation</span>(<span class="keyword">const</span> <span class="type">FInputActionValue</span>&amp; _rIAValue) {
+    <span class="keyword">if</span> (!IsValid(pGeneralFocusManager)) <span class="keyword">return</span>;
 
-    <span class="keyword">if</span> (!rPool.Free.IsEmpty()) pRocket = rPool.Free.Pop();
-    <span class="keyword">else if</span> (rPool.Active.Num() &gt; 0) {
-        <span class="comment">// Aggressive recycling: force oldest active rocket to explode</span>
-        pRocket = rPool.Active[0];
-        rPool.Active.RemoveAt(0);
-        pRocket-&gt;ForceExplosion();
+    <span class="comment">// Instantly reclaim focus if the player touches the gamepad/keyboard</span>
+    <span class="keyword">if</span> (m_eCurrentNavigationMode == ENavigationInputType::FREE) {
+        SwitchNavigationMode(ENavigationInputType::FOCUS);
+        <span class="keyword">return</span>;
     }
 
-    <span class="keyword">return</span> pRocket.Get();
+    pGeneralFocusManager-&gt;Navigate(_rIAValue.Get&lt;<span class="type">FVector2D</span>&gt;());
 }</code></pre>
                                 </div>
                             </div>
@@ -215,47 +188,251 @@
                     </div>
                 </div>
 
-                <!-- Feature 2: UMG Architecture -->
+                <!-- Feature 2: Data-Driven Layouts -->
                 <div class="feature-block">
                     <div class="dropdown-header">
-                        <h3>Extended UMG Architecture</h3>
+                        <h3>Data-Driven Production Layouts</h3>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
                     <div class="dropdown-content">
                         <div class="dropdown-inner">
                             <div class="feature-text">
-                                <video src="/assets/videos/umg-architecture.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                <a href="https://github.com/JParamade/DorothysJob/blob/main/Source/DorothysJob/Manager/Dialogs/DialogsManager.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
                                 
-                                <p>Controlling exact pixel dimensions and aspect ratios from C++ while maintaining a WYSIWYG experience for UI Artists in the Unreal Editor is notoriously difficult. I engineered an extended hierarchy to decouple layout logic from Blueprint constraints.</p>
+                                <video src="/assets/videos/portfolio/dorothys-job/data-ui.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                
+                                <p>Hardcoding text or image references into C++ or UMG directly creates a massive bottleneck for narrative designers and artists. To solve this, production layouts are strictly data-driven, utilizing Unreal Engine's <code>UDataTable</code> and custom structs.</p>
                                 <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Recursive State Management:</b> The base <code>UCustomUserWidget</code> bypasses native limitations by recursively propagating custom <code>ShowWidget()</code> and <code>HideWidget()</code> states down deeply nested hierarchies.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Live Editor Synchronization:</b> I developed <code>UResizableUserWidget</code> to intercept the engine's <code>SynchronizeProperties()</code>. If a UI designer scales a widget in the editor, the C++ calculates the driving axis and dynamically scales the height to preserve the aspect ratio in real-time.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Encapsulated Leaf Nodes:</b> Wrappers like <code>UCustomButtonWidget</code> cleanly map custom C++ logic to native <code>ESlateVisibility</code> states.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Dynamic Content Fetching:</b> The <code>UTipManager</code> caches all available row names and dynamically extracts <code>FTipData</code> structs. It explicitly removes used rows from the active pool to guarantee non-repeating content until the pool is exhausted.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Narrative State Machines:</b> Rather than UMG widgets driving logic, the <code>UDialogsManager</code> controls the narrative flow. It broadcasts multicast delegates (<code>OnDialogLineReceived</code>), ensuring total separation of concerns between game state and visual presentation.</li>
                                 </ul>
                             </div>
                             
                             <div class="feature-visuals">
-                                <img src="/assets/images/portfolio/blast-course-2/umg-architecture.webp" alt="Class Hierarchy of the Custom UMG Framework" class="detail-img">
                                 <div class="feature-code">
                                     <div class="code-header">
-                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> UResizableUserWidget.cpp</span>
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> TipManager.cpp</span>
                                     </div>
-                                    <pre><code><span class="keyword">void</span> UResizableUserWidget::<span class="function">SynchronizeProperties</span>() {
-    Super::SynchronizeProperties();
+                                    <pre><code><span class="type">FText</span> UTipManager::<span class="function">GetNextTip</span>() {
+    <span class="keyword">if</span> (m_pAvailableTips.Num() == <span class="keyword">0</span>) {
+        <span class="keyword">if</span> (m_pTipTable) m_pAvailableTips = m_pTipTable-&gt;GetRowNames();
+        <span class="keyword">else return</span> <span class="type">FText</span>::FromString(TEXT(<span class="comment">"DT_ERROR: DataTable is not valid."</span>));
+    }
 
-    <span class="comment">// Preserve aspect ratio if the flag is enabled in the editor.</span>
-    <span class="keyword">if</span> (m_bPreserveAspectRatio) {
-        <span class="keyword">if</span> (m_fAspectRatio &lt; 0.f &amp;&amp; m_vWidgetSize.Y != 0.f) {
-            m_fAspectRatio = m_vWidgetSize.X / m_vWidgetSize.Y;
-        }<br>
-        ApplyAspectRatio();
-    } 
-<span class="keyword">    else</span> m_fAspectRatio = 0.f;
+    <span class="comment">// Pick a random tip index and remove it to prevent repetition</span>
+    <span class="type">int32</span> iIndex = <span class="type">FMath</span>::RandRange(<span class="keyword">0</span>, m_pAvailableTips.Num() - <span class="keyword">1</span>);
+    <span class="type">FName</span> sRowName = m_pAvailableTips[iIndex];
 
-    SetWidgetSize(m_vWidgetSize);
-    UpdateSizeToContent();
-    m_vLastSize = m_vWidgetSize;
+    <span class="keyword">if</span> (<span class="type">FTipData</span>* pTip = m_pTipTable-&gt;FindRow&lt;<span class="type">FTipData</span>&gt;(sRowName, TEXT(<span class="comment">"GetNextTip"</span>))) {
+        m_pAvailableTips.RemoveAt(iIndex);
+        <span class="keyword">return</span> pTip-&gt;m_sTipText;
+    }
+    <span class="keyword">return</span> <span class="type">FText</span>::FromString(TEXT(<span class="comment">"TIP_ERROR: No tips available."</span>));
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Event-Driven HUD & Polish -->
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>Event-Driven HUD & Rich Text Parsers</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <a href="https://github.com/JParamade/DorothysJob/blob/main/Source/DorothysJob/UI/Menus/Dialogue/DialogueScreen.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                <video src="/assets/videos/portfolio/dorothys-job/hud-fmod.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                
+                                <p>To prevent the common performance bottleneck of UI elements ticking every frame, the visual HUD strictly adheres to the Observer Pattern. It binds to player pawn delegates and only executes visual updates when explicitly notified of a state change.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Reactive Material Instances:</b> The <code>UHUDDorothy</code> widget recalculates scalar parameters for Dynamic Material Instances to achieve complex, non-linear fill effects and "Doom-style" reactive facial damage responses.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Memory-Safe Timer Visuals:</b> Transitory UI states are handled via asynchronous timers utilizing <code>TWeakObjectPtr</code>, ensuring UI deletion mid-animation never causes a fatal engine crash.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Custom Rich Text Parsing:</b> Hiding characters during a typewriter effect breaks native Unreal Rich Text formatting tags. I wrote a custom parser that evaluates strings character-by-character, automatically closing any active tags before pushing the sub-string to the UI.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> HUDDorothy.cpp</span>
+                                    </div>
+                                    <pre><code><span class="type">FTimerHandle</span> oHandle;
+<span class="type">TWeakObjectPtr</span>&lt;<span class="type">UHUDDorothy</span>&gt; WeakThis(<span class="keyword">this</span>);
+
+GetWorld()-&gt;GetTimerManager().SetTimer(
+    oHandle,
+    [WeakThis]() {
+        <span class="comment">// WeakPtr ensures safety if the UI is destroyed before the timer finishes</span>
+        <span class="keyword">if</span> (WeakThis.IsValid() &amp;&amp; IsValid(WeakThis-&gt;m_pDorothyImage)) {
+            WeakThis-&gt;m_pDorothyImage-&gt;SetBrushFromTexture(WeakThis-&gt;m_pDorothyNeutralTexture);
+        }
+    },
+    <span class="keyword">0.3f</span>, <span class="keyword">false</span>
+);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 4: FMOD Audio Architecture -->
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>FMOD Audio & Auto-Garbage Collection</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <a href="https://github.com/JParamade/DorothysJob/blob/main/Source/DorothysJob/Manager/GameInstanceSubsystem/AudioManager.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                <video src="/assets/videos/portfolio/dorothys-job/audio-demo.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                
+                                <p>To prevent gameplay classes from becoming tightly coupled to audio APIs, I developed a centralized Audio Manager alongside an event-driven component structure to handle FMOD integration.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Low-Level Middleware Integration:</b> The <code>UAudioManager</code> acts as a <code>UGameInstanceSubsystem</code>. By directly retrieving the <code>FMOD::Studio::System</code>, the manager can instantiate events and apply dynamic parameters, bypassing standard Unreal Audio Component overhead.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>The Auto-Destroyer:</b> To automate garbage collection and prevent memory leaks, dynamic audio components are passed to a <code>UFMODAutoDestroyer</code> wrapper. It binds to <code>OnEventStopped</code>, calling <code>ConditionalBeginDestroy()</code> the exact frame the sound finishes.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Event-Driven Audio Components:</b> Gameplay actors have zero awareness of FMOD. Instead, the <code>UBaseWeaponAudioComponent</code> acts as a bridge, retrieving data assets and translating gameplay logic into middleware parameters.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> AudioManager.cpp</span>
+                                    </div>
+                                    <pre><code><span class="type">void</span> UAudioManager::<span class="function">PlayEventInstanceWithParameters</span>(<span class="type">UFMODEvent</span>* _pEvent, <span class="keyword">const</span> <span class="type">TArray</span>&lt;<span class="type">FAudioParam</span>&gt;&amp; _rParameters) {
+    <span class="type">FMOD::Studio::System</span>* pStudioSystem = <span class="type">IFMODStudioModule</span>::Get().GetStudioSystem(<span class="type">EFMODSystemContext</span>::Runtime);
+    <span class="keyword">if</span> (!pStudioSystem) <span class="keyword">return</span>;
+
+    <span class="comment">// Setup instance and apply dynamic parameter arrays via low-level API</span>
+    <span class="type">FMOD::Studio::EventInstance</span>* pEventInstance = <span class="keyword">nullptr</span>;
+    <span class="keyword">if</span> (FMOD_OK == pEventDesc-&gt;createInstance(&amp;pEventInstance) &amp;&amp; pEventInstance) {
+        <span class="keyword">for</span> (<span class="keyword">const</span> <span class="type">FAudioParam</span>&amp; rParam : _rParameters) {
+            pEventInstance-&gt;setParameterByName(TCHAR_TO_UTF8(*rParam.sName.ToString()), rParam.fValue);
+        }
+        pEventInstance-&gt;start();
+        
+        <span class="comment">// Flag for immediate destruction once the sound finishes playing</span>
+        pEventInstance-&gt;release();
+    }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 5: UObject Consumable Architecture -->
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>UObject-Based Consumable Architecture</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <a href="https://github.com/JParamade/DorothysJob/blob/main/Source/DorothysJob/Consumables/BaseConsumable.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                <video src="/assets/videos/portfolio/dorothys-job/consumable-system.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                
+                                <p>A common anti-pattern in inventory systems is representing held items as physical <code>AActor</code> instances, bloating memory. To ensure maximum scalability, the consumable framework is strictly <code>UObject</code>-based, separating abstract logic from physical instantiation.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Logic over Actors:</b> Consumables only exist as lightweight data containers until used. Timer-driven durables delegate duration tracking entirely to the World's <code>FTimerManager</code> instead of ticking.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Safe NavMesh Spawning:</b> <code>USpawnableConsumable</code> generates radial vectors, queries the NavMesh, and performs an <code>FPathFindingQuery</code> to ensure items never spawn out of bounds or inside walls.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Filtered Spatial Queries:</b> Physical deployables (like bombs) bypass collision spheres, utilizing highly optimized <code>SphereOverlapActors</code> with specific <code>EObjectTypeQuery</code> channels to selectively damage targets via <code>IDamageable</code> interfaces.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <img src="/assets/images/portfolio/dorothys-job/consumable-architecture.webp" alt="Class Diagram of Consumable UObject Hierarchy" class="detail-img">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> Clean4Actor.cpp</span>
+                                    </div>
+                                    <pre><code><span class="comment">// Perform an optimized spatial query using specific collision channels</span>
+<span class="type">UKismetSystemLibrary</span>::<span class="function">SphereOverlapActors</span>(
+    GetWorld(),
+    GetActorLocation(),
+    m_fExplosionRadius,
+    _oChannel,
+    <span class="keyword">nullptr</span>,
+    aActorsToIgnore,
+    aOutActors
+);
+
+<span class="comment">// Apply damage purely via interfaces, avoiding hard class dependencies</span>
+<span class="keyword">for</span> (<span class="type">AActor</span>* pActor : aOutActors) {
+    <span class="keyword">if</span> (<span class="type">IDamageable</span>* pEnemy = Cast&lt;<span class="type">IDamageable</span>&gt;(pActor)) {
+        pEnemy-&gt;Damage(_fDamage, EDirtType::Neutral);
+    }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 6: Steam API & Serialization -->
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>Asynchronous Steam API Synchronization</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <a href="https://github.com/JParamade/DorothysJob/blob/main/Source/DorothysJob/Manager/GameInstanceSubsystem/AchievementSubsystem.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                <p>To handle progression tracking, I built a persistent <code>UGameInstanceSubsystem</code> that manages synchronization between local save data and the Steamworks API, while preventing race conditions during asynchronous platform initialization.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Data-Driven Initialization:</b> To avoid hardcoding achievement IDs, the manager dynamically reads the <code>DefaultEngine.ini</code> utilizing Unreal's <code>GConfig</code> parser to construct its internal map of structs.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Asynchronous Queuing:</b> Connecting to Steam is asynchronous. If a player unlocks an achievement before the API is ready, the system pushes it to an internal <code>m_lPendingUnlocks</code> queue, which is flushed upon successful initialization callbacks.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Bi-Directional Synchronization:</b> The manager compares local save data against Steam's cloud records. If the local save is ahead (e.g., the player played offline), it aggressively pushes the data up to force a cloud synchronization.</li>
+                                </ul>                                
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> AchievementSubsystem.cpp</span>
+                                    </div>
+                                    <pre><code><span class="type">void</span> UAchievementSubsystem::<span class="function">UnlockAchievement</span>(<span class="keyword">const</span> <span class="type">FString</span>&amp; _rAchievementId) {
+    <span class="type">FAchievementData</span>* pData = FindAchievement(_rAchievementId);
+    <span class="keyword">if</span> (!pData || pData-&gt;bUnlocked) <span class="keyword">return</span>;
+
+    pData-&gt;CurrentValue = pData-&gt;MaxValue;
+    pData-&gt;bUnlocked = <span class="keyword">true</span>;
+
+    <span class="comment">// Queue the achievement if Steam is not yet ready to receive writes</span>
+    <span class="keyword">if</span> (!m_bSteamAchievementsReady) {
+        m_lPendingUnlocks.AddUnique(_rAchievementId);
+    }
+    <span class="keyword">else</span> {
+        WriteAchievementToSteam(*pData);
+    }
+
+    OnAchievementUnlocked.Broadcast(_rAchievementId);
 }</code></pre>
                                 </div>
                             </div>
