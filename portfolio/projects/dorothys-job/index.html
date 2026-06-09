@@ -300,8 +300,6 @@ GetWorld()-&gt;GetTimerManager().SetTimer(
                                     <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
                                 </a>
                                 
-                                <video src="/assets/videos/portfolio/dorothys-job/audio-demo.webm" autoplay loop muted playsinline class="demo-media"></video>
-                                
                                 <p>To prevent gameplay classes from becoming tightly coupled to audio APIs, I developed a centralized Audio Manager alongside an event-driven component structure to handle FMOD integration.</p>
                                 <ul class="tech-list">
                                     <li><i class="fas fa-check" aria-hidden="true"></i> <b>Low-Level Middleware Integration:</b> The <code>UAudioManager</code> acts as a <code>UGameInstanceSubsystem</code>. By directly retrieving the <code>FMOD::Studio::System</code>, the manager can instantiate events and apply dynamic parameters, bypassing standard Unreal Audio Component overhead.</li>
