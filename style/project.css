@@ -301,14 +301,69 @@
     width: 100%;
 }
 
-.feature-text h3 {
-    /* Uses fluid scaling so it shrinks gracefully on mobile */
+.feature-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px; /* Reduced margin since they are collapsible now */
+}
+
+.dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px 0;
+    border-bottom: 2px solid #222;
+    transition: border-color 0.3s ease;
+}
+
+.dropdown-header h3 {
     font-size: clamp(1.5rem, 4vw, 2rem);
-    margin: 0 0 20px 0;
-    text-align: left;
+    margin: 0;
     color: var(--text-main);
-    border-bottom: 2px solid #222; /* Adds a nice separator to ground the title */
-    padding-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.dropdown-header:hover h3, 
+.dropdown-header:hover .toggle-icon {
+    color: var(--accent-color);
+}
+
+.dropdown-content {
+    display: grid;
+    grid-template-rows: 0fr; /* Starts collapsed */
+    transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dropdown-inner {
+    overflow: hidden; /* Prevents content bleeding during animation */
+    opacity: 0;
+    padding-top: 0;
+    transition: opacity 0.3s ease, padding 0.3s ease;
+}
+
+.feature-block.open .dropdown-content {
+    grid-template-rows: 1fr; /* Expands to fit inner content exactly */
+}
+
+.feature-block.open .dropdown-inner {
+    opacity: 1;
+    padding-top: 30px; /* Adds space between header and content when open */
+}
+
+.feature-block.open .toggle-icon {
+    transform: rotate(180deg);
+    color: var(--accent-color);
+}
+
+.feature-block.open .dropdown-header {
+    border-color: var(--accent-color);
 }
 
 .feature-text p {
