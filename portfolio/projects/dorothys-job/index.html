@@ -129,55 +129,129 @@
                 
                 <h2 class="section-title">Engineering <span class="highlight">Systems</span></h2>
 
-                <!-- Feature 1: UI Navigation -->
+                <!-- Feature 1: Rocket Architecture -->
                 <div class="feature-block">
-                    <div class="feature-text">
-                        <h3>Custom UI Focus Navigation</h3>
-                        <p>Navigating complex UI menus with a gamepad requires a robust focus system. I engineered a custom C++ UI navigation subsystem that supports both grid-based and linear layouts.</p>
-                        <ul class="tech-list">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> <b>Input-Aware:</b> Dynamically swaps control schemes between Keyboard, Mouse, and Gamepad.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> <b>Focus Memory:</b> Remembers the last selected widget when swapping between deeply nested menus.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> <b>Responsive:</b> UMG layouts mathematically scale to maintain aspect ratios across all monitor resolutions.</li>
-                        </ul>
+                    <div class="dropdown-header">
+                        <h3>Polymorphic Projectile Architecture</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
-                    <!-- Code Snippet Box -->
-                    <div class="feature-code">
-                        <div class="code-header">
-                            <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> UFocusManager.cpp</span>
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <video src="/assets/videos/rocket-architecture.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                
+                                <p>To ensure high performance and strict predictability in a fast-paced game, I bypassed Unreal Engine's native <code>UProjectileMovementComponent</code>. Instead, I engineered a highly modular, <code>Tick</code>-driven mathematical movement system utilizing <code>SweepSingleByChannel</code>.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Component-Agnostic Collisions:</b> Environmental interactions are handled cleanly by detecting "Defuser" surfaces via <code>UMaterialInterface</code>.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Polymorphic Extensions:</b> The robust <code>ABaseRocket</code> allows child classes (like Bounce or Remote rockets) to implement complex behaviors, such as vector reflection, simply by overriding the virtual <code>Impact()</code> function.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>The "Unconscious" Actor:</b> Rockets have zero awareness of the memory pool. They simply execute their lifecycle and broadcast an <code>OnRocketFinished</code> multicast delegate when ready for reclamation.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <img src="/assets/images/portfolio/blast-course-2/rocket-architecture.webp" alt="UML Class Diagram of Rocket Architecture" class="detail-img">
+                            </div>
                         </div>
-                        <pre><code><span class="keyword">void</span> UFocusManager::<span class="function">UpdateFocus</span>(<span class="type">UWidget</span>* NewWidget) {
-    <span class="keyword">if</span> (!NewWidget || NewWidget == CurrentFocusedWidget) 
-        <span class="keyword">return</span>;
-
-    <span class="comment">// Store previous focus for backtracking</span>
-    FocusHistory.Push(CurrentFocusedWidget);
-
-    <span class="comment">// Broadcast event to trigger UI animations</span>
-    OnFocusChanged.Broadcast(CurrentFocusedWidget, NewWidget);
-
-    CurrentFocusedWidget = NewWidget;
-    NewWidget->SetKeyboardFocus();
-}</code></pre>
                     </div>
                 </div>
 
-                <hr class="section-divider">
-
-                <!-- Feature 2: Audio & Gameplay (Text & Image layout) -->
-                <div class="feature-block reversed">
-                    <div class="feature-text">
-                        <h3>Audio Architecture & Consumables</h3>
-                        <p>With a background in music, I took ownership of the FMOD integration. I built an event-driven Audio Manager subsystem in C++ that decoupled sound logic from game actors, drastically improving performance.</p>
-                        <p>On the gameplay side, I developed a highly modular consumable architecture. By utilizing data-driven design (DataAssets), game designers could create and balance new power-ups and weapons entirely in the editor without requiring additional code support.</p>
+                <!-- Feature 2: Object Pooling -->
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>Dual Object Pooling</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
-                    <div class="feature-media">
-                        <img src="/assets/images/portfolio/dorothys-job/hero.png" alt="Dorothy's Job Gameplay" class="detail-img">
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <video src="/assets/videos/object-pool.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                
+                                <p>Spawning hundreds of rockets and explosions at runtime causes massive memory fragmentation and garbage collection spikes. To guarantee a locked frame rate, I built two distinct pooling strategies directly into the <code>ACustomGameMode</code>.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>O(1) Circular Buffer:</b> Transient, visual-heavy explosions do not require complex lifecycle tracking. They utilize a high-performance modulo-based ring buffer for instant memory access.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Active/Free Queues:</b> Rockets utilize stricter management via decoupled <code>TArray</code> queues.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Aggressive Recycling Failsafe:</b> If a player exhausts the pre-allocated free pool, the system forces the oldest active rocket to detonate, ensuring the game never hitches due to limit exhaustion or mid-combat memory allocation.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <img src="/assets/images/portfolio/blast-course-2/pool-sequence.webp" alt="Sequence Diagram of the Decoupled Pooling Lifecycle" class="detail-img">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> ACustomGameMode.cpp</span>
+                                    </div>
+                                    <pre><code><span class="type">ABaseRocket</span>* ACustomGameMode::<span class="function">AcquireRocketFromPool</span>(<span class="type">ERocketType</span> _eType) {
+    <span class="type">FRocketPool</span>&amp; rPool = m_mRocketPools[_eType];
+    <span class="type">TObjectPtr</span>&lt;<span class="type">ABaseRocket</span>&gt; pRocket = <span class="keyword">nullptr</span>;
+
+    <span class="keyword">if</span> (!rPool.Free.IsEmpty()) pRocket = rPool.Free.Pop();
+    <span class="keyword">else if</span> (rPool.Active.Num() &gt; 0) {
+        <span class="comment">// Aggressive recycling: force oldest active rocket to explode</span>
+        pRocket = rPool.Active[0];
+        rPool.Active.RemoveAt(0);
+        pRocket-&gt;ForceExplosion();
+    }
+
+    <span class="keyword">return</span> pRocket.Get();
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2: UMG Architecture -->
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>Extended UMG Architecture</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <video src="/assets/videos/umg-architecture.webm" autoplay loop muted playsinline class="demo-media"></video>
+                                
+                                <p>Controlling exact pixel dimensions and aspect ratios from C++ while maintaining a WYSIWYG experience for UI Artists in the Unreal Editor is notoriously difficult. I engineered an extended hierarchy to decouple layout logic from Blueprint constraints.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Recursive State Management:</b> The base <code>UCustomUserWidget</code> bypasses native limitations by recursively propagating custom <code>ShowWidget()</code> and <code>HideWidget()</code> states down deeply nested hierarchies.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Live Editor Synchronization:</b> I developed <code>UResizableUserWidget</code> to intercept the engine's <code>SynchronizeProperties()</code>. If a UI designer scales a widget in the editor, the C++ calculates the driving axis and dynamically scales the height to preserve the aspect ratio in real-time.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Encapsulated Leaf Nodes:</b> Wrappers like <code>UCustomButtonWidget</code> cleanly map custom C++ logic to native <code>ESlateVisibility</code> states.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <img src="/assets/images/portfolio/blast-course-2/umg-architecture.webp" alt="Class Hierarchy of the Custom UMG Framework" class="detail-img">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> UResizableUserWidget.cpp</span>
+                                    </div>
+                                    <pre><code><span class="keyword">void</span> UResizableUserWidget::<span class="function">SynchronizeProperties</span>() {
+    Super::SynchronizeProperties();
+
+    <span class="comment">// Preserve aspect ratio if the flag is enabled in the editor.</span>
+    <span class="keyword">if</span> (m_bPreserveAspectRatio) {
+        <span class="keyword">if</span> (m_fAspectRatio &lt; 0.f &amp;&amp; m_vWidgetSize.Y != 0.f) {
+            m_fAspectRatio = m_vWidgetSize.X / m_vWidgetSize.Y;
+        }<br>
+        ApplyAspectRatio();
+    } 
+<span class="keyword">    else</span> m_fAspectRatio = 0.f;
+
+    SetWidgetSize(m_vWidgetSize);
+    UpdateSizeToContent();
+    m_vLastSize = m_vWidgetSize;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </section>
+            
         </main>
 
         <footer class="footer">
