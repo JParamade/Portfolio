@@ -13,18 +13,28 @@ document.addEventListener('DOMContentLoaded', () => {
         header.addEventListener('click', () => {
             const currentBlock = header.parentElement;
             
-            // Toggle the clicked block
-            currentBlock.classList.toggle('open');
+            // Toggle the clicked block and store whether it is now open
+            const isOpen = currentBlock.classList.toggle('open');
+            
+            // If the block was just opened, smoothly scroll it into view
+            if (isOpen) {
+                setTimeout(() => {
+                    currentBlock.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 300); // Small delay allows the CSS animation to start first
+            }
             
             // Close other open blocks automatically 
-            /*
+            
             dropdownHeaders.forEach(otherHeader => {
                 const otherBlock = otherHeader.parentElement;
                 if (otherBlock !== currentBlock && otherBlock.classList.contains('open')) {
                     otherBlock.classList.remove('open');
                 }
             });
-            */
+            
         });
     });
 

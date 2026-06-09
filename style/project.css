@@ -304,7 +304,8 @@
 .feature-block {
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px; /* Reduced margin since they are collapsible now */
+    margin-bottom: 0;
+    scroll-margin-top: 12vh;
 }
 
 .dropdown-header {
@@ -355,6 +356,7 @@
 .feature-block.open .dropdown-inner {
     opacity: 1;
     padding-top: 30px; /* Adds space between header and content when open */
+    padding-bottom: 40px;
 }
 
 .feature-block.open .toggle-icon {
