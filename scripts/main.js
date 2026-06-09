@@ -29,4 +29,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('beforeunload', function() {
         window.scrollTo(0, 0);
     });
+    
+    // ========================================================
+    // 3. BACK TO TOP BUTTON LOGIC
+    // ========================================================
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        // Show button after scrolling down 500px
+        if (window.scrollY > 500) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
