@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Dorothy's Job - Discover my technical work on UI systems, Audio (FMOD), and Gameplay programming for this isometric twin-stick shooter in Unreal Engine 5.">
+        <title>Dorothy's Job | JParamade Portfolio</title>
+
+        <link rel="icon" href="/assets/images/logo.png">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        
+        <link rel="stylesheet" href="/style/main.css">
+        <link rel="stylesheet" href="/style/project.css">
+    </head>
+    <body>
+        
+        <header class="header">
+            <div class="header-inner">
+                <a href="/" class="logo-container">
+                    <span class="site-name"><b>JParamade</b></span>
+                </a>
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="nav" id="nav-menu">
+                    <a href="/">Home</a>
+                    <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank">Resume</a>
+                    <a href="/portfolio" class="active">Portfolio</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/photography">Photography</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="project-detail-page fade-in-up">
+            <a href="/portfolio" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Portfolio</a>
+            
+            <section class="project-hero">
+                
+                <div class="hero-info">
+                    <h1 class="project-title">Burntbite Engine</h1>
+                    <p class="studio-tagline"><b>Personal Project</b></p>
+
+                    <div class="award-ribbons">
+                        <div class="award-ribbon">
+                            <i class="fas fa-microchip" aria-hidden="true"></i>
+                            <span><b>Data-Oriented</b> ECS Architecture</span>
+                        </div>
+                        <div class="award-ribbon">
+                            <i class="fas fa-code-branch" aria-hidden="true"></i>
+                            <span><b>Data-Driven</b> XML Instantiation</span>
+                        </div>
+                    </div>
+                    
+                    <p class="project-tagline">
+                        A lightweight Entity Component System (ECS) game engine built entirely from scratch in C++. Designed to prioritize data locality, strict decoupling of state and behavior, and data-driven entity instantiation.
+                    </p>
+                    
+                    <div class="tech-tags">
+                        <span class="tag tag-lang"><i class="fab fa-cuttlefish" aria-hidden="true"></i> C++</span>
+                        <span class="tag tag-tool"><i class="fas fa-database" aria-hidden="true"></i> PugiXML</span>
+                    </div>
+                    
+                </div>
+
+                <div class="hero-media-column">
+                    
+                    <div class="hero-media image-container">
+                        <img src="/assets/images/portfolio/burntbite/game.webp" alt="Burntbite Engine Gameplay Screenshot" class="detail-img">
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/JParamade/Burntbite" target="_blank" class="btn-external github">
+                            <i class="fab fa-github" aria-hidden="true"></i> View Source Code
+                        </a>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <div class="whitepaper-banner fade-in-up delay-1">
+                <div class="banner-content">
+                    <div class="banner-text">
+                        <h3><i class="fa-solid fa-file-code" aria-hidden="true"></i>&nbsp;&nbsp;Architecture Deep-Dive</h3>
+                        <p>Want to see the full technical breakdown? Download the comprehensive 5-page whitepaper detailing the polymorphic ECS storage, data-driven XML entity factories, and memory sweeping.</p>
+                    </div>
+                </div>
+                <a href="/assets/files/JaimeParamo_Burntbite_TDD.pdf" target="_blank" rel="noopener noreferrer" class="btn-external pdf-btn">
+                    <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                </a>
+            </div>
+            
+            <section class="tech-deep-dives">
+                
+                <h2 class="section-title">Engine <span class="highlight">Architecture</span></h2>
+
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>Type-Indexed Storage</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <a href="https://github.com/JParamade/Burntbite/blob/main/src/Engine/ECS.h" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                <p>To create a truly decoupled ECS, the core registry must be able to hold any Plain Old Data (POD) struct without requiring hardcoded lists. I implemented a polymorphic hash-map storage system driven by runtime type information.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Type Erasure pattern:</b> The core <code>ECS</code> class utilizes <code>std::type_index</code> to map component types to an abstract <code>IStorage</code> interface, allowing the engine to scale dynamically.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Direct Mapping:</b> Under the hood, <code>StorageImpl&lt;C&gt;</code> maintains an <code>std::unordered_map&lt;Entity, C&gt;</code>, ensuring fast lookup times by mapping the unique entity ID directly to its component data.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <img src="/assets/images/portfolio/burntbite/storage-architecture.webp" alt="UML Diagram of ECS Storage Architecture" class="detail-img">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> ECS.h</span>
+                                    </div>
+                                    <pre><code><span class="keyword">struct</span> <span class="type">IStorage</span> {
+    <span class="keyword">virtual</span> ~IStorage() = <span class="keyword">default</span>;
+    <span class="keyword">virtual</span> <span class="type">void</span> <span class="function">EraseEntity</span>(<span class="type">Entity</span> e) = <span class="keyword">0</span>;
+};
+
+<span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="type">C</span>&gt;
+<span class="keyword">struct</span> <span class="type">StorageImpl</span> : <span class="type">IStorage</span> {
+    <span class="type">std::unordered_map</span>&lt;<span class="type">Entity</span>, <span class="type">C</span>&gt; mMap;
+    <span class="type">void</span> <span class="function">EraseEntity</span>(<span class="type">Entity</span> e) <span class="keyword">override</span> { mMap.erase(e); }
+};</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>Data-Driven Instantiation via XML</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <a href="https://github.com/JParamade/Burntbite/blob/main/src/Game/EntityFactory.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                <p>Hardcoding component data into C++ ruins iteration times. To solve this, I integrated PugiXML to act as a factory, allowing entities to be constructed dynamically from external data files.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Dynamic Parsing:</b> The <code>EntityFactory</code> parses nodes like <code>&lt;transform&gt;</code> or <code>&lt;velocity&gt;</code> and translates them into ECS components dynamically during runtime.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Robust Fallbacks:</b> If an XML attribute or entire node is missing, the parser safely attaches a default-constructed component to the entity ID, ensuring the engine never crashes from bad data.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <img src="/assets/images/portfolio/burntbite/xml-factory.webp" alt="Sequence Diagram of XML Parsing" class="detail-img">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> EntityFactory.cpp</span>
+                                    </div>
+                                    <pre><code><span class="type">pugi::xml_node</span> oTransformNode = oNode.child(<span class="string">"transform"</span>);
+<span class="keyword">if</span> (oTransformNode) {
+    <span class="type">Transform</span> oTransform;
+    oTransform.fPosX = oTransformNode.attribute(<span class="string">"x"</span>).as_float(<span class="keyword">240.f</span>);
+    oTransform.fPosY = oTransformNode.attribute(<span class="string">"y"</span>).as_float(<span class="keyword">440.f</span>);
+
+    _rEcs.AddComponent&lt;<span class="type">Transform</span>&gt;(iEntity, oTransform);
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>Overcoming Global State: The Manager Entity</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <a href="https://github.com/JParamade/Burntbite/blob/main/src/Game/GameState.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                <p>A persistent architectural challenge in pure ECS is tracking global state such as high scores or universal spawn timers, which do not logically belong to physical actors.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Headless Architecture:</b> The <code>GameState</code> creates a "Manager Entity" during initialization. This is a headless entity ID that exclusively holds <code>SpawnTimer</code> and <code>Score</code> components.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Aggressive Memory Sweeping:</b> When the player dies, the engine must reset the board. <code>ResetForNewGame()</code> aggressively iterates through component maps, systematically erasing any entity ID that doesn't match the Manager ID, cleaning memory while retaining global rules.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> GameState.cpp</span>
+                                    </div>
+                                    <pre><code><span class="keyword">auto</span>&amp; rTransforms = _rEcs.Storage&lt;<span class="type">Transform</span>&gt;();
+<span class="type">std::vector</span>&lt;<span class="type">Entity</span>&gt; lTransformsToRemove;
+
+<span class="comment">// Collect all physical entities except the global manager</span>
+<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; rKeyValue : rTransforms) {
+    <span class="keyword">if</span> (rKeyValue.first != m_iManager) {
+        lTransformsToRemove.push_back(rKeyValue.first);
+    }
+}
+
+<span class="comment">// Aggressively clear memory for the board reset</span>
+<span class="keyword">for</span> (<span class="type">Entity</span> iEntity : lTransformsToRemove) {
+    rTransforms.erase(iEntity);
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="dropdown-header">
+                        <h3>Polymorphic System Iteration</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <div class="dropdown-content">
+                        <div class="dropdown-inner">
+                            <div class="feature-text">
+                                <a href="https://github.com/JParamade/Burntbite/blob/main/src/Game/Systems.cpp" target="_blank" rel="noopener noreferrer" class="repo-link">
+                                    <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                                
+                                <p>Behavior in Burntbite is driven entirely by Systems. To maintain a clean game loop in <code>main()</code>, all logic managers inherit from a central <code>ISystem</code> interface.</p>
+                                <ul class="tech-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Data-Driven Execution:</b> Systems operate only on the entities that possess the specific components they require. The core loop executes their <code>Update()</code> functions polymorphically.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Tag Querying:</b> The <code>MovementSystem</code> directly applies kinematic calculations frame-by-frame, querying empty structs like <code>EnemyTag</code> to selectively apply environmental forces like gravity.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="feature-visuals">
+                                <div class="feature-code">
+                                    <div class="code-header">
+                                        <span class="file-name"><i class="fab fa-cuttlefish" aria-hidden="true"></i> Systems.cpp</span>
+                                    </div>
+                                    <pre><code><span class="type">void</span> MovementSystem::<span class="function">Update</span>(<span class="type">ECS</span>&amp; _rEcs, <span class="type">float</span> _fDeltaTime) {
+    <span class="keyword">auto</span>&amp; rVelocities = _rEcs.Storage&lt;<span class="type">Velocity</span>&gt;();
+    <span class="keyword">auto</span>&amp; rTransforms = _rEcs.Storage&lt;<span class="type">Transform</span>&gt;();
+
+    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; rKeyValue : rVelocities) {
+        <span class="type">Entity</span> iEntity = rKeyValue.first;
+        <span class="keyword">auto</span> oIterator = rTransforms.find(iEntity);
+        <span class="keyword">if</span> (oIterator == rTransforms.end()) <span class="keyword">continue</span>;
+
+        <span class="comment">// Apply gravity for enemies via Tag querying</span>
+        <span class="keyword">if</span> (_rEcs.HasComponent&lt;<span class="type">EnemyTag</span>&gt;(iEntity)) {
+            rKeyValue.second.fVelocityY += m_fGravity * _fDeltaTime;
+        }
+
+        oIterator-&gt;second.fPosX += rKeyValue.second.fVelocityX * _fDeltaTime;
+        oIterator-&gt;second.fPosY += rKeyValue.second.fVelocityY * _fDeltaTime;
+    }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 Jaime Páramo. All rights reserved.</p>
+        </footer>
+
+        <div class="floating-social">
+            <a href="https://github.com/JParamade" target="_blank" class="social-btn github" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://JParamade.itch.io" target="_blank" class="social-btn itch" aria-label="Itch.io">
+                <img src="https://static.itch.io/images/itchio-textless-black.svg" alt="itch icon">
+            </a>
+            <a href="https://www.linkedin.com/in/jaime-paramo" target="_blank" class="social-btn linkedin" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:jaime.paramo@outlook.com" class="social-btn mail" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        
+        <button id="back-to-top" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <script src="/scripts/main.js"></script>
+        <script src="/scripts/project.js"></script>
+    </body>
+</html>
