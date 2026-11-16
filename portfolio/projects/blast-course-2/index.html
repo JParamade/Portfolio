@@ -103,7 +103,7 @@
                     
                     <div class="banner-text">
                         <h3><i class="fa-solid fa-file-code" aria-hidden="true"></i>&nbsp;&nbsp;Technical Deep-Dive</h3>
-                        <p>Want to see the full technical breakdown? Download the comprehensive 8-page whitepaper detailing the rocket math, memory pooling, and extended UMG frameworks.</p>
+                        <p>Want the full technical breakdown? Download the 8-page design document detailing the projectile math, memory pooling strategies, and extended UMG framework.</p>
                     </div>
                 </div>
                 <a href="/assets/files/JaimeParamo_BlastCourse2_TDD.pdf" target="_blank" class="btn-external pdf-btn">
@@ -127,11 +127,11 @@
                             <div class="feature-text">
                                 <video src="/assets/videos/rocket-architecture.webm" autoplay loop muted playsinline class="demo-media"></video>
                                 
-                                <p>To ensure high performance and strict predictability in a fast-paced game, I bypassed Unreal Engine's native <code>UProjectileMovementComponent</code>. Instead, I engineered a highly modular, <code>Tick</code>-driven mathematical movement system utilizing <code>SweepSingleByChannel</code>.</p>
+                                <p>To keep projectile behavior predictable at high speeds, I bypassed Unreal Engine's native <code>UProjectileMovementComponent</code> and built a custom, <code>Tick</code>-driven movement system using <code>SweepSingleByChannel</code>.</p>
                                 <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Component-Agnostic Collisions:</b> Environmental interactions are handled cleanly by detecting "Defuser" surfaces via <code>UMaterialInterface</code>.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Polymorphic Extensions:</b> The robust <code>ABaseRocket</code> allows child classes (like Bounce or Remote rockets) to implement complex behaviors, such as vector reflection, simply by overriding the virtual <code>Impact()</code> function.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>The "Unconscious" Actor:</b> Rockets have zero awareness of the memory pool. They simply execute their lifecycle and broadcast an <code>OnRocketFinished</code> multicast delegate when ready for reclamation.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Material-Based Collisions:</b> Environmental interactions are handled without extra actor components by detecting "Defuser" surfaces directly via <code>UMaterialInterface</code>.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Polymorphic Extensions:</b> <code>ABaseRocket</code> lets child classes (such as Bounce or Remote rockets) implement custom behaviors like vector reflection simply by overriding the virtual <code>Impact()</code> method.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Decoupled Lifecycle:</b> Rockets have zero awareness of the object pool, they simply execute their lifecycle and broadcast an <code>OnRocketFinished</code> multicast delegate when ready to be reclaimed.</li>
                                 </ul>
                             </div>
                             
@@ -154,11 +154,11 @@
                             <div class="feature-text">
                                 <video src="/assets/videos/object-pool.webm" autoplay loop muted playsinline class="demo-media"></video>
                                 
-                                <p>Spawning hundreds of rockets and explosions at runtime causes massive memory fragmentation and garbage collection spikes. To guarantee a locked frame rate, I built two distinct pooling strategies directly into the <code>ACustomGameMode</code>.</p>
+                                <p>Repeatedly spawning and destroying rockets and explosions at runtime introduces memory fragmentation and garbage collection spikes. To keep frame times stable, I implemented two pooling strategies inside <code>ACustomGameMode</code>.</p>
                                 <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>O(1) Circular Buffer:</b> Transient, visual-heavy explosions do not require complex lifecycle tracking. They utilize a high-performance modulo-based ring buffer for instant memory access.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Active/Free Queues:</b> Rockets utilize stricter management via decoupled <code>TArray</code> queues.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Aggressive Recycling Failsafe:</b> If a player exhausts the pre-allocated free pool, the system forces the oldest active rocket to detonate, ensuring the game never hitches due to limit exhaustion or mid-combat memory allocation.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>O(1) Circular Buffer:</b> Short-lived explosion effects don't require lifecycle tracking, so they use a modulo-based ring buffer for constant-time reuse.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Active/Free Queues:</b> Rockets require stricter state tracking and are managed through separate active and free <code>TArray</code> queues.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Aggressive Recycling Failsafe:</b> If the pre-allocated free pool runs out, the system forces the oldest active rocket to detonate and recycles it immediately, preventing mid-combat allocations or hitches.</li>
                                 </ul>
                             </div>
                             
@@ -200,11 +200,11 @@
                             <div class="feature-text">
                                 <video src="/assets/videos/umg-architecture.webm" autoplay loop muted playsinline class="demo-media"></video>
                                 
-                                <p>Controlling exact pixel dimensions and aspect ratios from C++ while maintaining a WYSIWYG experience for UI Artists in the Unreal Editor is notoriously difficult. I engineered an extended hierarchy to decouple layout logic from Blueprint constraints.</p>
+                                <p>Enforcing exact pixel dimensions and aspect ratios in C++ while keeping a live WYSIWYG workflow for UI artists in the Unreal Editor requires working around UMG's native layout rules. I built an extended widget hierarchy to handle sizing and visibility cleanly in code.</p>
                                 <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Recursive State Management:</b> The base <code>UCustomUserWidget</code> bypasses native limitations by recursively propagating custom <code>ShowWidget()</code> and <code>HideWidget()</code> states down deeply nested hierarchies.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Live Editor Synchronization:</b> I developed <code>UResizableUserWidget</code> to intercept the engine's <code>SynchronizeProperties()</code>. If a UI designer scales a widget in the editor, the C++ calculates the driving axis and dynamically scales the height to preserve the aspect ratio in real-time.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Encapsulated Leaf Nodes:</b> Wrappers like <code>UCustomButtonWidget</code> cleanly map custom C++ logic to native <code>ESlateVisibility</code> states.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Recursive Visibility Propagation:</b> The base <code>UCustomUserWidget</code> propagates custom <code>ShowWidget()</code> and <code>HideWidget()</code> calls recursively down nested widget hierarchies.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Live Editor Aspect Locking:</b> <code>UResizableUserWidget</code> overrides <code>SynchronizeProperties()</code> so that when a UI artist resizes a widget in the editor, C++ detects the driving axis and updates the opposing dimension in real time to preserve its aspect ratio.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Encapsulated Leaf Widgets:</b> Base wrappers like <code>UCustomButtonWidget</code> map custom C++ state logic directly to native <code>ESlateVisibility</code> states.</li>
                                 </ul>
                             </div>
                             
