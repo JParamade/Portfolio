@@ -618,7 +618,14 @@ li code {
 }
 
 /* ==========================================================================
-   9. MOBILE RESPONSIVE
+   9. STEAM-STYLE LATERAL & TOP KEY-ART BACKDROP
+   ========================================================================== */
+.project-backdrop {
+    display: none;
+}
+
+/* ==========================================================================
+   10. MOBILE RESPONSIVE
    ========================================================================== */
 @media (max-width: 992px) {
     .project-hero {
@@ -647,5 +654,47 @@ li code {
     .systems-header-bar {
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+@media (min-width: 1280px) {
+    .project-backdrop {
+        display: block;
+        position: fixed;
+        top: 72px; /* Starts cleanly below the fixed header */
+        left: 0;
+        width: 100%;
+        height: 85vh;
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        opacity: 0.25;
+        filter: blur(2px) saturate(1.1);
+        z-index: -1;
+        pointer-events: none;
+
+        /* Fades smoothly into --bg-color at the bottom and sides */
+        -webkit-mask-image: radial-gradient(
+            ellipse 90% 75% at 50% 25%,
+            rgba(0, 0, 0, 0.95) 25%,
+            rgba(0, 0, 0, 0.45) 65%,
+            transparent 100%
+        );
+        mask-image: radial-gradient(
+            ellipse 90% 75% at 50% 25%,
+            rgba(0, 0, 0, 0.95) 25%,
+            rgba(0, 0, 0, 0.45) 65%,
+            transparent 100%
+        );
+    }
+
+    .project-detail-page {
+        background: rgba(11, 13, 16, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-left: 1px solid var(--border-subtle);
+        border-right: 1px solid var(--border-subtle);
+        padding-left: 48px;
+        padding-right: 48px;
     }
 }
