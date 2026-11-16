@@ -1,28 +1,38 @@
 /**
  * portfolio.js
- * Handles category filtering on the portfolio index page.
+ * Handles category filtering and automatically promotes the first visible card to the featured layout.
  */
 document.addEventListener('DOMContentLoaded', () => {
     const filterPills = document.querySelectorAll('.filter-pill');
-    const projectItems = document.querySelectorAll('.project-filter-item');
+    const projectItems = Array.from(document.querySelectorAll('.project-filter-item'));
 
     if (!filterPills.length || !projectItems.length) return;
+
+    const applyFilter = selectedFilter => {
+        let firstVisibleAssigned = false;
+
+        projectItems.forEach(item => {
+            const category = item.getAttribute('data-category');
+            const isVisible = selectedFilter === 'all' || category === selectedFilter;
+
+            item.classList.toggle('is-hidden', !isVisible);
+            item.classList.remove('is-featured');
+
+            if (isVisible && !firstVisibleAssigned) {
+                item.classList.add('is-featured');
+                firstVisibleAssigned = true;
+            }
+        });
+    };
 
     filterPills.forEach(pill => {
         pill.addEventListener('click', () => {
             filterPills.forEach(p => p.classList.remove('active'));
             pill.classList.add('active');
-
-            const selectedFilter = pill.getAttribute('data-filter');
-
-            projectItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                if (selectedFilter === 'all' || category === selectedFilter) {
-                    item.classList.remove('is-hidden');
-                } else {
-                    item.classList.add('is-hidden');
-                }
-            });
+            applyFilter(pill.getAttribute('data-filter'));
         });
     });
+
+    // Ensure initial load promotes the first visible item
+    applyFilter('all');
 });

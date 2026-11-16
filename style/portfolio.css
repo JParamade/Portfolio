@@ -74,38 +74,8 @@
 }
 
 /* ==========================================================================
-   3. PORTFOLIO LAYOUT (Flagship + 2-Column Grid)
+   3. PORTFOLIO GRID & DYNAMIC FEATURED CARD
    ========================================================================== */
-.portfolio-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-}
-
-.flagship-project-card {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    background: var(--surface-1);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    overflow: hidden;
-    text-decoration: none;
-    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-}
-
-.flagship-project-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-hover);
-    background: var(--surface-2);
-}
-
-.flagship-img-wrapper {
-    position: relative;
-    min-height: 300px;
-    overflow: hidden;
-    border-right: 1px solid var(--border-subtle);
-}
-
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -129,6 +99,14 @@
     background: var(--surface-2);
 }
 
+/* Full-width Flagship layout applied dynamically to the first visible card */
+.project-card.is-featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    border-radius: 14px;
+}
+
 .project-filter-item.is-hidden {
     display: none;
 }
@@ -144,6 +122,13 @@
     border-bottom: 1px solid var(--border-subtle);
 }
 
+.project-card.is-featured .card-img-wrapper {
+    height: 100%;
+    min-height: 300px;
+    border-bottom: none;
+    border-right: 1px solid var(--border-subtle);
+}
+
 .project-image {
     width: 100%;
     height: 100%;
@@ -151,7 +136,6 @@
     transition: transform 0.4s ease;
 }
 
-.flagship-project-card:hover .project-image,
 .project-card:hover .project-image {
     transform: scale(1.03);
 }
@@ -199,6 +183,11 @@
     flex-grow: 1;
 }
 
+.project-card.is-featured .project-content {
+    padding: 32px;
+    justify-content: center;
+}
+
 .project-header-row {
     display: flex;
     justify-content: space-between;
@@ -215,7 +204,7 @@
     line-height: 1.25;
 }
 
-.flagship-project-card .project-title {
+.project-card.is-featured .project-title {
     font-size: 1.6rem;
     font-weight: 800;
 }
@@ -320,12 +309,10 @@
     transition: transform 0.2s ease;
 }
 
-.flagship-project-card:hover .view-project-action,
 .project-card:hover .view-project-action {
     color: var(--accent-color);
 }
 
-.flagship-project-card:hover .view-project-action i,
 .project-card:hover .view-project-action i {
     transform: translateX(4px);
 }
@@ -361,17 +348,22 @@
    9. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 900px) {
-    .flagship-project-card {
+    .portfolio-grid {
         grid-template-columns: 1fr;
     }
 
-    .flagship-img-wrapper {
+    .project-card.is-featured {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card.is-featured .card-img-wrapper {
+        height: 220px;
         min-height: 220px;
         border-right: none;
         border-bottom: 1px solid var(--border-subtle);
     }
 
-    .portfolio-grid {
-        grid-template-columns: 1fr;
+    .project-card.is-featured .project-content {
+        padding: 26px;
     }
 }
