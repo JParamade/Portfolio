@@ -53,11 +53,11 @@
 }
 
 .hero h1 {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: clamp(2.8rem, 7vw, 6.5rem); 
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.8rem, 7vw, 6.2rem); 
     margin: 0 0 12px 0;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
     line-height: 1.05;
     opacity: 0;
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; 
@@ -66,7 +66,7 @@
 .hero h2 {
     font-family: var(--font-code);
     font-weight: 400;
-    font-size: clamp(1.1rem, 2vw, 1.85rem);
+    font-size: clamp(1.05rem, 1.9vw, 1.75rem);
     color: var(--text-muted);
     margin: 0;
     opacity: 0;
@@ -129,9 +129,10 @@
 }
 
 .section-title {
-    font-size: clamp(1.85rem, 3.2vw, 2.5rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3.2vw, 2.55rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
     margin: 0 0 36px 0;
 }
 
@@ -185,7 +186,7 @@
 }
 
 .about-text {
-    font-size: 1.1rem;
+    font-size: 1.06rem;
     line-height: 1.75;
     color: var(--text-muted);
     margin-bottom: 32px;
@@ -199,8 +200,9 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 13px 24px;
-    font-size: 0.95rem;
+    padding: 13px 22px;
+    font-family: var(--font-code);
+    font-size: 0.88rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 8px;
@@ -256,23 +258,25 @@
 }
 
 .specialty-icon {
-    font-size: 1.6rem;
+    font-size: 1.45rem;
     color: var(--accent-color);
     margin-bottom: 18px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     background: var(--accent-tint);
     border: 1px solid var(--accent-border);
     border-radius: 10px;
 }
 
 .specialty-card h3 {
+    font-family: var(--font-display);
     margin: 0 0 12px 0;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
+    letter-spacing: -0.015em;
     color: var(--text-main);
 }
 
@@ -280,7 +284,7 @@
     color: var(--text-muted);
     line-height: 1.65;
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 0.94rem;
 }
 
 /* ==========================================================================
@@ -295,14 +299,14 @@
 .stack-note {
     text-align: left;
     color: var(--text-dim); 
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     margin-top: 32px;
     line-height: 1.5;
 }
 
 .stack-category h3 {
     font-family: var(--font-code);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-main);
@@ -325,7 +329,7 @@
     align-items: baseline;
     gap: 12px;
     padding: 9px 0;
-    font-size: 0.95rem;
+    font-size: 0.94rem;
 }
 
 .skill-list li::after {
@@ -343,7 +347,7 @@
 .skill-time { 
     font-family: var(--font-code); 
     color: var(--text-dim); 
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     order: 3;
 }
 
@@ -364,8 +368,8 @@
 
 .section-link {
     font-family: var(--font-code);
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-size: 0.86rem;
+    font-weight: 500;
     color: var(--text-muted);
     text-decoration: none;
     display: inline-flex;
@@ -440,8 +444,8 @@
     padding: 5px 10px;
     border-radius: 6px;
     font-family: var(--font-code);
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.74rem;
+    font-weight: 500;
 }
 
 .flagship-info {
@@ -453,21 +457,22 @@
 
 .project-studio {
     font-family: var(--font-code);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-dim);
     margin-bottom: 6px;
 }
 
 .flagship-info h3 {
+    font-family: var(--font-display);
     margin: 0 0 12px 0;
-    font-size: 1.65rem;
-    font-weight: 800;
+    font-size: 1.7rem;
+    font-weight: 700;
     letter-spacing: -0.02em;
 }
 
 .flagship-info p {
     color: var(--text-muted);
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     line-height: 1.65;
     margin: 0 0 18px 0;
 }
@@ -516,14 +521,16 @@
 }
 
 .mini-project-info h3 {
+    font-family: var(--font-display);
     margin: 0 0 10px 0;
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
+    letter-spacing: -0.015em;
 }
 
 .mini-project-info p {
     color: var(--text-muted);
-    font-size: 0.93rem;
+    font-size: 0.92rem;
     line-height: 1.6;
     margin: 0 0 18px 0;
     flex-grow: 1;
@@ -532,8 +539,8 @@
 .read-more {
     color: var(--text-muted);
     font-family: var(--font-code);
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.84rem;
+    font-weight: 500;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -600,11 +607,17 @@
 .timeline-date {
     font-family: var(--font-code);
     color: var(--accent-color);
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.82rem;
+    font-weight: 500;
 }
 
-.timeline-content h3 { margin: 8px 0 6px 0; font-size: 1.3rem; font-weight: 700; }
+.timeline-content h3 { 
+    font-family: var(--font-display);
+    margin: 8px 0 6px 0; 
+    font-size: 1.35rem; 
+    font-weight: 700; 
+    letter-spacing: -0.015em;
+}
 
 .company-header {
     display: flex;
@@ -620,7 +633,13 @@
     object-fit: contain; 
 }
 
-.company-header h4 { margin: 0; color: var(--text-dim); font-weight: 500; font-size: 1rem; }
+.company-header h4 { 
+    font-family: var(--font-body);
+    margin: 0; 
+    color: var(--text-dim); 
+    font-weight: 500; 
+    font-size: 0.98rem; 
+}
 
 .timeline-content p { color: var(--text-muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
 .timeline-content p b { color: var(--text-main); font-weight: 600; }
@@ -638,7 +657,7 @@
 
 .tag {
     font-family: var(--font-code);
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     font-weight: 500;
     padding: 5px 10px;
     border-radius: 6px;
@@ -649,7 +668,6 @@
 
 .tag i { margin-right: 2px; }
 
-/* Refined, muted syntax-inspired tones */
 .tag-engine { color: #38bdf8; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); }
 .tag-lang   { color: #fb7185; background: rgba(251, 113, 133, 0.08); border: 1px solid rgba(251, 113, 133, 0.2); }
 .tag-tool   { color: #fbbf24; background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.2); }
@@ -659,7 +677,7 @@
    11. MOBILE RESPONSIVE
    ========================================================================== */
 @media (max-width: 768px) {
-    .hero h1 { font-size: clamp(2rem, 7.5vw, 2.8rem); white-space: nowrap; }
+    .hero h1 { font-size: clamp(2.1rem, 8vw, 2.9rem); white-space: nowrap; }
     .home-section { padding: 64px 5vw; }
     .timeline::before { left: 10px; }
     .timeline-dot { left: 4px; }
@@ -693,5 +711,4 @@
         border-right: none;
         border-bottom: 1px solid var(--border-subtle);
     }
-    
 }
