@@ -10,7 +10,7 @@
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         
@@ -41,6 +41,7 @@
         <main class="project-detail-page fade-in-up">
             <a href="/portfolio" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Portfolio</a>
             
+            <!-- 1. HERO & MEDIA -->
             <section class="project-hero">
                 
                 <div class="hero-info">
@@ -85,6 +86,7 @@
 
             </section>
 
+            <!-- 2. ARCHITECTURE DOCUMENT BANNER -->
             <div class="whitepaper-banner fade-in-up delay-1">
                 <div class="banner-content">
                     <div class="banner-text">
@@ -97,13 +99,32 @@
                 </a>
             </div>
             
+            <!-- 3. ENGINE ARCHITECTURE -->
             <section class="tech-deep-dives">
                 
-                <h2 class="section-title">Engine <span class="highlight">Architecture</span></h2>
+                <div class="systems-header-bar">
+                    <h2 class="section-title">Engine <span class="highlight">Architecture</span></h2>
+                    <button type="button" class="expand-all-btn" id="toggle-all-systems">
+                        <i class="fas fa-expand-alt"></i> Expand All
+                    </button>
+                </div>
 
-                <div class="feature-block">
+                <!-- Quick-Jump System Bar -->
+                <nav class="system-jump-nav" aria-label="Jump to system">
+                    <a href="#sys-storage">01. Type-Indexed Storage</a>
+                    <a href="#sys-xml">02. XML Entity Factory</a>
+                    <a href="#sys-manager">03. Manager Entity</a>
+                    <a href="#sys-systems">04. System Iteration</a>
+                </nav>
+
+                <!-- Feature 1: Type-Indexed Storage (Open by default) -->
+                <div class="feature-block open" id="sys-storage">
                     <div class="dropdown-header">
-                        <h3>Type-Indexed Storage</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">01</span>
+                            <h3>Type-Indexed Storage</h3>
+                            <span class="system-domain">ECS Core · C++</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -143,9 +164,14 @@
                     </div>
                 </div>
 
-                <div class="feature-block">
+                <!-- Feature 2: Data-Driven Instantiation via XML -->
+                <div class="feature-block" id="sys-xml">
                     <div class="dropdown-header">
-                        <h3>Data-Driven Instantiation via XML</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">02</span>
+                            <h3>Data-Driven Instantiation via XML</h3>
+                            <span class="system-domain">Serialization · PugiXML</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -183,9 +209,14 @@
                     </div>
                 </div>
 
-                <div class="feature-block">
+                <!-- Feature 3: Overcoming Global State: The Manager Entity -->
+                <div class="feature-block" id="sys-manager">
                     <div class="dropdown-header">
-                        <h3>Overcoming Global State: The Manager Entity</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">03</span>
+                            <h3>Overcoming Global State: The Manager Entity</h3>
+                            <span class="system-domain">Game State · Memory</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -218,7 +249,7 @@
     }
 }
 
-<span class="comment">// Aggressively clear memory for the board reset</span>
+<span class="comment">// Clear gameplay entities while preserving global state</span>
 <span class="keyword">for</span> (<span class="type">Entity</span> iEntity : lTransformsToRemove) {
     rTransforms.erase(iEntity);
 }</code></pre>
@@ -228,9 +259,14 @@
                     </div>
                 </div>
 
-                <div class="feature-block">
+                <!-- Feature 4: Polymorphic System Iteration -->
+                <div class="feature-block" id="sys-systems">
                     <div class="dropdown-header">
-                        <h3>Polymorphic System Iteration</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">04</span>
+                            <h3>Polymorphic System Iteration</h3>
+                            <span class="system-domain">Main Loop · Kinematics</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     

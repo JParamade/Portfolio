@@ -10,7 +10,7 @@
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         
@@ -44,24 +44,25 @@
             <!-- 1. CINEMATIC HERO & TRAILER -->
             <section class="project-hero">
                 
-                <!-- LEFT COLUMN: Text & Ribbons -->
+                <!-- LEFT COLUMN: Text & Tags -->
                 <div class="hero-info">
                     <h1 class="project-title">Blast Course 2</h1>
                     <p class="studio-tagline">Developed at <b>Amiguito Studios</b></p>
 
                     <p class="project-tagline">
-                        The explosive sequel to <i>Blast Course</i>. A first-person puzzle-platformer centered around the high-speed art of Rocket Jumping.&nbsp;</p>
+                        The explosive sequel to <i>Blast Course</i>. A first-person puzzle-platformer centered around the high-speed art of Rocket Jumping.
+                    </p>
                     
                     <!-- Tech Tags -->
                     <div class="tech-tags">
                         <span class="tag tag-engine"><i class="fas fa-cube" aria-hidden="true"></i> Unreal Engine 5</span>
-                        <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> C++ & Blueprints</span>
+                        <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> C++ &amp; Blueprints</span>
                         <span class="tag tag-tool"><i class="fas fa-wrench" aria-hidden="true"></i> FMOD</span>
                     </div>
                     
                 </div>
 
-                <!-- RIGHT COLUMN: Media & CTA -->
+                <!-- RIGHT COLUMN: Media -->
                 <div class="hero-media-column">
                     
                     <!-- Game Trailer -->
@@ -97,28 +98,44 @@
                 </div>
             </section>
 
-            <!-- 3. TECHNICAL DEEP DIVES (For Tech Leads) -->
+            <!-- 3. TECHNICAL DESIGN DOCUMENT BANNER -->
             <div class="whitepaper-banner fade-in-up delay-1">
                 <div class="banner-content">
-                    
                     <div class="banner-text">
                         <h3><i class="fa-solid fa-file-code" aria-hidden="true"></i>&nbsp;&nbsp;Technical Deep-Dive</h3>
                         <p>Want the full technical breakdown? Download the 8-page design document detailing the projectile math, memory pooling strategies, and extended UMG framework.</p>
                     </div>
                 </div>
-                <a href="/assets/files/JaimeParamo_BlastCourse2_TDD.pdf" target="_blank" class="btn-external pdf-btn">
+                <a href="/assets/files/JaimeParamo_BlastCourse2_TDD.pdf" target="_blank" rel="noopener noreferrer" class="btn-external pdf-btn">
                     <i class="fas fa-download" aria-hidden="true"></i> Download PDF
                 </a>
             </div>
 
+            <!-- 4. ENGINEERING SYSTEMS -->
             <section class="tech-deep-dives">
                 
-                <h2 class="section-title">Engineering <span class="highlight">Systems</span></h2>
+                <div class="systems-header-bar">
+                    <h2 class="section-title">Engineering <span class="highlight">Systems</span></h2>
+                    <button type="button" class="expand-all-btn" id="toggle-all-systems">
+                        <i class="fas fa-expand-alt"></i> Expand All
+                    </button>
+                </div>
 
-                <!-- Feature 1: Rocket Architecture -->
-                <div class="feature-block">
+                <!-- Quick-Jump System Bar -->
+                <nav class="system-jump-nav" aria-label="Jump to system">
+                    <a href="#sys-rockets">01. Projectile Architecture</a>
+                    <a href="#sys-pooling">02. Dual Object Pooling</a>
+                    <a href="#sys-umg">03. Extended UMG Framework</a>
+                </nav>
+
+                <!-- Feature 1: Rocket Architecture (Open by default) -->
+                <div class="feature-block open" id="sys-rockets">
                     <div class="dropdown-header">
-                        <h3>Polymorphic Projectile Architecture</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">01</span>
+                            <h3>Polymorphic Projectile Architecture</h3>
+                            <span class="system-domain">Gameplay · C++</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -131,7 +148,7 @@
                                 <ul class="tech-list">
                                     <li><i class="fas fa-check" aria-hidden="true"></i> <b>Material-Based Collisions:</b> Environmental interactions are handled without extra actor components by detecting "Defuser" surfaces directly via <code>UMaterialInterface</code>.</li>
                                     <li><i class="fas fa-check" aria-hidden="true"></i> <b>Polymorphic Extensions:</b> <code>ABaseRocket</code> lets child classes (such as Bounce or Remote rockets) implement custom behaviors like vector reflection simply by overriding the virtual <code>Impact()</code> method.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Decoupled Lifecycle:</b> Rockets have zero awareness of the object pool, they simply execute their lifecycle and broadcast an <code>OnRocketFinished</code> multicast delegate when ready to be reclaimed.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Decoupled Lifecycle:</b> Rockets have zero awareness of the object pool; they simply execute their lifecycle and broadcast an <code>OnRocketFinished</code> multicast delegate when ready to be reclaimed.</li>
                                 </ul>
                             </div>
                             
@@ -143,9 +160,13 @@
                 </div>
 
                 <!-- Feature 2: Object Pooling -->
-                <div class="feature-block">
+                <div class="feature-block" id="sys-pooling">
                     <div class="dropdown-header">
-                        <h3>Dual Object Pooling</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">02</span>
+                            <h3>Dual Object Pooling</h3>
+                            <span class="system-domain">Optimization · Memory</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -188,10 +209,14 @@
                     </div>
                 </div>
 
-                <!-- Feature 2: UMG Architecture -->
-                <div class="feature-block">
+                <!-- Feature 3: UMG Architecture -->
+                <div class="feature-block" id="sys-umg">
                     <div class="dropdown-header">
-                        <h3>Extended UMG Architecture</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">03</span>
+                            <h3>Extended UMG Architecture</h3>
+                            <span class="system-domain">UI · Editor Tooling</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -221,10 +246,10 @@
     <span class="keyword">if</span> (m_bPreserveAspectRatio) {
         <span class="keyword">if</span> (m_fAspectRatio &lt; 0.f &amp;&amp; m_vWidgetSize.Y != 0.f) {
             m_fAspectRatio = m_vWidgetSize.X / m_vWidgetSize.Y;
-        }<br>
+        }
         ApplyAspectRatio();
     } 
-<span class="keyword">    else</span> m_fAspectRatio = 0.f;
+    <span class="keyword">else</span> m_fAspectRatio = 0.f;
 
     SetWidgetSize(m_vWidgetSize);
     UpdateSizeToContent();
@@ -266,5 +291,4 @@
         <script src="/scripts/main.js"></script>
         <script src="/scripts/project.js"></script>
     </body>
-
 </html>
