@@ -10,7 +10,7 @@
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         
@@ -72,7 +72,7 @@
                     <!-- Tech Tags -->
                     <div class="tech-tags">
                         <span class="tag tag-engine"><i class="fas fa-cube" aria-hidden="true"></i> Unreal Engine 5</span>
-                        <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> C++ & Blueprints</span>
+                        <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> C++ &amp; Blueprints</span>
                         <span class="tag tag-tool"><i class="fas fa-wrench" aria-hidden="true"></i> FMOD</span>
                     </div>
                     
@@ -124,7 +124,7 @@
                 </div>
             </section>
 
-            <!-- 3. TECHNICAL DEEP DIVES (For Tech Leads) -->
+            <!-- 3. TECHNICAL DESIGN DOCUMENT BANNER -->
             <div class="whitepaper-banner fade-in-up delay-1">
                 <div class="banner-content">
                     <div class="banner-text">
@@ -137,14 +137,34 @@
                 </a>
             </div>
             
+            <!-- 4. ENGINEERING SYSTEMS -->
             <section class="tech-deep-dives">
                 
-                <h2 class="section-title">Engineering <span class="highlight">Systems</span></h2>
+                <div class="systems-header-bar">
+                    <h2 class="section-title">Engineering <span class="highlight">Systems</span></h2>
+                    <button type="button" class="expand-all-btn" id="toggle-all-systems">
+                        <i class="fas fa-expand-alt"></i> Expand All
+                    </button>
+                </div>
 
-                <!-- Feature 1: Custom UI Focus Routing -->
-                <div class="feature-block">
+                <!-- Quick-Jump System Bar -->
+                <nav class="system-jump-nav" aria-label="Jump to system">
+                    <a href="#sys-focus">01. Focus Routing</a>
+                    <a href="#sys-layouts">02. Data-Driven UI</a>
+                    <a href="#sys-hud">03. Event-Driven HUD</a>
+                    <a href="#sys-fmod">04. FMOD Audio</a>
+                    <a href="#sys-consumables">05. Consumables</a>
+                    <a href="#sys-steam">06. Steam API</a>
+                </nav>
+
+                <!-- Feature 1: Custom UI Focus Routing (Open by default) -->
+                <div class="feature-block open" id="sys-focus">
                     <div class="dropdown-header">
-                        <h3>Custom Focus Routing & Dynamic Input</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">01</span>
+                            <h3>Custom Focus Routing &amp; Dynamic Input</h3>
+                            <span class="system-domain">UI · C++</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -160,7 +180,7 @@
                                 <p>To support smooth switching between mouse and gamepad without fighting Unreal Engine's native <code>SetUserFocus</code> behavior, I built a custom input-detection system and focus router that maps flat widget arrays into irregular 2D grids.</p>
                                 <ul class="tech-list">
                                     <li><i class="fas fa-check" aria-hidden="true"></i> <b>Hardware Polling:</b> The <code>ABasePlayerController</code> acts as the single source of truth, dynamically switching between <code>FOCUS</code> (Gamepad) and <code>FREE</code> (Mouse) states the moment hardware intent is detected.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Menu Stack & Grid Calculation:</b> The <code>UGeneralFocusManager</code> routes inputs exclusively to the top of the menu stack, while the <code>USpecificFocusManager</code> handles complex, irregular grid navigation.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Menu Stack &amp; Grid Calculation:</b> The <code>UGeneralFocusManager</code> routes inputs exclusively to the top of the menu stack, while the <code>USpecificFocusManager</code> handles complex, irregular grid navigation.</li>
                                     <li><i class="fas fa-check" aria-hidden="true"></i> <b>Interface Interception:</b> Widgets inheriting <code>IAxisNavigable</code> intercept directional inputs to adjust internal values (like a volume slider) without forcing the system to move focus to a different widget.</li>
                                 </ul>
                             </div>
@@ -189,9 +209,13 @@
                 </div>
 
                 <!-- Feature 2: Data-Driven Layouts -->
-                <div class="feature-block">
+                <div class="feature-block" id="sys-layouts">
                     <div class="dropdown-header">
-                        <h3>Data-Driven Production Layouts</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">02</span>
+                            <h3>Data-Driven Production Layouts</h3>
+                            <span class="system-domain">UI · DataTables</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -239,9 +263,13 @@
                 </div>
 
                 <!-- Feature 3: Event-Driven HUD & Polish -->
-                <div class="feature-block">
+                <div class="feature-block" id="sys-hud">
                     <div class="dropdown-header">
-                        <h3>Event-Driven HUD & Rich Text Parsers</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">03</span>
+                            <h3>Event-Driven HUD &amp; Rich Text Parsers</h3>
+                            <span class="system-domain">UMG · Shaders</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -287,9 +315,13 @@ GetWorld()-&gt;GetTimerManager().SetTimer(
                 </div>
 
                 <!-- Feature 4: FMOD Audio Architecture -->
-                <div class="feature-block">
+                <div class="feature-block" id="sys-fmod">
                     <div class="dropdown-header">
-                        <h3>FMOD Audio & Auto-Garbage Collection</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">04</span>
+                            <h3>FMOD Audio &amp; Auto-Garbage Collection</h3>
+                            <span class="system-domain">Audio · FMOD API</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -336,9 +368,13 @@ GetWorld()-&gt;GetTimerManager().SetTimer(
                 </div>
 
                 <!-- Feature 5: UObject Consumable Architecture -->
-                <div class="feature-block">
+                <div class="feature-block" id="sys-consumables">
                     <div class="dropdown-header">
-                        <h3>UObject-Based Consumable Architecture</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">05</span>
+                            <h3>UObject-Based Consumable Architecture</h3>
+                            <span class="system-domain">Gameplay · NavMesh</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     
@@ -389,9 +425,13 @@ GetWorld()-&gt;GetTimerManager().SetTimer(
                 </div>
 
                 <!-- Feature 6: Steam API & Serialization -->
-                <div class="feature-block">
+                <div class="feature-block" id="sys-steam">
                     <div class="dropdown-header">
-                        <h3>Asynchronous Steam API Synchronization</h3>
+                        <div class="dropdown-title-group">
+                            <span class="system-index">06</span>
+                            <h3>Asynchronous Steam API Synchronization</h3>
+                            <span class="system-domain">OnlineSubsystem · SaveData</span>
+                        </div>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     

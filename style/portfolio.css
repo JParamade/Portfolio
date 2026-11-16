@@ -18,7 +18,7 @@
 
 .portfolio-intro {
     text-align: left;
-    margin-bottom: 56px;
+    margin-bottom: 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,17 +38,80 @@
 }
 
 /* ==========================================================================
-   2. PORTFOLIO GRID
+   2. FILTER PILLS
    ========================================================================== */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 28px;
+.portfolio-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.filter-pill {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: var(--font-code);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-pill:hover {
+    border-color: var(--border-hover);
+    color: var(--text-main);
+    background: var(--surface-2);
+}
+
+.filter-pill.active {
+    background: var(--accent-tint);
+    border-color: var(--accent-border);
+    color: var(--accent-color);
 }
 
 /* ==========================================================================
-   3. PROJECT CARDS (Base Styles & Hover Effects)
+   3. PORTFOLIO LAYOUT (Flagship + 2-Column Grid)
    ========================================================================== */
+.portfolio-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.flagship-project-card {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.flagship-project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    background: var(--surface-2);
+}
+
+.flagship-img-wrapper {
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+    border-right: 1px solid var(--border-subtle);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
 .project-card {
     background: var(--surface-1);
     border: 1px solid var(--border-subtle);
@@ -64,6 +127,10 @@
     transform: translateY(-4px);
     border-color: var(--border-hover);
     background: var(--surface-2);
+}
+
+.project-filter-item.is-hidden {
+    display: none;
 }
 
 /* ==========================================================================
@@ -84,6 +151,7 @@
     transition: transform 0.4s ease;
 }
 
+.flagship-project-card:hover .project-image,
 .project-card:hover .project-image {
     transform: scale(1.03);
 }
@@ -125,7 +193,7 @@
    5. CARD CONTENT & TYPOGRAPHY
    ========================================================================== */
 .project-content {
-    padding: 24px;
+    padding: 26px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -141,10 +209,15 @@
 
 .project-title {
     color: var(--text-main);
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
     margin: 0;
     line-height: 1.25;
+}
+
+.flagship-project-card .project-title {
+    font-size: 1.6rem;
+    font-weight: 800;
 }
 
 .project-year {
@@ -161,16 +234,24 @@
 
 .studio-name {
     color: var(--text-dim);
+    font-family: var(--font-code);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.84rem;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .studio-name i {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+}
+
+.project-summary {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    margin: 0 0 20px 0;
 }
 
 /* ==========================================================================
@@ -239,10 +320,12 @@
     transition: transform 0.2s ease;
 }
 
+.flagship-project-card:hover .view-project-action,
 .project-card:hover .view-project-action {
     color: var(--accent-color);
 }
 
+.flagship-project-card:hover .view-project-action i,
 .project-card:hover .view-project-action i {
     transform: translateX(4px);
 }
@@ -272,4 +355,23 @@
 .portfolio-footer-hook p::before {
     content: "// ";
     color: var(--accent-color);
+}
+
+/* ==========================================================================
+   9. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 900px) {
+    .flagship-project-card {
+        grid-template-columns: 1fr;
+    }
+
+    .flagship-img-wrapper {
+        min-height: 220px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
 }

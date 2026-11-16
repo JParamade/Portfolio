@@ -10,7 +10,7 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -42,20 +42,26 @@
 
         <main class="portfolio-page fade-in-up">
             
-            <!-- Introduction -->
+            <!-- Introduction & Filter Pills -->
             <section class="portfolio-intro">
                 <h1 class="page-title">Selected <span class="highlight">Works</span></h1>
                 <p class="intro-text">
                     I am a Game Programmer specializing in <b>Unreal Engine 5</b> and <b>C++</b>, with over five years of experience building games across studio production, research, and personal projects. Combining a <b>Master’s in Game Programming</b> with a <b>Bachelor’s in Game Design</b>, I focus on writing clean, modular code and <b>designer-friendly systems</b> across gameplay, UI, and audio.
                 </p>
+
+                <div class="portfolio-filters" role="tablist" aria-label="Filter projects">
+                    <button type="button" class="filter-pill active" data-filter="all">All Projects (3)</button>
+                    <button type="button" class="filter-pill" data-filter="studio">Studio Production</button>
+                    <button type="button" class="filter-pill" data-filter="personal">Personal Projects</button>
+                </div>
             </section>
 
-            <!-- Projects Grid -->
-            <section class="portfolio-grid">
+            <!-- Flagship + Supporting Projects Layout -->
+            <section class="portfolio-layout">
                 
-                <!-- Project 1: Blast Course 2 -->
-                <a class="project-card delay-1" href="/portfolio/projects/blast-course-2">
-                    <div class="card-img-wrapper">
+                <!-- Flagship Project: Blast Course 2 -->
+                <a class="flagship-project-card project-filter-item delay-1" href="/portfolio/projects/blast-course-2" data-category="studio">
+                    <div class="flagship-img-wrapper">
                         <img src="/assets/images/portfolio/blast-course-2/hero.webp" alt="Blast Course 2 Hero Image" class="project-image">
                         <div class="role-badge">Game Programmer</div>
                     </div>
@@ -70,77 +76,92 @@
 
                         <span class="studio-name"><i class="fas fa-building" aria-hidden="true"></i> Amiguito Studios</span>
 
+                        <p class="project-summary">
+                            Sequel to the first-person rocket-jumping puzzle-platformer. Engineered tick-driven projectile trajectories, dual O(1) memory pooling, and editor-synchronized UMG layout widgets in C++.
+                        </p>
+
                         <div class="tech-tags">
                             <span class="tag tag-engine"><i class="fas fa-cube" aria-hidden="true"></i> Unreal Engine 5</span>
-                            <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> Blueprints & C++</span>
+                            <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> Blueprints &amp; C++</span>
                             <span class="tag tag-tool"><i class="fas fa-wrench" aria-hidden="true"></i> FMOD</span>
                             <span class="tag tag-team"><i class="fas fa-users" aria-hidden="true"></i> Team: 20+</span>
                         </div>
 
                         <div class="view-project-action">
-                            View Details <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            Read Technical Deep-Dive <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </div>
                     </div>
                 </a>
-                
-                <!-- Project 2: Dorothy's Job -->
-                <a class="project-card delay-2" href="/portfolio/projects/dorothys-job">
-                    <div class="card-img-wrapper">
-                        <img src="/assets/images/portfolio/dorothys-job/hero.png" alt="Dorothy's Job Hero Image" class="project-image">
-                        <div class="role-badge">UI, Audio &amp; Gameplay Programmer</div>
-                    </div>
 
-                    <div class="project-content">
-                        <div class="project-header-row">
-                            <h2 class="project-title">Dorothy’s Job</h2>
-                            <div class="card-badges">
-                                <i class="fab fa-steam platform-icon steam" title="Published on Steam" aria-hidden="true"></i>
-                                <span class="project-year">2025</span>
+                <!-- Supporting 2-Column Grid -->
+                <div class="portfolio-grid">
+                    <!-- Project 2: Dorothy's Job -->
+                    <a class="project-card project-filter-item delay-2" href="/portfolio/projects/dorothys-job" data-category="studio">
+                        <div class="card-img-wrapper">
+                            <img src="/assets/images/portfolio/dorothys-job/hero.png" alt="Dorothy's Job Hero Image" class="project-image">
+                            <div class="role-badge">UI, Audio &amp; Gameplay Programmer</div>
+                        </div>
+
+                        <div class="project-content">
+                            <div class="project-header-row">
+                                <h2 class="project-title">Dorothy’s Job</h2>
+                                <div class="card-badges">
+                                    <i class="fab fa-steam platform-icon steam" title="Published on Steam" aria-hidden="true"></i>
+                                    <span class="project-year">2025</span>
+                                </div>
+                            </div>
+
+                            <span class="studio-name"><i class="fas fa-building" aria-hidden="true"></i> Bola 13 Studios</span>
+
+                            <p class="project-summary">
+                                Isometric twin-stick shooter shipped on Steam with 30,000+ activations. Built custom C++ focus routing, centralized FMOD audio subsystems, and UObject-based consumables.
+                            </p>
+
+                            <div class="tech-tags">
+                                <span class="tag tag-engine"><i class="fas fa-cube" aria-hidden="true"></i> Unreal Engine 5</span>
+                                <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> Blueprints &amp; C++</span>
+                                <span class="tag tag-tool"><i class="fas fa-wrench" aria-hidden="true"></i> FMOD</span>
+                                <span class="tag tag-team"><i class="fas fa-users" aria-hidden="true"></i> Team: 30+</span>
+                            </div>
+
+                            <div class="view-project-action">
+                                Read Technical Deep-Dive <i class="fas fa-arrow-right" aria-hidden="true"></i>
                             </div>
                         </div>
-
-                        <span class="studio-name"><i class="fas fa-building" aria-hidden="true"></i> Bola 13 Studios</span>
-
-                        <div class="tech-tags">
-                            <span class="tag tag-engine"><i class="fas fa-cube" aria-hidden="true"></i> Unreal Engine 5</span>
-                            <span class="tag tag-lang"><i class="fas fa-code" aria-hidden="true"></i> Blueprints & C++</span>
-                            <span class="tag tag-tool"><i class="fas fa-wrench" aria-hidden="true"></i> FMOD</span>
-                            <span class="tag tag-team"><i class="fas fa-users" aria-hidden="true"></i> Team: 30+</span>
+                    </a>
+                    
+                    <!-- Project 3: Burntbite -->
+                    <a class="project-card project-filter-item delay-2" href="/portfolio/projects/burntbite-ecs" data-category="personal">
+                        <div class="card-img-wrapper">
+                            <img src="/assets/images/portfolio/burntbite/hero.webp" alt="Burntbite Hero Image" class="project-image">
                         </div>
 
-                        <div class="view-project-action">
-                            View Details <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Project 3: Burntbite -->
-                <a class="project-card delay-2" href="/portfolio/projects/burntbite-ecs">
-                    <div class="card-img-wrapper">
-                        <img src="/assets/images/portfolio/burntbite/hero.webp" alt="Burntbite Hero Image" class="project-image">
-                    </div>
+                        <div class="project-content">
+                            <div class="project-header-row">
+                                <h2 class="project-title">Burntbite Engine</h2>
+                                <div class="card-badges">
+                                    <i class="fab fa-github platform-icon github" title="Published on GitHub" aria-hidden="true"></i>
+                                    <span class="project-year">2025</span>
+                                </div>
+                            </div>
 
-                    <div class="project-content">
-                        <div class="project-header-row">
-                            <h2 class="project-title">Burntbite Engine</h2>
-                            <div class="card-badges">
-                                <i class="fab fa-github platform-icon github" title="Published on GitHub" aria-hidden="true"></i>
-                                <span class="project-year">2025</span>
+                            <span class="studio-name"><i class="fas fa-code-branch" aria-hidden="true"></i> Personal Project</span>
+
+                            <p class="project-summary">
+                                Lightweight Entity Component System (ECS) game engine built from scratch in C++, featuring type-indexed storage, XML entity factories, and headless manager entities.
+                            </p>
+                            
+                            <div class="tech-tags">
+                                <span class="tag tag-lang"><i class="fab fa-cuttlefish" aria-hidden="true"></i> C++</span>
+                                <span class="tag tag-tool"><i class="fas fa-database" aria-hidden="true"></i> PugiXML</span>
+                            </div>
+
+                            <div class="view-project-action">
+                                Read Technical Deep-Dive <i class="fas fa-arrow-right" aria-hidden="true"></i>
                             </div>
                         </div>
-
-                        <span class="studio-name">Personal Project</span>
-                        
-                        <div class="tech-tags">
-                            <span class="tag tag-lang"><i class="fab fa-cuttlefish" aria-hidden="true"></i> C++</span>
-                            <span class="tag tag-tool"><i class="fas fa-database" aria-hidden="true"></i> PugiXML</span>
-                        </div>
-
-                        <div class="view-project-action">
-                            View Details <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
 
             </section>
             
@@ -174,6 +195,6 @@
         </button>
         
         <script src="/scripts/main.js"></script>
+        <script src="/scripts/portfolio.js"></script>
     </body>
-
 </html>
