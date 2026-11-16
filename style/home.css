@@ -322,34 +322,29 @@
 
 .skill-list li {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    align-items: baseline;
+    gap: 12px;
+    padding: 9px 0;
     font-size: 0.95rem;
 }
 
-.skill-list li:last-child {
-    border-bottom: none;
+.skill-list li::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px dotted var(--border-subtle);
+    order: 2;
 }
 
-.skill-name { color: var(--text-muted); }
-
-.skill-name i {
-    width: 22px; 
-    text-align: center;
-    margin-right: 8px;
-    color: var(--text-dim);
+.skill-name { 
+    color: var(--text-muted); 
+    order: 1;
 }
 
 .skill-time { 
     font-family: var(--font-code); 
-    color: var(--text-main); 
+    color: var(--text-dim); 
     font-size: 0.85rem;
-    background: var(--surface-1);
-    padding: 3px 8px;
-    border-radius: 5px;
-    border: 1px solid var(--border-subtle);
+    order: 3;
 }
 
 /* ==========================================================================
