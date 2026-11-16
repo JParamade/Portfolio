@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="@TOFILL">
+        <meta name="description" content="Burntbite Engine - A lightweight Entity Component System (ECS) game engine built from scratch in C++, featuring type-indexed storage and XML-driven entity instantiation.">
         <title>Burntbite Engine | JParamade Portfolio</title>
 
         <link rel="icon" href="/assets/images/logo.png">
@@ -59,7 +59,7 @@
                     </div>
                     
                     <p class="project-tagline">
-                        A lightweight Entity Component System (ECS) game engine built entirely from scratch in C++. Designed to prioritize data locality, strict decoupling of state and behavior, and data-driven entity instantiation.
+                        A lightweight Entity Component System (ECS) game engine built from scratch in C++, focused on decoupling state from behavior and supporting data-driven entity instantiation.
                     </p>
                     
                     <div class="tech-tags">
@@ -89,7 +89,7 @@
                 <div class="banner-content">
                     <div class="banner-text">
                         <h3><i class="fa-solid fa-file-code" aria-hidden="true"></i>&nbsp;&nbsp;Architecture Deep-Dive</h3>
-                        <p>Want to see the full technical breakdown? Download the comprehensive 5-page whitepaper detailing the polymorphic ECS storage, data-driven XML entity factories, and memory sweeping.</p>
+                        <p>Want the full technical breakdown? Download the 5-page design document covering the type-indexed ECS storage, XML entity factory, and game state lifecycle.</p>
                     </div>
                 </div>
                 <a href="/assets/files/JaimeParamo_Burntbite_TDD.pdf" target="_blank" rel="noopener noreferrer" class="btn-external pdf-btn">
@@ -116,7 +116,7 @@
                                 
                                 <p>To create a truly decoupled ECS, the core registry must be able to hold any Plain Old Data (POD) struct without requiring hardcoded lists. I implemented a polymorphic hash-map storage system driven by runtime type information.</p>
                                 <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Type Erasure pattern:</b> The core <code>ECS</code> class utilizes <code>std::type_index</code> to map component types to an abstract <code>IStorage</code> interface, allowing the engine to scale dynamically.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Type Erasure Pattern:</b> The core <code>ECS</code> class maps <code>std::type_index</code> keys to an abstract <code>IStorage</code> interface, allowing new component types to be registered dynamically at runtime.</li>
                                     <li><i class="fas fa-check" aria-hidden="true"></i> <b>Direct Mapping:</b> Under the hood, <code>StorageImpl&lt;C&gt;</code> maintains an <code>std::unordered_map&lt;Entity, C&gt;</code>, ensuring fast lookup times by mapping the unique entity ID directly to its component data.</li>
                                 </ul>
                             </div>
@@ -156,10 +156,10 @@
                                     <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
                                 </a>
                                 
-                                <p>Hardcoding component data into C++ ruins iteration times. To solve this, I integrated PugiXML to act as a factory, allowing entities to be constructed dynamically from external data files.</p>
+                                <p>Hardcoding component values in C++ slows down iteration and requires recompiling for simple tweaks. To keep entity definitions flexible, I integrated PugiXML into an entity factory that constructs game objects directly from external XML files.</p>
                                 <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Dynamic Parsing:</b> The <code>EntityFactory</code> parses nodes like <code>&lt;transform&gt;</code> or <code>&lt;velocity&gt;</code> and translates them into ECS components dynamically during runtime.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Robust Fallbacks:</b> If an XML attribute or entire node is missing, the parser safely attaches a default-constructed component to the entity ID, ensuring the engine never crashes from bad data.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Dynamic Parsing:</b> The <code>EntityFactory</code> reads XML nodes such as <code>&lt;transform&gt;</code> or <code>&lt;velocity&gt;</code> and attaches the corresponding components to new entity IDs at runtime.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Safe Fallbacks:</b> When optional XML attributes are omitted, the parser falls back to sensible default values, preventing malformed data files from breaking entity creation.</li>
                                 </ul>
                             </div>
                             
@@ -199,7 +199,7 @@
                                 <p>A persistent architectural challenge in pure ECS is tracking global state such as high scores or universal spawn timers, which do not logically belong to physical actors.</p>
                                 <ul class="tech-list">
                                     <li><i class="fas fa-check" aria-hidden="true"></i> <b>Headless Architecture:</b> The <code>GameState</code> creates a "Manager Entity" during initialization. This is a headless entity ID that exclusively holds <code>SpawnTimer</code> and <code>Score</code> components.</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Aggressive Memory Sweeping:</b> When the player dies, the engine must reset the board. <code>ResetForNewGame()</code> aggressively iterates through component maps, systematically erasing any entity ID that doesn't match the Manager ID, cleaning memory while retaining global rules.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Selective Board Cleanup:</b> When a run ends, <code>ResetForNewGame()</code> iterates through the component maps and erases every entity ID except the Manager Entity, clearing gameplay objects while preserving global session state.</li>
                                 </ul>
                             </div>
                             
@@ -241,9 +241,9 @@
                                     <i class="fab fa-github"></i> View Implementation on GitHub <i class="fas fa-arrow-right"></i>
                                 </a>
                                 
-                                <p>Behavior in Burntbite is driven entirely by Systems. To maintain a clean game loop in <code>main()</code>, all logic managers inherit from a central <code>ISystem</code> interface.</p>
+                                <p>Game logic in Burntbite is handled entirely by Systems. To keep the main loop in <code>main()</code> clean and extensible, all systems inherit from a shared <code>ISystem</code> interface.</p>
                                 <ul class="tech-list">
-                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Data-Driven Execution:</b> Systems operate only on the entities that possess the specific components they require. The core loop executes their <code>Update()</code> functions polymorphically.</li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i> <b>Component Filtering:</b> Each system queries only the entities holding the specific components it requires, while the main loop invokes their <code>Update()</code> methods polymorphically.</li>
                                     <li><i class="fas fa-check" aria-hidden="true"></i> <b>Tag Querying:</b> The <code>MovementSystem</code> directly applies kinematic calculations frame-by-frame, querying empty structs like <code>EnemyTag</code> to selectively apply environmental forces like gravity.</li>
                                 </ul>
                             </div>
