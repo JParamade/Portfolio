@@ -54,7 +54,7 @@
 
 .hero h1 {
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 900;
     font-size: clamp(2.8rem, 7vw, 6.2rem); 
     margin: 0 0 12px 0;
     letter-spacing: -0.035em;
@@ -711,4 +711,5 @@
         border-right: none;
         border-bottom: 1px solid var(--border-subtle);
     }
+
 }
