@@ -127,11 +127,12 @@ body {
 }
 
 .nav a {
-    margin-left: 28px;
+    margin-left: 26px;
     text-decoration: none;
     color: var(--text-muted);
-    font-weight: 500;
-    font-size: 0.95rem;
+    font-family: var(--font-code);
+    font-weight: 600;
+    font-size: 0.88rem;
     transition: color 0.2s ease, border-color 0.2s ease;
     padding-bottom: 6px;
     border-bottom: 2px solid transparent;
