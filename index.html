@@ -69,7 +69,10 @@
                         <div class="about-text-column">
                             <h2 class="section-title" style="margin-bottom: 20px;">Hello, <span class="highlight">World</span>!</h2>
                             <p class="about-text">
-                                I am a Game Programmer based in Madrid specializing in <b>gameplay systems</b>, <b>UI architecture</b>, and <b>audio integration</b>. With a background in both game design and C++ engineering, I build modular systems in Unreal Engine 5 that give designers accessible, reliable tools to iterate on gameplay without friction.
+                                I am a Game Programmer based in Madrid specializing in <b>gameplay systems</b>, <b>UI architecture</b>, and <b>audio integration</b>. With a background in both game design and C++ engineering, I build modular systems in Unreal Engine 5 that give designers accessible, reliable tools to iterate on gameplay without friction.<br>
+                            </p>
+                            <p class="about-text">
+                                Alongside studio production across multiple UE5 projects, I spent three years teaching Unreal Engine 5 at U-tad’s Summer School and over a decade studying music theory and piano, a background that drives my focus on tactile UI and responsive FMOD audio pipelines.
                             </p>
                             <a href="/assets/files/CV_JaimeParamo.pdf" target="_blank" class="btn-primary"><i class="fas fa-file"></i> Download Resume</a>
                         </div>
@@ -170,18 +173,26 @@
             <!-- 6. FEATURED PROJECTS -->
             <section class="home-section glass-bg" id="featured-projects">
                 <div class="section-inner">
-                    <h2 class="section-title">Featured <span class="highlight">Work</span></h2>
+                    <div class="section-header-row">
+                        <h2 class="section-title">Featured <span class="highlight">Work</span></h2>
+                        <a href="/portfolio" class="section-link">All Projects <i class="fas fa-arrow-right"></i></a>
+                    </div>
                     
-                    <div class="featured-grid">
-                        <a href="/portfolio/projects/blast-course-2" class="mini-project-card">
-                            <img src="assets/images/portfolio/blast-course-2/hero.webp" alt="Blast Course 2">
-                            <div class="mini-project-info">
+                    <div class="featured-layout">
+                        <!-- Flagship Full-Width Project -->
+                        <a href="/portfolio/projects/blast-course-2" class="flagship-card">
+                            <div class="flagship-media">
+                                <img src="assets/images/portfolio/blast-course-2/hero.webp" alt="Blast Course 2">
+                                <span class="flagship-badge">Current Studio Project</span>
+                            </div>
+                            <div class="flagship-info">
+                                <span class="project-studio">Amiguito Studios</span>
                                 <h3>Blast Course 2</h3>
-                                <p>The explosive sequel to Blast Course. A first-person puzzle-platformer centered around the high-speed art of Rocket Jumping.&nbsp;</p>
+                                <p>The explosive sequel to Blast Course. A first-person puzzle-platformer centered around the high-speed art of Rocket Jumping.</p>
                                 
-                                <div class="tag-container" style="margin-bottom: 20px;">
+                                <div class="tag-container">
                                     <span class="tag tag-engine"><i class="fas fa-cube"></i> Unreal Engine 5</span>
-                                    <span class="tag tag-lang"><i class="fas fa-code"></i> Blueprints & C++</span>
+                                    <span class="tag tag-lang"><i class="fas fa-code"></i> Blueprints &amp; C++</span>
                                     <span class="tag tag-tool"><i class="fas fa-music"></i> FMOD</span>
                                 </div>
                                 
@@ -189,36 +200,41 @@
                             </div>
                         </a>
 
-                        <a href="/portfolio/projects/dorothys-job" class="mini-project-card">
-                            <img src="assets/images/portfolio/dorothys-job/hero.png" alt="Dorothy's Job">
-                            <div class="mini-project-info">
-                                <h3>Dorothy's Job</h3>
-                                <p>An isometric twin-stick shooter where players clean up enemy-filled levels using weaponized mops and vacuums.</p>
-                                
-                                <div class="tag-container" style="margin-bottom: 20px;">
-                                    <span class="tag tag-engine"><i class="fas fa-cube"></i> Unreal Engine 5</span>
-                                    <span class="tag tag-lang"><i class="fas fa-code"></i> Blueprints & C++</span>
-                                    <span class="tag tag-tool"><i class="fas fa-music"></i> FMOD</span>
+                        <!-- Two Supporting Cards -->
+                        <div class="featured-subgrid">
+                            <a href="/portfolio/projects/dorothys-job" class="mini-project-card">
+                                <img src="assets/images/portfolio/dorothys-job/hero.png" alt="Dorothy's Job">
+                                <div class="mini-project-info">
+                                    <span class="project-studio">Bola 13 Studios</span>
+                                    <h3>Dorothy's Job</h3>
+                                    <p>An isometric twin-stick shooter where players clean up enemy-filled levels using weaponized mops and vacuums.</p>
+                                    
+                                    <div class="tag-container">
+                                        <span class="tag tag-engine"><i class="fas fa-cube"></i> Unreal Engine 5</span>
+                                        <span class="tag tag-lang"><i class="fas fa-code"></i> Blueprints &amp; C++</span>
+                                        <span class="tag tag-tool"><i class="fas fa-music"></i> FMOD</span>
+                                    </div>
+                                    
+                                    <span class="read-more">View Deep Dive <i class="fas fa-arrow-right"></i></span>
                                 </div>
-                                
-                                <span class="read-more">View Deep Dive <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </a>
-                        
-                        <a href="/portfolio/projects/burntbite-ecs" class="mini-project-card">
-                            <img src="assets/images/portfolio/burntbite/hero.webp" alt="Burntbite">
-                            <div class="mini-project-info">
-                                <h3>Burntbite Engine</h3>
-                                <p>A lightweight Entity Component System (ECS) game engine built entirely from scratch in C++.</p>
-                                
-                                <div class="tag-container" style="margin-bottom: 20px;">
-                                    <span class="tag tag-lang"><i class="fab fa-cuttlefish" aria-hidden="true"></i> C++</span>
-                                    <span class="tag tag-tool"><i class="fas fa-database" aria-hidden="true"></i> PugiXML</span>
+                            </a>
+                            
+                            <a href="/portfolio/projects/burntbite-ecs" class="mini-project-card">
+                                <img src="assets/images/portfolio/burntbite/hero.webp" alt="Burntbite">
+                                <div class="mini-project-info">
+                                    <span class="project-studio">Personal Project</span>
+                                    <h3>Burntbite Engine</h3>
+                                    <p>A lightweight Entity Component System (ECS) game engine built entirely from scratch in C++.</p>
+                                    
+                                    <div class="tag-container">
+                                        <span class="tag tag-lang"><i class="fab fa-cuttlefish" aria-hidden="true"></i> C++</span>
+                                        <span class="tag tag-tool"><i class="fas fa-database" aria-hidden="true"></i> PugiXML</span>
+                                    </div>
+                                    
+                                    <span class="read-more">View Deep Dive <i class="fas fa-arrow-right"></i></span>
                                 </div>
-                                
-                                <span class="read-more">View Deep Dive <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -396,4 +412,5 @@
         <script src="scripts/home.js"></script>
     </body>
     
+
 </html>
