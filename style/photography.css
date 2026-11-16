@@ -1,122 +1,117 @@
 /* ==========================================================================
-   1. PHOTOGRAPHY PAGE LAYOUT
+   PHOTOGRAPHY.CSS
    ========================================================================== */
 .photography-page {
     min-height: 100vh;
-    padding: 12vh 5vw 10vh 5vw; 
-    max-width: 1400px; 
+    padding: 120px 5vw 96px 5vw; 
+    max-width: 1240px; 
     margin: 0 auto;
 }
 
 .page-title {
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    text-align: center; /* Restored to center */
-    margin-bottom: 60px; /* Gives nice breathing room before the columns start */
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    text-align: center;
+    margin: 0 0 56px 0;
     line-height: 1.1;
 }
 
-/* Two-Column CSS Grid */
 .photography-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); 
-    gap: 6vw;
-    align-items: center; /* FIX: This vertically centers the right column to the left column */
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); 
+    gap: 56px;
+    align-items: center;
 }
 
-/* ==========================================================================
-   2. STORY / INTRO TEXT (Left Column)
-   ========================================================================== */
+/* -------- Story / Intro Text -------- */
 .story-text {
     color: var(--text-muted);
-    font-size: 1.15rem;
+    font-size: 1.08rem;
     line-height: 1.8;
 }
 
 .story-text p {
-    margin-bottom: 25px;
-    text-align: justify;
-    text-justify: inter-word;
+    margin: 0 0 24px 0;
+    text-align: left;
+}
+
+.story-text p b {
+    color: var(--text-main);
+    font-weight: 600;
 }
 
 .story-text p:last-child {
     margin-bottom: 0;
 }
 
-/* ==========================================================================
-   3. CINEMATIC CATEGORY PORTALS (Right Column)
-   ========================================================================== */
+/* -------- Category Portals -------- */
 .photography-galleries {
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    /* Removed the previous margin-top so it centers perfectly mathematically */
+    gap: 28px;
 }
 
 .portal-card {
     position: relative;
-    height: 350px; 
+    height: 310px; 
     border-radius: 12px;
     overflow: hidden;
     display: block;
     text-decoration: none;
-    border: 1px solid #222;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-subtle);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .portal-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.5s ease;
 }
 
-/* Gradient overlay to ensure text readability over any image */
 .portal-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(11, 13, 16, 0.92) 0%, rgba(11, 13, 16, 0.25) 55%, transparent 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 30px;
-    transition: background 0.3s ease;
+    padding: 28px;
 }
 
 .portal-overlay h2 {
     color: var(--text-main);
-    font-size: 2.2rem;
-    margin: 0 0 10px 0;
-    line-height: 1.1;
+    font-size: 1.85rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px 0;
+    line-height: 1.15;
 }
 
 .portal-action {
     color: var(--text-muted);
     font-family: var(--font-code);
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 .portal-action i {
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
-/* -------- Hover Interactions -------- */
 .portal-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
     border-color: var(--accent-color);
-    box-shadow: 0 15px 30px rgba(0, 255, 102, 0.15);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
 }
 
 .portal-card:hover .portal-img {
-    transform: scale(1.05); /* Subtle zoom */
-}
-
-.portal-card:hover .portal-overlay {
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0, 255, 102, 0.05) 60%, transparent 100%);
+    transform: scale(1.03);
 }
 
 .portal-card:hover .portal-action {
@@ -124,21 +119,18 @@
 }
 
 .portal-card:hover .portal-action i {
-    transform: translateX(8px); /* Arrow slides right */
+    transform: translateX(5px);
 }
 
-/* ==========================================================================
-   4. RESPONSIVE DESIGN
-   ========================================================================== */
 @media (max-width: 992px) {
     .photography-layout {
-        grid-template-columns: 1fr; /* Stacks columns vertically */
-        gap: 60px;
+        grid-template-columns: 1fr;
+        gap: 48px;
     }
 }
 
 @media (max-width: 768px) {
     .portal-card {
-        height: 300px; /* Ensures cards fit nicely on smaller phone screens */
+        height: 260px;
     }
 }

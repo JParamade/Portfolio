@@ -3,30 +3,38 @@
    ========================================================================== */
 .portfolio-page {
     min-height: 100vh;
-    padding: 10vh 5vw 10vh 5vw;
+    padding: 120px 5vw 96px 5vw;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .page-title {
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
     text-align: center;
-    margin-bottom: 60px;
+    margin: 0 0 24px 0;
 }
 
 .portfolio-intro {
-    text-align: justify;
-    margin-bottom: 60px;
+    text-align: left;
+    margin-bottom: 56px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .intro-text {
-    max-width: 800px;
+    max-width: 780px;
     color: var(--text-muted);
-    line-height: 1.8;
-    font-size: 1.1rem;
+    line-height: 1.75;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.intro-text b {
+    color: var(--text-main);
+    font-weight: 600;
 }
 
 /* ==========================================================================
@@ -34,29 +42,28 @@
    ========================================================================== */
 .portfolio-grid {
     display: grid;
-    /* Automatically creates responsive columns based on the 350px minimum width */
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
 }
 
 /* ==========================================================================
    3. PROJECT CARDS (Base Styles & Hover Effects)
    ========================================================================== */
 .project-card {
-    background: #151515;
-    border: 1px solid #222;
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
     border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 30px rgba(0, 255, 102, 0.1);
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    background: var(--surface-2);
 }
 
 /* ==========================================================================
@@ -65,62 +72,60 @@
 .card-img-wrapper {
     position: relative;
     width: 100%;
-    height: 220px;
+    height: 215px;
     overflow: hidden;
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .project-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .project-card:hover .project-image {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .role-badge {
     position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(5px);
+    bottom: 12px;
+    right: 12px;
+    background: rgba(11, 13, 16, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     color: var(--text-main);
-    padding: 6px 12px;
+    padding: 5px 10px;
     border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: 1px solid #333;
+    font-family: var(--font-code);
+    font-size: 0.78rem;
+    font-weight: 500;
+    border: 1px solid var(--border-subtle);
 }
 
 .card-badges {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 /* -------- Platform Icons -------- */
 .platform-icon {
-    font-size: 1.3rem;
-    color: #555; 
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.15rem;
+    color: var(--text-dim); 
+    transition: color 0.2s ease;
 }
 
-.project-card:hover .platform-icon {
-    transform: scale(1.1);
-}
-
-/* Brand Colors on Hover */
-.project-card:hover .platform-icon.steam { color: #66c0f4; }
+.project-card:hover .platform-icon.steam { color: #38bdf8; }
 .project-card:hover .platform-icon.itch { color: #fa5c5c; }
-.project-card:hover .platform-icon.github { color: #ffffff; }
+.project-card:hover .platform-icon.github { color: var(--text-main); }
 
 /* ==========================================================================
    5. CARD CONTENT & TYPOGRAPHY
    ========================================================================== */
 .project-content {
-    padding: 25px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -130,30 +135,34 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 5px;
+    gap: 12px;
+    margin-bottom: 6px;
 }
 
 .project-title {
     color: var(--text-main);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    font-weight: 700;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .project-year {
     font-family: var(--font-code);
     color: var(--accent-color);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    background: rgba(0, 255, 102, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
+    background: var(--accent-tint);
+    border: 1px solid var(--accent-border);
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
 }
 
 .studio-name {
-    color: var(--text-muted);
+    color: var(--text-dim);
     font-weight: 500;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -161,8 +170,7 @@
 }
 
 .studio-name i {
-    color: #888;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 /* ==========================================================================
@@ -171,15 +179,15 @@
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     margin-top: auto;
 }
 
 .tag {
     font-family: var(--font-code);
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 6px 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 5px 10px;
     border-radius: 6px;
     display: inline-flex;
     align-items: center;
@@ -187,27 +195,27 @@
 }
 
 .tag-engine {
-    color: #00d2ff;
-    background: rgba(0, 210, 255, 0.1);
-    border: 1px solid rgba(0, 210, 255, 0.2);
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
 .tag-lang {
-    color: #ff3366;
-    background: rgba(255, 51, 102, 0.1);
-    border: 1px solid rgba(255, 51, 102, 0.2);
+    color: #fb7185;
+    background: rgba(251, 113, 133, 0.08);
+    border: 1px solid rgba(251, 113, 133, 0.2);
 }
 
 .tag-tool {
-    color: #ffaa00;
-    background: rgba(255, 170, 0, 0.1);
-    border: 1px solid rgba(255, 170, 0, 0.2);
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.2);
 }
 
 .tag-team {
     color: var(--accent-color);
-    background: rgba(0, 255, 102, 0.1);
-    border: 1px solid rgba(0, 255, 102, 0.2);
+    background: var(--accent-tint);
+    border: 1px solid var(--accent-border);
 }
 
 /* ==========================================================================
@@ -215,19 +223,20 @@
    ========================================================================== */
 .view-project-action {
     margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid #222;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-subtle);
     color: var(--text-muted);
+    font-family: var(--font-code);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 .view-project-action i {
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 .project-card:hover .view-project-action {
@@ -235,40 +244,32 @@
 }
 
 .project-card:hover .view-project-action i {
-    transform: translateX(8px);
+    transform: translateX(4px);
 }
 
-
 /* ==========================================================================
-   7. FOOTER HOOK
+   8. FOOTER HOOK
    ========================================================================== */
 .portfolio-footer-hook {
     text-align: center;
-    margin-top: 80px;
-    padding: 40px;
-    border-top: 1px solid #222;
+    margin-top: 72px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border-subtle);
 }
 
 .portfolio-footer-hook p {
     font-family: var(--font-code);
-    color: var(--text-muted);
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin: 0;
 }
 
 .portfolio-footer-hook b {
-    color: var(--accent-color);
-    font-style: normal;
+    color: var(--text-muted);
+    font-weight: 600;
 }
 
 .portfolio-footer-hook p::before {
-    content: "\f110"; 
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
+    content: "// ";
     color: var(--accent-color);
-    animation: fa-spin 2s linear infinite;
-    font-size: 0.9rem;
 }

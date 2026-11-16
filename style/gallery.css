@@ -1,15 +1,15 @@
 /* ==========================================================================
-   1. GALLERY PAGE LAYOUT & HEADER
+   GALLERY.CSS
    ========================================================================== */
 .gallery-page {
-    padding: 15vh 5vw 10vh 5vw;
-    max-width: 1400px;
+    padding: 112px 5vw 96px 5vw;
+    max-width: 1320px;
     margin: 0 auto;
     min-height: 100vh;
 }
 
 .gallery-header {
-    margin-bottom: 40px;
+    margin-bottom: 36px;
 }
 
 .back-link {
@@ -18,8 +18,10 @@
     gap: 8px;
     color: var(--text-muted);
     text-decoration: none;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 18px;
     transition: color 0.2s ease;
 }
 
@@ -28,88 +30,92 @@
 }
 
 .page-title {
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
     margin: 0;
     line-height: 1.1;
     color: var(--text-main);
 }
 
-/* ==========================================================================
-   2. FILTER NAVIGATION
-   ========================================================================== */
+/* -------- Filter Navigation -------- */
 .gallery-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid #222;
+    gap: 10px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid var(--border-subtle);
     padding-bottom: 20px;
 }
 
 .filter-btn {
-    background: transparent;
-    border: 1px solid #333;
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
     color: var(--text-muted);
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 7px 15px;
+    border-radius: 8px;
     font-family: var(--font-code);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
-.filter-btn:hover, .filter-btn.active {
-    border-color: var(--accent-color);
+.filter-btn:hover {
+    border-color: var(--border-hover);
     color: var(--text-main);
-    background: rgba(0, 255, 102, 0.05);
+    background: var(--surface-2);
 }
 
-/* ==========================================================================
-   3. MASONRY GRID (CSS Columns)
-   ========================================================================== */
+.filter-btn.active {
+    border-color: var(--accent-border);
+    color: var(--accent-color);
+    background: var(--accent-tint);
+}
+
+/* -------- Masonry Grid -------- */
 .masonry-grid {
     column-count: 3;
     column-gap: 20px;
 }
 
 .masonry-item {
-    break-inside: avoid; /* Crucial: Prevents images from being split across columns */
+    break-inside: avoid;
     margin-bottom: 20px;
     position: relative;
-    border-radius: 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
     overflow: hidden;
     cursor: zoom-in;
     display: block;
+    transition: border-color 0.25s ease;
 }
 
 .masonry-item img {
     width: 100%;
     display: block;
-    border-radius: 8px;
-    transition: transform 0.4s ease;
+    transition: transform 0.35s ease;
 }
 
-/* -------- Hover Overlay (Expand Icon) -------- */
 .photo-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(11, 13, 16, 0.35);
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
 }
 
 .photo-overlay i {
-    color: white; 
-    font-size: 3rem; 
+    color: var(--text-main); 
+    font-size: 1.75rem; 
     opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.3s ease;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: all 0.25s ease;
 }
 
+.masonry-item:hover { border-color: var(--border-hover); }
 .masonry-item:hover .photo-overlay { opacity: 1; }
 .masonry-item:hover .photo-overlay i {
     opacity: 1;
@@ -117,14 +123,13 @@
 }
 .masonry-item:hover img { transform: scale(1.02); }
 
-/* ==========================================================================
-   4. LIGHTBOX: BASE & PURE IMAGE (Video Games)
-   ========================================================================== */
+/* -------- Lightbox Base & Pure Image -------- */
 .lightbox {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(7, 9, 11, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 2000;
     display: none; 
     align-items: center;
@@ -137,19 +142,27 @@
 
 .lightbox-close {
     position: absolute;
-    top: 30px;
-    right: 40px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
+    top: 24px;
+    right: 32px;
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.25rem;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: all 0.2s ease;
     z-index: 2001;
 }
 
 .lightbox-close:hover {
     color: var(--accent-color);
+    border-color: var(--border-hover);
+    background: var(--surface-2);
 }
 
 .pure-image-content {
@@ -166,22 +179,20 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-radius: 4px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    border-radius: 6px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-/* ==========================================================================
-   5. LIGHTBOX: EXIF METADATA (Real Life)
-   ========================================================================== */
+/* -------- Lightbox EXIF Metadata -------- */
 .meta-image-content {
     display: flex;
     max-width: 90vw;
     max-height: 85vh;
-    background: #111;
-    border: 1px solid #222;
-    border-radius: 8px;
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
 }
 
 .lightbox-img-wrapper {
@@ -189,7 +200,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #050505; 
+    background: #07090b; 
     padding: 20px;
 }
 
@@ -199,13 +210,12 @@
     box-shadow: none; 
 }
 
-/* -------- Metadata Sidebar -------- */
 .lightbox-sidebar {
-    width: 320px;
-    min-width: 320px;
-    padding: 40px 30px;
-    background: #151515;
-    border-left: 1px solid #222;
+    width: 310px;
+    min-width: 310px;
+    padding: 36px 28px;
+    background: var(--surface-1);
+    border-left: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -215,56 +225,56 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 15px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 14px;
 }
 
 .meta-header i {
-    color: var(--text-main);
-    font-size: 1.5rem;
+    color: var(--accent-color);
+    font-size: 1.25rem;
 }
 
 .meta-header h3 {
     color: var(--text-main);
-    font-size: 1.2rem;
+    font-family: var(--font-code);
+    font-size: 0.95rem;
+    font-weight: 600;
     margin: 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.06em;
 }
 
 .meta-list p {
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin: 0 0 16px 0;
     font-family: var(--font-code);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+}
+
+.meta-list p:last-child {
+    margin-bottom: 0;
 }
 
 .meta-list i {
-    color: var(--accent-color);
-    width: 20px;
+    color: var(--text-dim);
+    width: 18px;
     text-align: center;
 }
 
-/* ==========================================================================
-   6. RESPONSIVE MEDIA QUERIES
-   ========================================================================== */
-
-/* Tablets & Small Desktops */
 @media (max-width: 900px) {
     .masonry-grid { column-count: 2; }
     .pure-image-content { padding: 20px; }
-    .lightbox-close { top: 15px; right: 20px; }
+    .lightbox-close { top: 16px; right: 16px; }
     
-    /* Meta Lightbox Stacked Layout */
     .meta-image-content { 
         flex-direction: column; 
         max-height: 95vh; 
     }
-    .lightbox-img-wrapper { padding: 10px; }
+    .lightbox-img-wrapper { padding: 12px; }
     .meta-image-content .lightbox-img { max-height: 50vh; }
     
     .lightbox-sidebar { 
@@ -272,15 +282,15 @@
         min-width: 100%;
         padding: 20px;
         border-left: none; 
-        border-top: 1px solid #222; 
+        border-top: 1px solid var(--border-subtle); 
     }
     .meta-list {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Shifts list to a neat 2-column grid */
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
     }
 }
 
-/* Mobile Devices */
 @media (max-width: 600px) {
     .masonry-grid { column-count: 1; }
     .gallery-filters { justify-content: center; }

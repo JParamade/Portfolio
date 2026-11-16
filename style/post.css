@@ -1,27 +1,28 @@
 /* ==========================================================================
-   1. INDIVIDUAL POST LAYOUT
+   POST.CSS
    ========================================================================== */
 .post-page {
     min-height: 100vh;
-    padding: 15vh 5vw 5vh 5vw;
+    padding: 112px 5vw 80px 5vw;
     display: flex;
     justify-content: center;
 }
 
 .full-post {
-    max-width: 800px; /* Constrained for perfect reading width */
+    max-width: 760px;
     width: 100%;
 }
 
-/* -------- Back Link -------- */
 .back-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     color: var(--text-muted);
     text-decoration: none;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 24px;
     transition: color 0.2s ease;
 }
 
@@ -29,54 +30,48 @@
     color: var(--accent-color);
 }
 
-/* ==========================================================================
-   2. POST HEADER & META DATA
-   ========================================================================== */
 .post-header {
-    text-align: center;
-    margin-bottom: 30px;
+    text-align: left;
+    margin-bottom: 32px;
 }
 
 .post-meta {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    align-items: center;
+    gap: 12px;
     font-family: var(--font-code);
     color: var(--accent-color);
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-}
-
-.post-date {
-    margin-top: 3px;
+    font-size: 0.85rem;
+    margin-bottom: 14px;
 }
 
 .post-category {
     color: var(--text-muted);
-    border: 1px solid #333;
-    padding: 2px 10px;
-    border-radius: 12px;
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
 }
 
 .full-post-title {
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
     margin: 0;
-    line-height: 1.2;
-    text-wrap: balance; /* Prevents awkward single-word orphans on new lines */
+    line-height: 1.15;
+    text-wrap: balance;
 }
 
-/* ==========================================================================
-   3. POST CONTENT & TYPOGRAPHY
-   ========================================================================== */
 .full-post-content {
-    text-align: justify;
-    font-size: 1.15rem;
+    text-align: left;
+    font-size: 1.08rem;
     line-height: 1.8;
-    color: #e0e0e0;
+    color: var(--text-muted);
 }
 
 .full-post-content p {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
 .full-post-content b, 
@@ -85,34 +80,32 @@
     font-weight: 600;
 }
 
-/* ==========================================================================
-   4. POST MEDIA (Images & Videos)
-   ========================================================================== */
 .full-post-image {
     width: 100%;
     height: auto;
-    max-height: 450px;
+    max-height: 440px;
     object-fit: cover;
     border-radius: 12px;
-    margin-bottom: 40px;
-    border: 1px solid #222;
+    margin-bottom: 36px;
+    border: 1px solid var(--border-subtle);
 }
 
 .inline-image {
     width: 100%;
-    border-radius: 8px;
-    margin: 30px 0;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    margin: 28px 0;
 }
 
-/* 16:9 Responsive Video Container */
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     border-radius: 12px;
-    margin: 40px 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-subtle);
+    margin: 36px 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
 
 .video-container iframe {
